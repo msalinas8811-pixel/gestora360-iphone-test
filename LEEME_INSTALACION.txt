@@ -223,3 +223,11 @@ VERSIÓN 2.77 — LIMPIAR HISTORIAL DE ÚLTIMOS MOVIMIENTOS
 - El botón solicita confirmación y elimina únicamente los registros guardados en el historial de movimientos.
 - No modifica las existencias actuales, productos, compras ni facturas. La limpieza del historial no se puede deshacer; exporta los movimientos antes si necesitas conservar una copia.
 - Esta versión ZIP independiente no modifica el sitio publicado.
+
+Corrección v2.95: el cálculo sincroniza los valores visibles del campo Precio de venta sugerido antes de actualizar el resumen y conserva el nombre escrito en Descripción de la importación. Actualiza/republica todos los archivos y recarga el sitio para evitar caché antigua.
+
+
+Versión 3.00: incluye recálculo forzado del resumen de importación al abrir el módulo y botón manual “Recalcular resumen”.
+
+
+Versión 314: ajuste visual de cabecera global, logo, accesos de Inicio/Ayuda/Idioma y menú horizontal.

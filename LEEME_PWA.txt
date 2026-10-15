@@ -1,0 +1,22 @@
+GESTORA 360 PWA — VERSIÓN 316
+
+CONTENIDO
+- index.html: aplicación
+- manifest.webmanifest: configuración de instalación
+- service-worker.js: caché y funcionamiento sin conexión para recursos guardados
+- icon-192.png / icon-512.png: iconos de la app
+
+IMPORTANTE
+Este paquete es una PWA (aplicación web progresiva), no un APK ni un IPA. Para instalarla como aplicación en iPhone o Android, debe publicarse en un sitio HTTPS. Abrir el HTML directamente desde Archivos no permite instalar todas las funciones PWA.
+
+PUBLICACIÓN
+1. Descomprime el ZIP.
+2. Sube TODOS los archivos de esta carpeta a la raíz de un sitio HTTPS (por ejemplo, el hosting que utilices).
+3. Abre la URL del sitio en Safari (iPhone) o Chrome (Android).
+4. iPhone: Safari > Compartir > Añadir a pantalla de inicio.
+5. Android: Chrome > menú ⋮ > Instalar aplicación o Añadir a pantalla de inicio.
+
+DATOS
+La aplicación conserva datos localmente en el navegador/dispositivo. Los datos no se sincronizan automáticamente entre dispositivos. Usa el módulo Respaldo para exportar y conservar copias antes de actualizar o cambiar de dispositivo.
+
+Esta versión deriva de Gestora 360 v315 y mantiene sus módulos y lógica funcional; se actualizaron los metadatos PWA y la versión de caché. No se ha publicado automáticamente en internet.

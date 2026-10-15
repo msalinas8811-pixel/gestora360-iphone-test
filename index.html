@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b34"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Gestora 360"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><link rel="manifest" href="./manifest.webmanifest"><title>Gestora 360 — Plataforma de gestión empresarial</title>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102342"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png"><link rel="apple-touch-icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gestora 360"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="mobile-web-app-capable" content="yes"><meta name="description" content="Gestora 360: costos de importación, compras, inventario, facturación, clientes, proveedores y reportes."><title>Gestora 360 — Plataforma de gestión empresarial</title>
 <style>
 :root{--ink:#17352f;--muted:#647a73;--line:#dce6e2;--bg:#f4f7f5;--green:#176b54;--soft:#e9f3ef}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}header{background:#123b34;color:#fff;padding:20px max(18px,calc((100% - 1050px)/2))}.brand{font-size:22px;font-weight:800;display:flex;align-items:center;gap:12px}.brand img{width:58px;height:58px;object-fit:cover;border-radius:14px;border:2px solid rgba(255,255,255,.75);background:#fff}.brandname{display:flex;flex-direction:column;gap:3px}.tag{font-size:13px;color:#c9ded7}main{max-width:1050px;margin:20px auto;padding:0 15px 45px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px;margin-bottom:15px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{background:var(--soft);padding:14px;border-radius:11px}.metric span{display:block;font-size:12px;color:var(--muted)}.metric strong{font-size:21px;display:block;margin-top:5px}h2{font-size:17px;margin:0 0 13px}.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}input,select{width:100%;padding:10px;border:1px solid #cbd9d4;border-radius:9px;font:inherit;color:var(--ink);background:#fff}button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;background:var(--green);color:#fff;cursor:pointer}.secondary{background:#eaf2ef;color:var(--ink)}.remove{background:#fff0ee;color:#a33c30;padding:7px 10px}.product{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.productgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.calcfield input[readonly]{background:#edf4f1;border-color:#c8d9d2;font-weight:700;color:#174f40}.calcfield label{font-weight:700}.calcfield{min-width:0}.result{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#f2f7f4;border-radius:9px;padding:11px;margin-top:11px}.result b{font-size:18px;color:var(--green)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.note{font-size:12px;line-height:1.5;color:var(--muted)}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:right;padding:9px 7px;border-bottom:1px solid var(--line);white-space:nowrap}th:first-child,td:first-child{text-align:left}@media(max-width:700px){.metrics{grid-template-columns:1fr}.fields{grid-template-columns:repeat(2,1fr)}.productgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.wide{grid-column:1/-1}}
 .totalrow td{font-weight:700;background:#edf5f2;border-top:2px solid #2d6657} .international-only[hidden]{display:none!important}
@@ -181,18 +181,258 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
 @media(max-width:540px){#page-costs #costImportSummaryPanel{padding:16px!important}#page-costs #costImportSummaryPanel .report-import-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}#page-costs #costImportSummaryPanel .report-import-metrics .metric{padding:15px 12px!important;border-radius:17px!important}#page-costs #costImportSummaryPanel .report-import-metrics .metric span{font-size:clamp(12px,3.5vw,15px)!important}#page-costs #costImportSummaryPanel .report-import-metrics .metric strong{font-size:clamp(18px,5vw,27px)!important}}
 </style>
 
-</head><body><header><div class="brand"><img src="./importapro-logo.png" alt="Logotipo de Gestora 360"><div class="brandname">Gestora 360<div class="tag">Todo tu negocio en un solo lugar</div></div><div style="margin-left:auto;display:flex;align-items:end;gap:8px;flex-wrap:wrap"><button type="button" data-page-go="page-home" id="globalHomeButton" class="secondary" style="padding:9px 12px;background:#16a085;color:#fff;border-color:#16a085">⌂ Inicio</button><button type="button" id="helpButton" class="secondary" style="padding:9px 12px">Ayuda</button><div style="min-width:145px"><label for="language" style="color:#fff">Idioma / Language</label><select id="language"><option value="es">Versión español</option><option value="en">English version</option></select></div></div></div></header>
+
+<style id="gestora360-redesign-v305">
+:root{--g360-navy:#102342;--g360-navy2:#19375c;--g360-teal:#13a58e;--g360-teal-dark:#087e70;--g360-canvas:#f4f7fb;--g360-line:#e1e8f0;--g360-muted:#64748b;--g360-text:#172b4d;--g360-card:#fff}
+html{scroll-behavior:smooth}body{background:var(--g360-canvas)!important;color:var(--g360-text)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;letter-spacing:-.01em}
+header{background:linear-gradient(112deg,#102342 0%,#183b61 70%,#155e70 100%)!important;box-shadow:0 8px 28px #10234220!important;border-bottom:1px solid #ffffff16!important}
+header .brand img{border:1px solid #ffffff70!important;box-shadow:0 3px 12px #06172c35!important}header .tag{color:#c8d8e9!important}
+body>main{background:transparent!important}
+.app-navigation{background:linear-gradient(180deg,#102342 0%,#0d1d35 100%)!important;border-right:1px solid #ffffff12!important;box-shadow:8px 0 28px #1023420b!important}
+.app-navigation:before{color:#92accb!important;letter-spacing:.16em!important;font-size:10px!important}
+.app-navigation button{border-radius:12px!important;transition:background .18s ease,border-color .18s ease,transform .18s ease!important;min-height:44px!important}
+.app-navigation button:hover{background:#ffffff12!important;border-color:#ffffff12!important;transform:translateX(2px)}
+.app-navigation button[aria-current="page"]{background:linear-gradient(105deg,#0c8b7b,#16a58f)!important;box-shadow:0 7px 18px #06172c40!important;color:#fff!important}
+.panel,.home-tile{background:var(--g360-card)!important;border:1px solid var(--g360-line)!important;border-radius:17px!important;box-shadow:0 5px 22px #10234208!important}
+.panel{padding:22px!important;margin-bottom:18px!important}.panel h2{color:#142b49!important;font-weight:750!important;letter-spacing:-.025em!important;border-bottom-color:#e5ebf3!important}
+.home-hero{background:linear-gradient(115deg,#102342 0%,#1c4b70 66%,#13a58e 130%)!important;border:1px solid #ffffff1c!important;box-shadow:0 12px 30px #10234219!important;padding:32px!important}
+.home-tile{transition:transform .18s ease,box-shadow .18s ease!important}.home-tile:hover{transform:translateY(-2px);box-shadow:0 12px 28px #10234212!important}
+button{background:linear-gradient(110deg,#087f72,#13a58e)!important;color:#fff!important;border:1px solid transparent!important;box-shadow:0 2px 5px #1023420b!important;transition:filter .15s ease,transform .15s ease!important}
+button:hover{filter:brightness(1.04)}button:active{transform:translateY(1px)}button.secondary{background:#edf3f8!important;color:#1b3555!important;border:1px solid #dce5ef!important;box-shadow:none!important}button.remove{background:#fff1ef!important;color:#a33c30!important;border-color:#f4d9d5!important}
+input,select,textarea{border:1px solid #cbd6e3!important;border-radius:10px!important;box-shadow:inset 0 1px 2px #10234205!important;transition:border-color .15s,box-shadow .15s}input:focus,select:focus,textarea:focus{outline:none!important;border-color:#13a58e!important;box-shadow:0 0 0 3px #13a58e20!important}
+label{color:#465a74!important;font-weight:650!important}.note{color:var(--g360-muted)!important}
+.metric,.metric-card{border-radius:13px!important;border-color:#dce7f0!important;background:#f1f6fb!important}.result{background:#edf8f5!important;border:1px solid #d8eee7!important}.result b,.calcfield input[readonly]{color:#087f70!important}
+th{background:#edf3fa!important;color:#243d5c!important}tbody tr:nth-child(even){background:#f8fafc!important}
+.page-heading{gap:12px}.page-heading h1{letter-spacing:-.035em;color:#142b49}
+@media(max-width:900px){body>main{padding-left:18px!important;padding-right:18px!important}.panel{padding:18px!important}}
+@media(max-width:700px){header{padding:10px 12px!important}.app-navigation{gap:6px!important;padding:8px 9px!important;background:#102342!important;box-shadow:0 5px 15px #10234218!important}.app-navigation button{min-height:40px!important;min-width:46px!important;padding:7px 9px!important;border-radius:10px!important;font-size:11px!important;gap:6px!important}.app-navigation button:before{font-size:15px!important;width:auto!important;flex:0 0 auto!important}.app-navigation button[aria-current="page"]{box-shadow:0 3px 10px #06172c40!important}body>main{padding-left:12px!important;padding-right:12px!important}.panel{padding:15px!important;border-radius:14px!important}.home-hero{padding:21px!important;border-radius:16px!important}.home-grid{gap:10px!important}.home-tile{padding:14px!important}.actions button{min-width:0}.fields{gap:10px!important}}
+@media(max-width:520px){header{min-height:68px!important}.brandname{font-size:18px!important}.brand .tag{font-size:11px!important}.app-navigation{padding:7px 8px!important}.app-navigation button{max-width:142px!important;min-height:38px!important;font-size:10.5px!important;padding:7px 8px!important}.app-navigation button:before{font-size:14px!important}.home-grid{grid-template-columns:1fr!important}.metrics,.metric-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.panel h2{font-size:1.05rem!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+
+
+<style id="gestora360-redesign-chat2-v307">
+/* Gestora 360 v3.07 — visual redesign pass; functional markup and app logic preserved */
+:root{--g360-navy:#102342;--g360-navy2:#18365d;--g360-teal:#12a995;--g360-pale:#f3f6fb;--g360-text:#192b45;--g360-muted:#687991;--g360-border:#e0e7f0;--g360-card:#fff}
+html{background:#f3f6fb}body{background:#f3f6fb!important;color:var(--g360-text)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;letter-spacing:-.01em}
+header{background:linear-gradient(115deg,#0b1b35 0%,#15345a 72%,#146b75 140%)!important;box-shadow:0 8px 28px rgba(16,35,66,.16)!important;border-bottom:1px solid rgba(255,255,255,.1)}
+header .brand img{border-radius:14px!important;box-shadow:0 4px 14px #06152c55!important}
+header .tag{letter-spacing:.02em!important}
+body>main{padding-top:28px!important}
+.app-navigation{background:linear-gradient(180deg,#102342,#0c1a30)!important;box-shadow:8px 0 28px rgba(16,35,66,.07)!important;border-right:1px solid #263d5c!important}
+.app-navigation:before{content:'GESTIÓN EMPRESARIAL  ·  MENÚ'!important;color:#89a3c6!important;letter-spacing:1.15px!important;font-size:9px!important}
+.app-navigation button{border-radius:12px!important;min-height:46px!important;padding:12px 13px!important;color:#c9d6e7!important;font-weight:650!important;transition:all .18s ease!important}
+.app-navigation button:before{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:8px;background:#ffffff0b;font-size:16px!important;flex-shrink:0}
+.app-navigation button[data-page-go="page-home"]:before{content:'⌂'}
+.app-navigation button[data-page-go="page-company"]:before{content:'▦'}
+.app-navigation button[data-page-go="page-costs"]:before{content:'◈'}
+.app-navigation button[data-page-go="page-purchases"]:before{content:'↙'}
+.app-navigation button[data-page-go="page-inventory"]:before{content:'▤'}
+.app-navigation button[data-page-go="page-billing"]:before{content:'▧'}
+.app-navigation button[data-page-go="page-customers"]:before{content:'♙'}
+.app-navigation button[data-page-go="page-suppliers"]:before{content:'⇄'}
+.app-navigation button[data-page-go="page-reports"]:before{content:'▥'}
+.app-navigation button[data-page-go="page-backup"]:before{content:'⤓'}
+.app-navigation button:hover{background:#ffffff10!important;border-color:#ffffff13!important;color:#fff!important;transform:translateX(2px)}
+.app-navigation button[aria-current="page"]{background:linear-gradient(100deg,#0e9f91,#0d827f)!important;color:#fff!important;border-color:#29c3b1!important;box-shadow:0 5px 14px #07988830!important}
+.app-navigation button[aria-current="page"]:before{background:#ffffff20}
+.panel,.home-tile,.product{background:#fff!important;border:1px solid #e1e8f1!important;border-radius:16px!important;box-shadow:0 4px 18px rgba(18,42,75,.045)!important}
+.panel{padding:21px!important;margin-bottom:18px!important}
+.home-hero{position:relative;overflow:hidden;padding:30px!important;border-radius:21px!important;background:linear-gradient(118deg,#102342 0%,#1a4771 66%,#087f83 140%)!important;box-shadow:0 12px 28px rgba(16,35,66,.16)!important}
+.home-hero:after{content:'360';position:absolute;right:25px;bottom:-36px;font-size:150px;font-weight:900;line-height:1;color:#ffffff0a;pointer-events:none}
+.home-hero h1{font-size:clamp(27px,3vw,36px)!important;letter-spacing:-.035em!important;position:relative;z-index:1}
+.home-hero p{max-width:720px;color:#dce8f5!important;position:relative;z-index:1}
+.home-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:15px!important}
+.home-tile{padding:20px!important;gap:12px!important;transition:transform .18s ease,box-shadow .18s ease!important}
+.home-tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,42,75,.09)!important}
+.home-tile h2{font-size:16px!important;letter-spacing:-.015em}
+.home-tile p{font-size:13px;line-height:1.6!important;color:#66768d!important}
+h1,h2,h3{letter-spacing:-.025em}
+.page-heading{padding:5px 2px 14px!important;border-bottom:1px solid #e0e7f0;margin-bottom:20px!important}
+.page-heading h1{font-size:clamp(23px,2.6vw,30px)!important;color:#102342!important;font-weight:800!important}
+button{border-radius:10px!important;box-shadow:none;transition:filter .15s ease,transform .15s ease}
+button:not(.secondary):not(.remove):hover{filter:brightness(1.06);transform:translateY(-1px)}
+input,select,textarea{border-color:#d4deea!important;border-radius:10px!important;min-height:40px}
+input:focus,select:focus,textarea:focus{outline:3px solid #12a99522!important;border-color:#12a995!important}
+th{background:#f3f6fb;color:#3a4c66;font-weight:750}
+td,th{border-bottom-color:#e6ebf2!important}
+.metric{background:linear-gradient(145deg,#f1f6fb,#eaf7f5)!important;border:1px solid #e0ebeF}
+.result{background:#eff8f7!important;border:1px solid #d8eeea}
+.result b,.calcfield input[readonly]{color:#087f76!important}
+@media(max-width:1050px){.home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){body>main{margin:82px 0 0!important;padding:16px 12px 34px!important}.app-navigation{position:sticky!important;top:82px!important;left:auto!important;bottom:auto!important;width:100%!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;padding:10px!important;margin:0 0 16px!important;border-radius:0 0 15px 15px!important;box-shadow:0 5px 16px #10234212!important}.app-navigation:before{grid-column:1/-1;padding:2px 6px 5px!important}.app-navigation button{font-size:11px!important;min-height:43px!important;padding:7px 5px!important;gap:4px!important;justify-content:center!important;text-align:center!important;flex-direction:column!important;line-height:1.1!important}.app-navigation button:before{width:22px;height:22px;font-size:14px!important}.home-grid{grid-template-columns:1fr!important}.home-hero{padding:23px!important}.panel{padding:15px!important}.page-heading{align-items:flex-start!important}}
+@media(min-width:761px) and (max-width:1050px){body>main{margin-left:220px!important;padding-left:20px!important;padding-right:20px!important}.app-navigation{width:220px!important}.home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+</style>
+
+
+<style id="g360-v308-header-icons">
+.g360-header-tools{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;position:relative}
+.g360-icon-btn{width:38px;height:38px;min-width:38px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.24)!important;border-radius:11px!important;background:rgba(255,255,255,.09)!important;color:#fff!important;cursor:pointer;transition:background .18s ease,transform .18s ease;box-shadow:none!important}
+.g360-icon-btn:hover{background:rgba(255,255,255,.18)!important;transform:translateY(-1px)}
+.g360-icon-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.g360-home-btn{background:#16a085!important;border-color:#16a085!important}
+.g360-language-wrap{position:relative;display:flex;align-items:center}
+.g360-language-source{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;min-width:0!important}
+.g360-language-menu{position:absolute;right:0;top:calc(100% + 9px);z-index:10050;min-width:150px;padding:5px;background:#fff;border:1px solid #dbe4ee;border-radius:12px;box-shadow:0 12px 30px rgba(5,20,40,.22)}
+.g360-language-menu[hidden]{display:none!important}.g360-language-menu button{display:block;width:100%;text-align:left;border:0!important;background:transparent!important;color:#172b4d!important;border-radius:8px!important;padding:10px 12px!important;font-size:13px;font-weight:650;cursor:pointer}.g360-language-menu button:hover{background:#eef7f7!important}
+@media(max-width:520px){.g360-header-tools{gap:5px}.g360-icon-btn{width:34px;height:34px;min-width:34px;border-radius:9px!important}.g360-icon-btn svg{width:17px;height:17px}header .brand img{width:36px!important;height:36px!important}header .brandname{font-size:16px}}
+</style>
+
+
+<style id="g360-nav-no-bottom-v309">
+/* Mantener la navegación global fuera del flujo de la página para que no aparezca al final de Inicio. */
+@media (min-width: 761px){
+ body>main{margin-left:252px!important;margin-top:82px!important;}
+ nav.app-navigation{position:fixed!important;top:82px!important;bottom:0!important;left:0!important;width:252px!important;height:auto!important;display:flex!important;flex-direction:column!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:100!important;}
+}
+@media (max-width:760px){
+ body>main{margin:76px 0 0!important;}
+ nav.app-navigation{position:fixed!important;top:76px!important;bottom:auto!important;left:0!important;right:0!important;width:100%!important;height:auto!important;max-height:68px!important;display:flex!important;flex-direction:row!important;overflow-x:auto!important;overflow-y:hidden!important;z-index:100!important;}
+ nav.app-navigation button{flex:0 0 auto!important;}
+}
+</style>
+
+<style id="gestora360-horizontal-dashboard-v310">
+:root{--g360-navy:#12385f;--g360-blue:#087fc2;--g360-teal:#18b8bd;--g360-canvas:#f3f7fc;--g360-line:#dce7f1;--g360-text:#243b53;--g360-muted:#65788d}
+body{background:var(--g360-canvas)!important;color:var(--g360-text)!important}
+header{position:relative!important;top:auto!important;left:auto!important;right:auto!important;width:100%!important;min-height:112px!important;height:auto!important;padding:20px clamp(16px,3vw,42px)!important;background:linear-gradient(110deg,#12385f 0%,#087fc2 58%,#18b8bd 100%)!important;color:#fff!important;border:0!important;border-radius:0 0 26px 26px!important;box-shadow:0 8px 24px #0c3d641c!important;z-index:120!important}
+header .brand{width:100%;display:flex!important;align-items:center!important;gap:15px!important;flex-wrap:wrap}
+header .brand img{width:64px!important;height:64px!important;object-fit:contain!important;border-radius:14px!important;background:#fff!important;padding:5px!important}
+header .brandname{font-size:clamp(24px,3vw,34px)!important;font-weight:800!important;color:#fff!important;letter-spacing:-.5px}
+header .brand .tag{font-size:14px!important;color:#e3f5ff!important;font-weight:500!important;margin-top:3px}
+.g360-header-tools{margin-left:auto!important;display:flex!important;align-items:center!important;gap:8px!important}
+.g360-icon-btn{width:40px!important;height:40px!important;border:1px solid #ffffff66!important;border-radius:12px!important;background:#ffffff18!important;color:#fff!important}
+.g360-icon-btn svg{stroke:currentColor!important;width:19px!important;height:19px!important}
+body>main{margin:0!important;padding:22px clamp(14px,3vw,38px) 36px!important;max-width:1800px!important}
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:none!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;overflow-x:auto!important;overflow-y:hidden!important;margin:18px clamp(14px,3vw,38px) 4px!important;padding:0 0 8px!important;background:transparent!important;border:0!important;box-shadow:none!important;z-index:80!important;scrollbar-width:thin}
+nav.app-navigation:before{display:none!important;content:none!important}
+nav.app-navigation button{flex:0 0 auto!important;width:auto!important;min-width:fit-content!important;max-width:none!important;min-height:52px!important;padding:12px 22px!important;border:1px solid var(--g360-line)!important;border-radius:22px!important;background:#fff!important;color:#596d82!important;font-size:15px!important;font-weight:700!important;white-space:nowrap!important;box-shadow:0 1px 2px #183a5b08!important;transform:none!important}
+nav.app-navigation button:before{display:none!important;content:none!important}
+nav.app-navigation button:hover{background:#eaf5fc!important;color:#126ca6!important;border-color:#b8d8ed!important;transform:translateY(-1px)!important}
+nav.app-navigation button[aria-current="page"]{background:linear-gradient(120deg,#087fc2,#126fc0)!important;border-color:#087fc2!important;color:#fff!important;box-shadow:0 5px 14px #087fc22c!important}
+.app-page{min-width:0!important}
+.home-hero{background:linear-gradient(115deg,#fff,#eaf7fc)!important;border:1px solid #d8eaf5!important;border-radius:22px!important;padding:clamp(22px,4vw,38px)!important;margin:10px 0 18px!important;box-shadow:0 6px 22px #193e5c0b!important}
+.home-hero h1{color:#12385f!important;font-size:clamp(26px,3vw,36px)!important;margin:0 0 10px!important}
+.home-hero p{color:#536a80!important;max-width:950px!important;font-size:16px!important;line-height:1.7!important;margin:0!important}
+.panel{border:1px solid var(--g360-line)!important;border-radius:18px!important;box-shadow:0 4px 18px #163b5b0a!important}
+.home-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}
+.home-tile{border:1px solid #dce8f1!important;border-radius:16px!important;background:#fff!important;padding:20px!important;box-shadow:0 3px 12px #173b5908!important}
+.home-tile h2{color:#12385f!important}
+.home-tile button{border-radius:10px!important;background:#087fc2!important;color:#fff!important;border-color:#087fc2!important}
+.page-heading{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;flex-wrap:wrap!important}
+@media(max-width:900px){.home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}header{padding:16px!important}nav.app-navigation{margin:14px 14px 2px!important}nav.app-navigation button{padding:11px 17px!important;min-height:48px!important}}
+@media(max-width:560px){header{min-height:88px!important;padding:13px 12px!important;border-radius:0 0 20px 20px!important}header .brand{gap:10px!important}header .brand img{width:48px!important;height:48px!important}header .brandname{font-size:22px!important}header .brand .tag{font-size:11px!important}.g360-header-tools{gap:5px!important}.g360-icon-btn{width:34px!important;height:34px!important}body>main{padding:12px 10px 28px!important}nav.app-navigation{margin:12px 10px 0!important;gap:7px!important}nav.app-navigation button{min-height:44px!important;padding:10px 15px!important;font-size:13px!important;border-radius:18px!important}.home-grid{grid-template-columns:1fr!important}.home-hero{padding:20px!important;border-radius:16px!important}.home-hero p{font-size:14px!important}.home-tile{padding:16px!important}}
+@media print{nav.app-navigation{display:none!important}body>main{margin:0!important;padding:0!important}header{display:none!important}}
+</style>
+
+
+<style id="g360-v311-nav-below-header">
+/* Menú principal horizontal justo debajo de la cabecera y de los iconos Inicio/Ayuda/Idioma. */
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:none!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;overflow-x:auto!important;overflow-y:hidden!important;margin:14px clamp(12px,3vw,38px) 16px!important;padding:0 0 8px!important;background:transparent!important;border:0!important;box-shadow:none!important;z-index:20!important;scrollbar-width:thin}
+nav.app-navigation:before{display:none!important;content:none!important}
+nav.app-navigation button{flex:0 0 auto!important;width:auto!important;min-width:max-content!important;max-width:none!important;min-height:48px!important;padding:11px 19px!important;border:1px solid var(--g360-line,#dce7f1)!important;border-radius:18px!important;background:#fff!important;color:#596d82!important;font-size:14px!important;font-weight:700!important;white-space:nowrap!important;box-shadow:0 1px 2px #183a5b08!important}
+nav.app-navigation button:before{display:none!important;content:none!important}
+nav.app-navigation button[aria-current="page"]{background:linear-gradient(120deg,#087fc2,#126fc0)!important;border-color:#087fc2!important;color:#fff!important;box-shadow:0 5px 14px #087fc22c!important}
+body>main{margin:0!important}
+@media(max-width:560px){nav.app-navigation{margin:12px 10px 14px!important;gap:7px!important;padding-bottom:7px!important}nav.app-navigation button{min-height:43px!important;padding:9px 14px!important;font-size:12px!important;border-radius:16px!important}body>main{padding-top:8px!important}}
+@media print{nav.app-navigation{display:none!important}}
+</style>
+
+
+<style id="g360-v312-menu-superior-logo-persistente">
+/* Cabecera global: el logo y los accesos permanecen visibles en todos los módulos */
+body>header{display:flex!important;visibility:visible!important;opacity:1!important;position:sticky!important;top:0!important;z-index:1000!important;width:100%!important;height:auto!important;min-height:76px!important;box-sizing:border-box!important;align-items:center!important;background:var(--panel,#fff)!important;}
+body>header .brand{display:flex!important;visibility:visible!important;opacity:1!important;width:100%!important;align-items:center!important;flex-wrap:wrap!important;}
+body>header .brand img{display:block!important;visibility:visible!important;opacity:1!important;max-height:58px!important;width:auto!important;object-fit:contain!important;}
+body>header .g360-header-tools{display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;gap:8px!important;margin-left:auto!important;}
+body>header #globalHomeButton,body>header #helpButton,body>header #languageButton{display:inline-flex!important;visibility:visible!important;opacity:1!important;}
+nav.app-navigation{position:sticky!important;top:76px!important;z-index:900!important;margin-top:0!important;padding-top:6px!important;padding-bottom:6px!important;background:var(--bg,#f4f7f5)!important;}
+@media(max-width:760px){body>header{min-height:68px!important;padding:8px 10px!important;}body>header .brand{gap:7px!important;}body>header .brand img{max-height:46px!important;}body>header .g360-header-tools{margin-left:auto!important;gap:5px!important;}nav.app-navigation{top:68px!important;max-height:none!important;}}
+@media print{body>header{display:none!important}nav.app-navigation{display:none!important}}
+</style>
+
+
+<style id="g360-v314-header-layout-fix">
+/* Cabecera única y ordenada: logo/título a la izquierda, accesos a la derecha */
+body>header{
+ display:flex!important; position:relative!important; top:auto!important; left:auto!important; right:auto!important;
+ width:100%!important; height:auto!important; min-height:92px!important; box-sizing:border-box!important;
+ padding:16px clamp(14px,3vw,36px)!important; margin:0!important; align-items:center!important;
+ justify-content:space-between!important; gap:18px!important; overflow:visible!important;
+ background:linear-gradient(110deg,#12385f 0%,#087fc2 58%,#18b8bd 100%)!important;
+ color:#fff!important; border:0!important; border-radius:0 0 22px 22px!important;
+ box-shadow:0 8px 24px #0c3d641c!important; z-index:1000!important;
+}
+body>header .brand{
+ display:flex!important; flex:1 1 auto!important; width:auto!important; min-width:0!important; height:auto!important;
+ flex-direction:row!important; flex-wrap:nowrap!important; align-items:center!important; justify-content:flex-start!important;
+ gap:14px!important; margin:0!important; padding:0!important;
+}
+body>header .brand>img{
+ display:block!important; flex:0 0 58px!important; width:58px!important; min-width:58px!important; height:58px!important;
+ max-width:58px!important; max-height:58px!important; object-fit:contain!important; padding:4px!important;
+ border:1px solid #ffffff80!important; border-radius:13px!important; background:#fff!important; box-shadow:0 2px 7px #062a4420!important;
+}
+body>header .brandname{
+ display:flex!important; flex:0 1 auto!important; flex-direction:column!important; min-width:0!important;
+ gap:3px!important; color:#fff!important; font-size:clamp(21px,2.4vw,30px)!important;
+ font-weight:850!important; line-height:1.12!important; letter-spacing:-.35px!important; white-space:normal!important;
+}
+body>header .brand .tag{display:block!important;color:#e3f5ff!important;font-size:12px!important;font-weight:500!important;line-height:1.35!important;margin:2px 0 0!important;}
+body>header .g360-header-tools{
+ display:flex!important; flex:0 0 auto!important; width:auto!important; min-width:max-content!important;
+ flex-direction:row!important; flex-wrap:nowrap!important; align-items:center!important; justify-content:flex-end!important;
+ gap:9px!important; margin:0 0 0 auto!important; padding:0!important; position:relative!important;
+}
+body>header .g360-icon-btn{
+ display:inline-flex!important; flex:0 0 42px!important; width:42px!important; min-width:42px!important; height:42px!important; min-height:42px!important;
+ align-items:center!important; justify-content:center!important; padding:0!important; margin:0!important;
+ color:#fff!important; background:#ffffff1c!important; border:1px solid #ffffff85!important; border-radius:12px!important;
+ box-shadow:none!important; line-height:1!important;
+}
+body>header .g360-icon-btn svg{display:block!important;width:20px!important;height:20px!important;max-width:20px!important;max-height:20px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;}
+body>header .g360-language-wrap{position:relative!important;display:flex!important;flex:0 0 auto!important;align-items:center!important;}
+body>header .g360-language-menu{position:absolute!important;right:0!important;top:calc(100% + 9px)!important;z-index:2000!important;min-width:150px!important;padding:7px!important;background:#fff!important;border:1px solid #dce6ef!important;border-radius:12px!important;box-shadow:0 12px 30px #1023422e!important;}
+body>header .g360-language-menu[hidden]{display:none!important}
+body>header .g360-language-menu button{display:block!important;width:100%!important;text-align:left!important;white-space:nowrap!important;color:#17324f!important;background:#fff!important;border:0!important;border-radius:8px!important;padding:10px 12px!important;}
+body>header .g360-language-menu button:hover{background:#edf6fb!important;}
+body>header .g360-language-source{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;left:-9999px!important;}
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;z-index:900!important;margin:14px clamp(14px,3vw,36px) 4px!important;padding:0 0 8px!important;}
+body>main{margin:0!important;padding-top:16px!important;}
+@media(max-width:640px){
+ body>header{min-height:0!important;align-items:flex-start!important;flex-wrap:wrap!important;gap:12px!important;padding:13px 12px 14px!important;border-radius:0 0 16px 16px!important;}
+ body>header .brand{flex:1 1 100%!important;width:100%!important;gap:10px!important;}
+ body>header .brand>img{flex-basis:46px!important;width:46px!important;min-width:46px!important;height:46px!important;max-height:46px!important;}
+ body>header .brandname{font-size:22px!important;}
+ body>header .brand .tag{font-size:11px!important;}
+ body>header .g360-header-tools{flex:0 0 auto!important;width:auto!important;margin:0 0 0 auto!important;gap:8px!important;}
+ body>header .g360-icon-btn{flex-basis:38px!important;width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;border-radius:10px!important;}
+ body>header .g360-icon-btn svg{width:18px!important;height:18px!important;}
+ nav.app-navigation{margin:10px 12px 2px!important;gap:7px!important;}
+ body>main{padding:12px 10px 28px!important;}
+}
+@media print{body>header,nav.app-navigation{display:none!important}}
+</style>
+
+</head><body><header><div class="brand"><img src="./importapro-logo.png" alt="Gestora 360 — G360"><div class="brandname">Gestora 360<div class="tag">Todo tu negocio en un solo lugar</div></div><div class="g360-header-tools" aria-label="Accesos rápidos">
+<button type="button" data-page-go="page-home" id="globalHomeButton" class="g360-icon-btn g360-home-btn" aria-label="Inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M9 20v-6h6v6"/></svg></button>
+<button type="button" id="helpButton" class="g360-icon-btn" aria-label="Ayuda" title="Ayuda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.3 1.8c-1.1 1-1.9 1.2-1.9 2.7M12 17h.01"/></svg></button>
+<div class="g360-language-wrap"><button type="button" id="languageButton" class="g360-icon-btn" aria-label="Idioma / Language" title="Idioma / Language" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></button><div id="languageMenu" class="g360-language-menu" hidden><button type="button" data-language-value="es">🇸🇻 Español</button><button type="button" data-language-value="en">🌐 English</button></div><select id="language" aria-label="Idioma / Language" class="g360-language-source"><option value="es">Versión español</option><option value="en">English version</option></select></div>
+</div></div></header>
+<nav class="app-navigation" aria-label="Navegación principal">
+ <button type="button" data-page-go="page-home" aria-current="page">Inicio</button><button type="button" data-page-go="page-company">Empresa</button><button type="button" data-page-go="page-costs">Costos de importación</button><button type="button" data-page-go="page-purchases">Compras</button><button type="button" data-page-go="page-inventory">Inventario</button><button type="button" data-page-go="page-billing">Facturación</button><button type="button" data-page-go="page-customers">Clientes</button><button type="button" data-page-go="page-suppliers">Proveedores</button><button type="button" data-page-go="page-reports">Reportes</button><button type="button" data-page-go="page-backup">Backup y restauración</button>
+</nav>
 <div id="helpModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:9999;padding:18px;overflow:auto" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
  <div style="max-width:760px;margin:5vh auto;background:var(--panel,#fff);color:var(--text,#172033);border-radius:16px;padding:20px;box-shadow:0 12px 40px rgba(0,0,0,.25)">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h2 id="helpTitle" style="margin:0">Ayuda de Gestora 360</h2><button type="button" id="closeHelp" class="secondary">Cerrar ✕</button></div>
-  <p id="helpIntro">Guía rápida: qué significa cada campo y cómo se utiliza.</p>
+  <p id="helpIntro">Guía rápida de Gestora 360: qué significa cada campo y cómo se utiliza.</p>
   <div id="helpContent" style="display:grid;gap:12px"></div>
  </div>
 </div>
 <main>
 <section id="page-home" class="app-page active">
- <div class="home-hero"><h1>Bienvenido a Gestora 360</h1><p>Registra los datos de tu empresa y administra costos estimados, compras locales e internacionales, inventario, facturación y reportes desde módulos independientes. El trabajo se guarda localmente en este dispositivo.</p></div>
- <section class="panel"><h2>Tu plataforma de trabajo</h2><p class="note">Selecciona uno de los módulos. Cada módulo abre su propia página para que trabajes con más claridad desde el teléfono o la computadora.</p>
+ <div class="home-hero"><h1>Bienvenido a Gestora 360</h1><p>Gestora 360 reúne en un solo lugar las herramientas para administrar tu empresa: calcula costos de importación, registra compras, controla inventario, prepara facturas y consulta reportes de costos y ventas. Selecciona un módulo en la barra de navegación para comenzar. La información se guarda localmente en este dispositivo.</p></div>
+ <section class="panel"><h2>Módulos principales</h2><p class="note">Accede a cada área de gestión desde la barra superior o abre directamente una tarjeta de abajo.</p>
   <div class="home-grid">
    <div class="home-tile"><h2>Datos de la empresa</h2><p>Registra el nombre comercial y legal, dirección e identificaciones de la empresa. Los datos se comparten con los módulos.</p><button type="button" data-page-go="page-company">Registrar empresa →</button></div>
    <div class="home-tile"><h2>Costos de importación</h2><p>Registra productos, FOB, CBM, flete, gastos e impuestos estimados para calcular el costo unitario.</p><button type="button" data-page-go="page-costs">Abrir costos de importación →</button></div>
@@ -207,21 +447,19 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
  </section>
  <section class="panel"><h2>Antes de comenzar</h2><p class="note">Gestora 360 guarda la información en el navegador de este dispositivo. No sincroniza automáticamente con otros teléfonos o computadoras. Exporta respaldos con regularidad y verifica las bases tributarias con tu agente aduanal o contador.</p></section>
 </section>
-<nav class="app-navigation" aria-label="Navegación principal">
- <button type="button" data-page-go="page-home" aria-current="page">Inicio</button><button type="button" data-page-go="page-company">Empresa</button><button type="button" data-page-go="page-costs">Calculadora de costos</button><button type="button" data-page-go="page-purchases">Compras</button><button type="button" data-page-go="page-inventory">Inventario</button><button type="button" data-page-go="page-billing">Facturación</button><button type="button" data-page-go="page-customers">Clientes</button><button type="button" data-page-go="page-suppliers">Proveedores</button><button type="button" data-page-go="page-reports">Reportes</button><button type="button" data-page-go="page-backup">Backup y restauración</button>
-</nav>
+
 <div id="page-backup" class="app-page">
  <div class="page-heading"><h1>Respaldo y restauración</h1><button type="button" class="secondary" data-page-go="page-home">← Inicio</button></div>
  <section class="panel"><h2>Respaldar todos tus datos</h2>
-  <p>Genera un archivo de respaldo que incluye los datos guardados por ImportaPro en este navegador: empresa y logo, importaciones, inventario, movimientos, facturas y preferencias.</p>
+  <p>Genera un archivo de respaldo que incluye los datos guardados por Gestora 360 en este dispositivo: empresa y logo, importaciones, inventario, movimientos, facturas y preferencias.</p>
   <div class="actions"><button type="button" id="exportBackup">Descargar respaldo completo (.JSON)</button></div>
   <p class="note">Después de descargarlo, guárdalo en un lugar seguro, por ejemplo iCloud Drive, Google Drive o OneDrive. El archivo puede contener datos comerciales y de clientes; protégelo como información confidencial.</p>
  </section>
  <section class="panel"><h2>Restaurar en este dispositivo</h2>
-  <p>Selecciona un archivo de respaldo de ImportaPro para recuperar los datos en este dispositivo o en otro celular o computadora.</p>
+  <p>Selecciona un archivo de respaldo de Gestora 360 para recuperar los datos en este dispositivo o en otro celular o computadora.</p>
   <div class="fields"><div class="wide"><label for="backupFile">Archivo de respaldo (.JSON)</label><input type="file" id="backupFile" accept=".json,application/json"></div></div>
   <div class="actions"><button type="button" id="restoreBackup">Restaurar respaldo seleccionado</button></div>
-  <p class="note">La restauración reemplaza los datos actuales de ImportaPro en este navegador por los del archivo seleccionado. Antes de restaurar, descarga un respaldo de los datos actuales para no perderlos.</p>
+  <p class="note">La restauración reemplaza los datos actuales de Gestora 360 en este dispositivo por los del archivo seleccionado. Antes de restaurar, descarga un respaldo de los datos actuales para no perderlos.</p>
   <p class="note">Importante: la aplicación no sincroniza automáticamente los datos entre dispositivos. Para compartirlos, descarga el archivo, guárdalo en tu nube y luego selecciónalo desde el otro dispositivo. Restaura solo archivos de respaldo confiables.</p>
   <p id="backupStatus" class="note" role="status" aria-live="polite"></p>
  </section>
@@ -232,7 +470,7 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
  <p class="note">Completa los datos que deben aparecer en los documentos comerciales. El registro se guarda en este dispositivo y se comparte con facturación y reportes.</p>
  <div class="panel" style="background:#f4f7f6;margin-bottom:14px"><h3>Buscar empresa guardada</h3><p class="note">Si los campos están vacíos, busca por nombre comercial o razón social para recuperar los datos guardados en este dispositivo.</p><div class="fields"><div class="wide"><label for="companySearch">Nombre comercial o razón social</label><input id="companySearch" placeholder="Escribe el nombre de la empresa"></div></div><div class="actions"><button type="button" id="companySearchButton">Buscar y cargar empresa</button></div><p id="companySearchStatus" class="note" role="status" aria-live="polite"></p></div>
  <div class="fields">
-  <div><label for="companyCommercial">Nombre comercial</label><input id="companyCommercial" placeholder="Ej. ImportaPro Comercial"></div>
+  <div><label for="companyCommercial">Nombre comercial</label><input id="companyCommercial" placeholder="Ej. Gestora 360 Comercial"></div>
   <div><label for="companyLegal">Nombre legal / razón social</label><input id="companyLegal" placeholder="Razón social registrada"></div>
   <div class="wide"><label for="companyAddress">Dirección</label><input id="companyAddress" placeholder="Dirección completa de la empresa"></div>
   <div><label for="companyDui">DUI (si corresponde)</label><input id="companyDui" placeholder="Número de DUI"></div>
@@ -279,24 +517,7 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
 <section class="panel"><h2>Gastos generales (USD)</h2><div class="fields">
 <div><label>Tamaño del contenedor</label><select id="containerSize"><option value="">Seleccionar tamaño...</option><option value="20">20 pies</option><option value="40">40 pies</option></select></div><div><label>Flete internacional total (USD)</label><input id="freight" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Agente / tramitador</label><input id="broker" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Transporte local</label><input id="transport" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Descarga / mano de obra</label><input id="unload" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Otros gastos</label><input id="other" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>IVA estimado (%)</label><input id="vat" type="number" min="0" step=".01" value="13"></div></div></section>
 <section class="panel"><div class="head"><h2 style="margin:0">Productos del contenedor</h2><button id="add">+ Agregar producto</button></div><div id="products"></div><div class="actions"><button class="secondary" id="copy">Copiar resumen</button><button class="secondary" id="csv">Exportar CSV de productos</button><button class="secondary" id="exportReport">Exportar reporte a Excel</button><button class="secondary" id="reset">Borrar datos</button><button id="saveImport">Guardar importación</button></div></section>
-<section class="panel report-import-summary" id="costImportSummaryPanel" style="background:#fff;border:1px solid #dbe4ef;box-shadow:0 6px 24px #102e4a0b;padding:20px">
-<div class="consult-section-title"><div><div class="section-kicker">CONSULTA GENERAL</div><h2>Resumen de la importación</h2></div></div>
-<div class="metrics report-import-metrics">
-<div class="metric report-import-name" style="grid-column:1/-1"><span>Nombre de la importación</span><strong id="costImportName">Importación actual</strong></div>
-<div class="metric"><span>Total CBM</span><strong id="volume">0.000 m³</strong></div>
-<div class="metric"><span>Valor FOB total</span><strong id="fobtotal">$0.00</strong></div>
-<div class="metric"><span>DAI</span><strong id="daiTotal">$0.00</strong></div>
-<div class="metric"><span>IVA de importación</span><strong id="ivaImportTotal">$0.00</strong></div>
-<div class="metric"><span>Total IVA + DAI</span><strong id="taxTotal">$0.00</strong></div>
-<div class="metric"><span>Valor estimado final</span><strong id="grand">$0.00</strong></div>
-<div class="metric"><span>Valor de venta (IVA incluido)</span><strong id="costSalesGross">$0.00</strong></div>
-<div class="metric"><span>IVA de la venta</span><strong id="costSalesVat">$0.00</strong></div>
-<div class="metric"><span>IVA a pagar estimado (IVA venta − IVA importación)</span><strong id="costVatPayable">$0.00</strong></div>
-<div class="metric"><span>Ganancia final estimada</span><strong id="costProfitFinal">$0.00</strong></div>
-</div>
-<p class="note">El resumen corresponde a la importación actual de la calculadora. Los importes son estimados; confirma los impuestos con tu agente aduanal y contador.</p>
-<div class="formula-note report-import-formulas" id="costSummaryFormulas"><h3>Fórmulas y valores calculados</h3><p id="costSalesFormula" class="note">Valor de venta (IVA incluido) = suma de cantidad × precio de venta sugerido por producto.</p><p id="costVatFormula" class="note">IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).</p><p id="costProfitFormula" class="note">Ganancia final = (valor de venta − IVA de la venta) − (costo final − IVA de importación) − gastos de venta y operación.</p></div>
-</section>
+<section id="costGeneralImportSummary" class="panel" style="margin-top:14px;background:#f7fbf9"><div class="consult-section-title"><div><div class="section-kicker">CONSULTA GENERAL</div><h2>Resumen de la importación</h2></div><button type="button" id="costGeneralRecalculate" class="secondary" style="margin-top:10px">Recalcular resumen</button></div><div class="metrics"><div class="metric" style="grid-column:1/-1"><span>Nombre de la importación</span><strong id="costGeneralImportName">Importación actual</strong></div><div class="metric"><span>Total CBM</span><strong id="costGeneralSumCbm">0.000 m³</strong></div><div class="metric"><span>Valor FOB total</span><strong id="costGeneralSumFob">$0.00</strong></div><div class="metric"><span>DAI</span><strong id="costGeneralSumDai">$0.00</strong></div><div class="metric"><span>IVA de importación</span><strong id="costGeneralSumImportVat">$0.00</strong></div><div class="metric"><span>Total IVA + DAI</span><strong id="costGeneralSumTaxes">$0.00</strong></div><div class="metric"><span>Valor estimado final</span><strong id="costGeneralSumFinal">$0.00</strong></div><div class="metric"><span>Valor de venta (IVA incluido)</span><strong id="costGeneralSumSales">$0.00</strong></div><div class="metric"><span>IVA de la venta</span><strong id="costGeneralSumSalesVat">$0.00</strong></div><div class="metric"><span>IVA a pagar estimado (IVA venta − IVA importación)</span><strong id="costGeneralSumVatPayable">$0.00</strong></div><div class="metric"><span>Ganancia final estimada</span><strong id="costGeneralSumProfit">$0.00</strong></div></div><p class="note">El resumen corresponde a los productos que estás editando en Costos de importación. Los importes son estimados; confirma los impuestos con tu agente aduanal y contador.</p><div style="margin-top:12px;padding:14px;border:1px solid #dbe4ed;border-radius:12px;background:#f8fafc"><h3 style="margin:0 0 8px">Fórmulas y valores calculados</h3><p id="costGeneralSalesFormula" class="note">Valor de venta = suma de cantidad × precio de venta sugerido.</p><p id="costGeneralVatFormula" class="note">IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).</p><p id="costGeneralProfitFormula" class="note">Ganancia final = venta sin IVA − costo de importación sin IVA de importación − gastos de venta y operación.</p></div><div class="consult-section-title" style="margin-top:18px"><div><div class="section-kicker">DETALLE DE PRODUCTOS</div><h2>Productos de la importación</h2></div></div><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>FOB unitario</th><th>FOB total</th><th>CBM total</th><th>Flete asignado</th><th>Base DAI</th><th>DAI %</th><th>DAI</th><th>IVA estimado</th><th>Costo unitario estimado</th><th>Venta estimada total</th></tr></thead><tbody id="costGeneralImportProductRows"><tr><td colspan="13">Agrega productos para ver el detalle.</td></tr></tbody></table></div></section>
 </div>
 <div id="page-inventory" class="app-page">
  <div class="page-heading"><h1>Inventario · una localidad</h1><button type="button" class="secondary" data-page-go="page-home">← Inicio</button></div>
@@ -382,6 +603,7 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
  <div class="wide"><label for="supplierRecordNotes">Observaciones</label><input id="supplierRecordNotes" placeholder="Productos, condiciones especiales, etc."></div>
  </div><div class="actions"><button type="button" id="supplierRecordSave">Guardar proveedor</button><button type="button" class="secondary" id="supplierRecordExport">Exportar proveedores CSV</button></div><p class="note">Registra proveedores locales e internacionales para mantener su información centralizada.</p></section>
  <section class="panel"><h2>Directorio de proveedores</h2><div class="fields"><div class="wide"><label for="supplierSearch">Buscar proveedor</label><input id="supplierSearch" placeholder="Buscar por nombre, país, contacto, teléfono o correo"></div></div><div class="tablewrap"><table><thead><tr><th>Proveedor</th><th>Tipo</th><th>Nombre comercial</th><th>DUI</th><th>NIT</th><th>Registro IVA</th><th>Representante legal</th><th>Contacto</th><th>Teléfono</th><th>Correo</th><th>País</th><th>Categoría</th><th>Pago</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="supplierRecordRows"></tbody></table></div></section>
+
 </div>
 <div id="page-reports" class="app-page">
  <div class="page-heading"><h1>Centro de reportes</h1><button type="button" class="secondary" data-page-go="page-home">← Inicio</button></div>
@@ -395,7 +617,7 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
 <article class="consult-kpi" role="button" tabindex="0" data-kpi-module="customers" aria-label="Ver directorio de clientes"><span>Clientes registrados</span><strong id="consultCustomerCount">0</strong><small>Directorio de clientes · Ver resumen ↗</small></article>
 <article class="consult-kpi" role="button" tabindex="0" data-kpi-module="suppliers" aria-label="Ver directorio de proveedores"><span>Proveedores registrados</span><strong id="consultSupplierCount">0</strong><small>Directorio de proveedores · Ver resumen ↗</small></article>
 <article class="consult-kpi" role="button" tabindex="0" data-kpi-module="stock-alerts" aria-label="Ver alertas de stock"><span>Alertas de stock</span><strong id="consultStockAlerts">0</strong><small>Agotados o bajo mínimo · Ver resumen ↗</small></article></section>
-<section class="panel" id="reportQueryPanel"><div class="consult-section-title"><div><div class="section-kicker">FILTROS Y RESULTADOS</div><h2>Consulta por módulo y fechas</h2></div><span class="consult-live">Consulta en este dispositivo</span></div><p class="note">Selecciona un módulo y un período. Para ver todo el historial disponible, deja las fechas vacías y pulsa <strong>Consulta general</strong>. Costos estimados de importación e inventario actual son fotografías actuales: se muestran aunque selecciones fechas. Los movimientos y documentos con fecha sí se filtran por período.</p><div class="fields"><div><label for="queryModule">Módulo</label><select id="queryModule"><option value="all">Todos los módulos</option><option value="costs">Costos estimados de importación (actual)</option><option value="purchases">Compras</option><option value="sales">Ventas / facturación</option><option value="inventory">Inventario actual</option><option value="movements">Movimientos de inventario</option><option value="customers">Clientes</option><option value="suppliers">Proveedores</option></select></div><div><label for="queryStart">Desde</label><input id="queryStart" type="date"></div><div><label for="queryEnd">Hasta</label><input id="queryEnd" type="date"></div><div class="actions" style="align-items:end"><button type="button" id="runReportQuery"><span>⌕</span> Consultar</button><button type="button" class="secondary" id="clearReportQuery">Ver todo</button><button type="button" class="secondary" id="exportReportQuery">Exportar a Excel / CSV</button></div></div><div class="metrics" style="margin-top:12px"><div class="metric"><span>Registros encontrados</span><strong id="queryCount">0</strong></div><div class="metric"><span>Total de compras consultadas</span><strong id="queryPurchasesTotal">$0.00</strong></div><div class="metric"><span>Total de ventas consultadas</span><strong id="querySalesTotal">$0.00</strong></div></div><p id="queryStatus" class="note" role="status">Selecciona los filtros y pulsa Consultar.</p><section id="reportCostsOverview" class="panel" style="margin-top:14px;display:none"><div class="consult-section-title"><div><div class="section-kicker">RESUMEN GENERAL</div><h2>Resumen general de módulos</h2></div></div><div class="consult-dashboard-grid"><article class="consult-kpi"><span>Costos de importación</span><strong id="costOverviewCount">0</strong><small>Productos en la calculadora</small></article><article class="consult-kpi"><span>Compras registradas</span><strong id="costOverviewPurchases">0</strong><small>Locales e internacionales</small></article><article class="consult-kpi"><span>Ventas registradas</span><strong id="costOverviewSales">0</strong><small>Facturas guardadas</small></article><article class="consult-kpi"><span>Productos en inventario</span><strong id="costOverviewInventory">0</strong><small>Referencias registradas</small></article><article class="consult-kpi"><span>Movimientos de inventario</span><strong id="costOverviewMovements">0</strong><small>Entradas, salidas y ajustes</small></article><article class="consult-kpi"><span>Clientes registrados</span><strong id="costOverviewCustomers">0</strong><small>Directorio de clientes</small></article><article class="consult-kpi"><span>Proveedores registrados</span><strong id="costOverviewSuppliers">0</strong><small>Directorio de proveedores</small></article><article class="consult-kpi"><span>Alertas de stock</span><strong id="costOverviewAlerts">0</strong><small>Agotados o bajo mínimo</small></article></div></section><section id="reportSavedImportPicker" class="panel" style="margin-top:14px;display:none"><h3>Importaciones registradas</h3><p class="note">El sistema selecciona automáticamente la importación guardada más reciente. Puedes elegir otra para ver su resumen y todos sus productos.</p><div class="fields"><div class="wide"><label for="reportSavedImportSelect">Importación guardada</label><select id="reportSavedImportSelect"><option value="">Seleccionar importación...</option></select></div></div></section><section id="generalImportSummary" class="panel" style="margin-top:14px;display:none;background:#f7fbf9"><div class="consult-section-title"><div><div class="section-kicker">CONSULTA GENERAL</div><h2>Resumen de la importación</h2></div></div><div class="metrics"><div class="metric" style="grid-column:1/-1"><span>Nombre de la importación</span><strong id="generalImportName">Importación actual</strong></div><div class="metric"><span>Total CBM</span><strong id="generalSumCbm">0.000 m³</strong></div><div class="metric"><span>Valor FOB total</span><strong id="generalSumFob">$0.00</strong></div><div class="metric"><span>DAI</span><strong id="generalSumDai">$0.00</strong></div><div class="metric"><span>IVA de importación</span><strong id="generalSumImportVat">$0.00</strong></div><div class="metric"><span>Total IVA + DAI</span><strong id="generalSumTaxes">$0.00</strong></div><div class="metric"><span>Valor estimado final</span><strong id="generalSumFinal">$0.00</strong></div><div class="metric"><span>Valor de venta (IVA incluido)</span><strong id="generalSumSales">$0.00</strong></div><div class="metric"><span>IVA de la venta</span><strong id="generalSumSalesVat">$0.00</strong></div><div class="metric"><span>IVA a pagar estimado (IVA venta − IVA importación)</span><strong id="generalSumVatPayable">$0.00</strong></div><div class="metric"><span>Ganancia final estimada</span><strong id="generalSumProfit">$0.00</strong></div></div><p class="note">El resumen y el detalle corresponden a la importación seleccionada. Si eliges la calculadora actual, se muestran los productos que estás editando. Los importes son estimados; confirma los impuestos con tu agente aduanal y contador.</p><div style="margin-top:12px;padding:14px;border:1px solid #dbe4ed;border-radius:12px;background:#f8fafc"><h3 style="margin:0 0 8px">Fórmulas y valores calculados</h3><p id="generalSalesFormula" class="note">Valor de venta = suma de cantidad × precio de venta sugerido.</p><p id="generalVatFormula" class="note">IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).</p><p id="generalProfitFormula" class="note">Ganancia final = venta sin IVA − costo de importación sin IVA de importación − gastos de venta y operación.</p></div></section><section id="generalImportProducts" class="panel" style="margin-top:14px;display:none"><div class="consult-section-title"><div><div class="section-kicker">DETALLE DE PRODUCTOS</div><h2>Productos de la importación seleccionada</h2></div></div><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>FOB unitario</th><th>FOB total</th><th>CBM total</th><th>Flete asignado</th><th>Base DAI</th><th>DAI %</th><th>DAI</th><th>IVA estimado</th><th>Costo unitario estimado</th></tr></thead><tbody id="generalImportProductRows"><tr><td colspan="12">Selecciona una importación.</td></tr></tbody></table></div></section><div class="tablewrap" id="queryResultsTableWrap"><table><thead id="queryHead"></thead><tbody id="queryRows"><tr><td>Ejecuta una consulta para ver los resultados.</td></tr></tbody></table></div></section>
+<section class="panel" id="reportQueryPanel"><div class="consult-section-title"><div><div class="section-kicker">FILTROS Y RESULTADOS</div><h2>Consulta por módulo y fechas</h2></div><span class="consult-live">Consulta en este dispositivo</span></div><p class="note">Selecciona un módulo y un período. Para ver todo el historial disponible, deja las fechas vacías y pulsa <strong>Consulta general</strong>. Costos estimados de importación e inventario actual son fotografías actuales: se muestran aunque selecciones fechas. Los movimientos y documentos con fecha sí se filtran por período.</p><div class="fields"><div><label for="queryModule">Módulo</label><select id="queryModule"><option value="all">Todos los módulos</option><option value="costs">Costos estimados de importación (actual)</option><option value="purchases">Compras</option><option value="sales">Ventas / facturación</option><option value="inventory">Inventario actual</option><option value="movements">Movimientos de inventario</option><option value="customers">Clientes</option><option value="suppliers">Proveedores</option></select></div><div><label for="queryStart">Desde</label><input id="queryStart" type="date"></div><div><label for="queryEnd">Hasta</label><input id="queryEnd" type="date"></div><div class="actions" style="align-items:end"><button type="button" id="runReportQuery"><span>⌕</span> Consultar</button><button type="button" class="secondary" id="clearReportQuery">Ver todo</button><button type="button" class="secondary" id="exportReportQuery">Exportar a Excel / CSV</button></div></div><div class="metrics" style="margin-top:12px"><div class="metric"><span>Registros encontrados</span><strong id="queryCount">0</strong></div><div class="metric"><span>Total de compras consultadas</span><strong id="queryPurchasesTotal">$0.00</strong></div><div class="metric"><span>Total de ventas consultadas</span><strong id="querySalesTotal">$0.00</strong></div></div><p id="queryStatus" class="note" role="status">Selecciona los filtros y pulsa Consultar.</p><section id="reportCostsOverview" class="panel" style="margin-top:14px;display:none"><div class="consult-section-title"><div><div class="section-kicker">RESUMEN GENERAL</div><h2>Resumen general de módulos</h2></div></div><div class="consult-dashboard-grid"><article class="consult-kpi"><span>Costos de importación</span><strong id="costOverviewCount">0</strong><small>Productos en la calculadora</small></article><article class="consult-kpi"><span>Compras registradas</span><strong id="costOverviewPurchases">0</strong><small>Locales e internacionales</small></article><article class="consult-kpi"><span>Ventas registradas</span><strong id="costOverviewSales">0</strong><small>Facturas guardadas</small></article><article class="consult-kpi"><span>Productos en inventario</span><strong id="costOverviewInventory">0</strong><small>Referencias registradas</small></article><article class="consult-kpi"><span>Movimientos de inventario</span><strong id="costOverviewMovements">0</strong><small>Entradas, salidas y ajustes</small></article><article class="consult-kpi"><span>Clientes registrados</span><strong id="costOverviewCustomers">0</strong><small>Directorio de clientes</small></article><article class="consult-kpi"><span>Proveedores registrados</span><strong id="costOverviewSuppliers">0</strong><small>Directorio de proveedores</small></article><article class="consult-kpi"><span>Alertas de stock</span><strong id="costOverviewAlerts">0</strong><small>Agotados o bajo mínimo</small></article></div></section><section id="reportSavedImportPicker" class="panel" style="margin-top:14px;display:none"><h3>Importaciones registradas</h3><p class="note">El sistema selecciona automáticamente la importación guardada más reciente. Puedes elegir otra para ver su resumen y todos sus productos.</p><div class="fields"><div class="wide"><label for="reportSavedImportSelect">Importación guardada</label><select id="reportSavedImportSelect"><option value="">Seleccionar importación...</option></select></div></div></section><section id="generalImportSummary" class="panel" style="margin-top:14px;display:none;background:#f7fbf9"><div class="consult-section-title"><div><div class="section-kicker">CONSULTA GENERAL</div><h2>Resumen de la importación</h2></div></div><div class="metrics"><div class="metric" style="grid-column:1/-1"><span>Nombre de la importación</span><strong id="generalImportName">Importación actual</strong></div><div class="metric"><span>Total CBM</span><strong id="generalSumCbm">0.000 m³</strong></div><div class="metric"><span>Valor FOB total</span><strong id="generalSumFob">$0.00</strong></div><div class="metric"><span>DAI</span><strong id="generalSumDai">$0.00</strong></div><div class="metric"><span>IVA de importación</span><strong id="generalSumImportVat">$0.00</strong></div><div class="metric"><span>Total IVA + DAI</span><strong id="generalSumTaxes">$0.00</strong></div><div class="metric"><span>Valor estimado final</span><strong id="generalSumFinal">$0.00</strong></div><div class="metric"><span>Valor de venta (IVA incluido)</span><strong id="generalSumSales">$0.00</strong></div><div class="metric"><span>IVA de la venta</span><strong id="generalSumSalesVat">$0.00</strong></div><div class="metric"><span>IVA a pagar estimado (IVA venta − IVA importación)</span><strong id="generalSumVatPayable">$0.00</strong></div><div class="metric"><span>Ganancia final estimada</span><strong id="generalSumProfit">$0.00</strong></div></div><p class="note">El resumen y el detalle corresponden a la importación seleccionada. Si eliges la calculadora actual, se muestran los productos que estás editando. Los importes son estimados; confirma los impuestos con tu agente aduanal y contador.</p><div style="margin-top:12px;padding:14px;border:1px solid #dbe4ed;border-radius:12px;background:#f8fafc"><h3 style="margin:0 0 8px">Fórmulas y valores calculados</h3><p id="generalSalesFormula" class="note">Valor de venta = suma de cantidad × precio de venta sugerido.</p><p id="generalVatFormula" class="note">IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).</p><p id="generalProfitFormula" class="note">Ganancia final = venta sin IVA − costo de importación sin IVA de importación − gastos de venta y operación.</p></div></section><section id="generalImportProducts" class="panel" style="margin-top:14px;display:none"><div class="consult-section-title"><div><div class="section-kicker">DETALLE DE PRODUCTOS</div><h2>Productos de la importación seleccionada</h2></div></div><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>FOB unitario</th><th>FOB total</th><th>CBM total</th><th>Flete asignado</th><th>Base DAI</th><th>DAI %</th><th>DAI</th><th>IVA estimado</th><th>Costo unitario estimado</th><th>Venta estimada total</th></tr></thead><tbody id="generalImportProductRows"><tr><td colspan="13">Selecciona una importación.</td></tr></tbody></table></div></section><div class="tablewrap" id="queryResultsTableWrap"><table><thead id="queryHead"></thead><tbody id="queryRows"><tr><td>Ejecuta una consulta para ver los resultados.</td></tr></tbody></table></div></section>
 <section class="panel" id="taxReportPanel"><div class="consult-section-title"><div><div class="section-kicker">CONTROL TRIBUTARIO ESTIMADO</div><h2>Consulta de IVA y pago a cuenta</h2></div><span class="consult-live">Cálculo orientativo</span></div><p class="note">Selecciona un período para estimar IVA débito de ventas, IVA de compras registrado y pago a cuenta. Solo se usan documentos guardados en Gestora 360. Verifica el tratamiento fiscal, los créditos deducibles, retenciones, operaciones exentas y reglas vigentes con tu contador antes de declarar o pagar.</p><div class="fields"><div><label for="taxReportStart">Desde</label><input id="taxReportStart" type="date"></div><div><label for="taxReportEnd">Hasta</label><input id="taxReportEnd" type="date"></div><div><label for="taxReportVatRate">IVA aplicado (%)</label><input id="taxReportVatRate" type="number" min="0" max="100" step=".01" value="13"></div><div><label for="taxReportAccountRate">Pago a cuenta estimado (%)</label><input id="taxReportAccountRate" type="number" min="0" max="100" step=".01" value="1.75"></div></div><div class="actions" style="margin-top:12px"><button type="button" id="runTaxReport">Calcular período</button><button type="button" class="secondary" id="allTaxReport">Consulta general</button><button type="button" class="secondary" id="exportTaxReport">Exportar reporte CSV</button></div><div class="metrics" style="margin-top:14px"><div class="metric"><span>Ventas brutas registradas</span><strong id="taxGrossSales">$0.00</strong></div><div class="metric"><span>IVA débito estimado</span><strong id="taxOutputVat">$0.00</strong></div><div class="metric"><span>IVA compras registrado</span><strong id="taxInputVat">$0.00</strong></div><div class="metric"><span>Remanente IVA anterior</span><strong id="taxVatCarryIn">$0.00</strong></div><div class="metric"><span>IVA estimado a pagar</span><strong id="taxVatDue">$0.00</strong></div><div class="metric"><span>Remanente IVA a favor</span><strong id="taxVatCarryOut">$0.00</strong></div><div class="metric"><span>Base estimada pago a cuenta</span><strong id="taxAccountBase">$0.00</strong></div><div class="metric"><span>Pago a cuenta estimado</span><strong id="taxAccountDue">$0.00</strong></div></div><p id="taxReportStatus" class="note" role="status">Selecciona un período y pulsa Calcular período.</p><div class="tablewrap"><table><thead><tr><th>Concepto</th><th>Base estimada</th><th>Tasa</th><th>Importe</th></tr></thead><tbody id="taxReportRows"><tr><td colspan="4">Todavía no se ha calculado el reporte.</td></tr></tbody></table></div></section>
 <section class="panel"><h2>Reportes por módulo</h2><p class="note">Cada reporte se descarga en CSV compatible con Excel. Los reportes de ventas se basan en facturas guardadas; los de compras incluyen pendientes y recibidas.</p><div class="report-summary">
 
@@ -424,11 +646,29 @@ body>main{margin:82px 0 0 0!important;max-width:none!important;width:100%!import
 </div>
 <div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>Producto</th><th>Precio venta/u IVA incl.</th><th>Ventas totales IVA incl.</th><th>IVA venta</th><th>IVA importación estimado</th><th>Venta neta/u</th><th>Costo neto/u</th><th>Comisión</th><th>Publicidad</th><th>Entrega</th><th>Otros operativos</th><th>Ganancia/u</th><th>Ganancia total</th></tr></thead><tbody id="profitDetails"></tbody></table></div>
 <p class="note">Supuesto del modelo: el precio de venta ingresado incluye IVA. El IVA de venta se separa usando la tasa configurada. La ganancia se estima como venta sin IVA menos costo de importación sin el IVA de importación, suponiendo que ese IVA sea acreditable/recuperable para la empresa. El DAI y los gastos locales sí permanecen dentro del costo. La recuperación real del crédito fiscal depende de la situación tributaria y documentos válidos de la empresa; confirmar con contador o agente aduanal.</p>
-</section><section class="panel"><h2>Aviso importante</h2><p class="note">ImportaPro es una herramienta de apoyo para preparar estimaciones de costos, impuestos y rentabilidad. Los resultados pueden variar por datos ingresados, clasificación arancelaria, criterios aduaneros, tipo de cambio, cargos y normativa vigente. No garantizamos la exactitud de los cálculos ni nos hacemos responsables por decisiones tomadas únicamente con base en esta estimación. El importador es quien debe verificar la información con sus proveedores, agente aduanal y contador, y quien toma la decisión final de importar.</p></section>
+</section><section class="panel"><h2>Aviso importante</h2><p class="note">Gestora 360 es una herramienta de apoyo para preparar estimaciones de costos, impuestos y rentabilidad. Los resultados pueden variar por datos ingresados, clasificación arancelaria, criterios aduaneros, tipo de cambio, cargos y normativa vigente. No garantizamos la exactitud de los cálculos ni nos hacemos responsables por decisiones tomadas únicamente con base en esta estimación. El importador es quien debe verificar la información con sus proveedores, agente aduanal y contador, y quien toma la decisión final de importar.</p></section>
 </div>
 </main><script>
 const seed=[{sku:"",name:"Triciclo eléctrico 800W",qty:20,fob:280,sale:0,suggestedSale:0,cbm:1.2,dai:15,commission:0,ads:0,delivery:0,operating:0},{sku:"",name:"Motocicleta eléctrica",qty:15,fob:350,sale:0,suggestedSale:0,cbm:.85,dai:15,commission:0,ads:0,delivery:0,operating:0},{sku:"",name:"Go-kart 99cc",qty:10,fob:220,sale:0,suggestedSale:0,cbm:1.5,dai:5,commission:0,ads:0,delivery:0,operating:0}];const newId=()=>("p-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10));let items=[{id:newId(),sku:"",name:"",qty:"",fob:"",sale:0,suggestedSale:"",cbm:"",dai:0,commission:0,ads:0,delivery:0,operating:0}];const $=id=>document.getElementById(id),n=v=>Math.max(0,Number(v)||0),cash=v=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(v),rates=[0,5,10,15,20];
-function productSalePrice(p){return n(p?.suggestedSale)||n(p?.sale)||n(p?.salePrice)||n(p?.suggested_sale)||n(p?.sellingPrice)||0;}
+function productSalePrice(p){
+ // Prioriza siempre el campo editable "Precio de venta sugerido"; contempla claves de respaldos antiguos.
+ const vals=[p?.suggestedSale,p?.suggested_sale,p?.precioVentaSugerido,p?.suggestedSellingPrice,p?.salePrice,p?.sellingPrice,p?.precioVenta,p?.sale];
+ for(const v of vals){if(v!==undefined&&v!==null&&String(v).trim()!==""){const value=n(String(v).replace(/[$,\s]/g,""));if(value>0)return value;}}
+ return 0;
+}
+function syncVisibleProductFields(){
+ // Lee los valores que el usuario ve en cada ficha antes de calcular; evita que el resumen use un estado antiguo.
+ document.querySelectorAll("#products .product[data-id]").forEach(card=>{
+  const p=items.find(x=>String(x.id)===String(card.dataset.id));if(!p)return;
+  card.querySelectorAll("[data-k]").forEach(input=>{const k=input.dataset.k;if(!k)return;const raw=input.value;
+   if(k==="name"||k==="sku")p[k]=raw;
+   else if(k==="dai")p[k]=n(raw);
+   else if(raw!=="")p[k]=n(raw);
+   else if(k==="suggestedSale")p[k]=0;
+  });
+ });
+}
+function importDisplayName(){const field=$("importDescription");return field?String(field.value||"").trim():"";}
 function importProducts(rec){if(!rec)return [];const candidates=[rec.items,rec.products,rec.productos,rec.details,rec.detalleProductos];const found=candidates.find(Array.isArray);return (found||[]).filter(Boolean).map(p=>({...p,sku:p.sku??p.SKU??p.code??"",name:p.name??p.productName??p.description??p.nombre??"",qty:p.qty??p.quantity??p.cantidad??0,fob:p.fob??p.fobUnit??p.unitFob??p.precioFob??0,cbm:p.cbm??p.cbmUnit??p.volumen??0,dai:p.dai??p.daiRate??p.porcentajeDai??0,suggestedSale:p.suggestedSale??p.suggested_sale??p.salePrice??p.sellingPrice??p.precioVentaSugerido??p.precioVenta??p.sale??0,commission:p.commission??p.comision??0,ads:p.ads??p.publicidad??0,delivery:p.delivery??p.entrega??0,operating:p.operating??p.operatingCost??p.gastosOperativos??0}));}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function render(){ $("products").innerHTML=items.map((p,i)=>`<div class="product" data-id="${p.id}"><div class="head"><b>Producto ${i+1}</b><button class="remove" data-remove="${p.id}" ${items.length===1?"disabled":""}>Eliminar</button></div><div class="productgrid"><div class="wide"><label>Descripción del producto</label><input data-k="name" value="${esc(p.name)}"></div><div><label>SKU / código del producto</label><input data-k="sku" value="${esc(p.sku||"")}" placeholder="Ej. TRIC-800"></div><div><label>FOB unitario según factura comercial ($)</label><input data-k="fob" type="number" min="0" step=".01" value="${p.fob}"></div><div><label>CBM por unidad</label><input data-k="cbm" type="number" min="0" step=".001" value="${p.cbm}"></div><div><label>Cantidad</label><input data-k="qty" type="number" min="0" step="1" value="${p.qty}"></div><div><label>DAI del producto (%)</label><select data-k="dai" aria-label="Seleccionar porcentaje DAI de este producto">${rates.map(r=>`<option value="${r}" ${Number(p.dai)===r?"selected":""}>${r}%</option>`).join("")}</select></div>
@@ -449,6 +689,7 @@ function render(){ $("products").innerHTML=items.map((p,i)=>`<div class="product
 <p class="note">Los campos bloqueados se calculan automáticamente. Ingresa manualmente el precio de venta sugerido (IVA incluido) para cada producto. Los valores de venta, IVA de venta, IVA a pagar y ganancia final se actualizan automáticamente.</p>
 </div>`).join("");calc()}
 function calc(){
+syncVisibleProductFields();
 let totalVol=items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad)*n(p.cbm),0),
 fobSum=items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad)*n(p.fob),0),
 freight=n($("freight").value),
@@ -472,26 +713,34 @@ items.forEach(p=>{
  el.querySelector(".productiva").value=cash(importVat);
  el.querySelector(".productfreight").value=cash(fr);
  el.querySelector(".producttax").value=cash(dai+importVat);
- el.querySelector(".profitperunit").value=cash(productSalePrice(p)-unit);
- el.querySelector(".profittotal").value=cash((productSalePrice(p)-unit)*q);
+ el.querySelector(".profitperunit").value=cash(profitUnit);
+ el.querySelector(".profittotal").value=cash(profit);
 }
  rows+=`<tr><td>${esc(p.name)}</td><td>${cash(fobTotal)}</td><td>${vol.toFixed(2)}</td><td>${cash(fr)}</td><td>${cash(base)}</td><td>${p.dai}%</td><td>${cash(dai)}</td><td>${cash(importVat)}</td><td>${cash(unit)}</td></tr>`;
  profitRows+=`<tr><td>${esc(p.name)}</td><td>${cash(saleUnit)}</td><td>${cash(grossSales)}</td><td>${cash(saleVat)}</td><td>${cash(importVat)}</td><td>${cash(q?saleNet/q:0)}</td><td>${cash(costNet)}</td><td>${cash(q?commissionCost/q:0)}</td><td>${cash(n(p.ads??0))}</td><td>${cash(n(p.delivery??0))}</td><td>${cash(n(p.operating??0))}</td><td>${cash(profitUnit)}</td><td>${cash(profit)}</td></tr>`;
 });
 $("volume").textContent=totalVol.toFixed(2)+" m³";$("fobtotal").textContent=cash(fobSum);$("grand").textContent=cash(total);$("daiTotal").textContent=cash(daiSum);$("ivaImportTotal").textContent=cash(importVatSum);$("taxTotal").textContent=cash(daiSum+importVatSum);rows+=`<tr class="totalrow"><td><b>TOTAL TODOS LOS MODELOS</b></td><td><b>${cash(fobSum)}</b></td><td><b>${totalVol.toFixed(2)}</b></td><td><b>${cash(freight)}</b></td><td>—</td><td>—</td><td><b>${cash(daiSum)}</b></td><td><b>${cash(importVatSum)}</b></td><td>—</td></tr>`;$("details").innerHTML=rows;
-$("salesImportCost").textContent=cash(total);$("salesGross").textContent=cash(salesGross);$("salesVat").textContent=cash(salesVat);$("purchaseVat").textContent=cash(purchaseVat);$("vatNet").textContent=cash(salesVat-purchaseVat);$("profitTotal").textContent=cash(profitTotal);if($("costImportName"))$("costImportName").textContent=(($("importDescription")?.value||"").trim()||"Importación actual");if($("costVatPayable"))$("costVatPayable").textContent=cash(salesVat-purchaseVat);if($("costSalesGross"))$("costSalesGross").textContent=cash(salesGross);if($("costSalesVat"))$("costSalesVat").textContent=cash(salesVat);if($("costProfitFinal"))$("costProfitFinal").textContent=cash(profitTotal);if($("costSalesFormula"))$("costSalesFormula").textContent=`Valor de venta (IVA incluido) = Σ (cantidad × precio de venta sugerido) = ${cash(salesGross)}. Ingresa el precio sugerido en cada producto para incluirlo.`;if($("costVatFormula"))$("costVatFormula").textContent=`IVA de la venta = ${cash(salesGross)} × ${vatRate.toFixed(2)} ÷ (1 + ${vatRate.toFixed(2)}) = ${cash(salesVat)}.`;if($("costProfitFormula"))$("costProfitFormula").textContent=`Ganancia final = (venta ${cash(salesGross)} − IVA venta ${cash(salesVat)}) − (costo final ${cash(total)} − IVA importación ${cash(importVatSum)}) − gastos de venta/operación ${cash(sellingCostsTotal)} = ${cash(profitTotal)}.`;$("profitMargin").textContent=(salesNetTotal?profitTotal/salesNetTotal*100:0).toFixed(2)+"%";$("sellingCosts").textContent=cash(sellingCostsTotal);
+$("salesImportCost").textContent=cash(total);$("salesGross").textContent=cash(salesGross);$("salesVat").textContent=cash(salesVat);$("purchaseVat").textContent=cash(purchaseVat);$("vatNet").textContent=cash(salesVat-purchaseVat);$("profitTotal").textContent=cash(profitTotal);if($("costImportName"))$("costImportName").textContent=importDisplayName();if($("costVatPayable"))$("costVatPayable").textContent=cash(salesVat-purchaseVat);if($("costSalesGross"))$("costSalesGross").textContent=cash(salesGross);if($("costSalesVat"))$("costSalesVat").textContent=cash(salesVat);if($("costProfitFinal"))$("costProfitFinal").textContent=cash(profitTotal);if($("costSalesFormula"))$("costSalesFormula").textContent=`Valor de venta (IVA incluido) = Σ (cantidad × precio de venta sugerido) = ${cash(salesGross)}. Se toma el precio de venta sugerido de cada producto; los productos con precio 0 no suman ventas.`;if($("costVatFormula"))$("costVatFormula").textContent=`IVA de la venta = ${cash(salesGross)} × ${vatRate.toFixed(2)} ÷ (1 + ${vatRate.toFixed(2)}) = ${cash(salesVat)}.`;if($("costProfitFormula"))$("costProfitFormula").textContent=`Ganancia final = (venta ${cash(salesGross)} − IVA venta ${cash(salesVat)}) − (costo final ${cash(total)} − IVA importación ${cash(importVatSum)}) − gastos de venta/operación ${cash(sellingCostsTotal)} = ${cash(profitTotal)}.`;$("profitMargin").textContent=(salesNetTotal?profitTotal/salesNetTotal*100:0).toFixed(2)+"%";$("sellingCosts").textContent=cash(sellingCostsTotal);
 const totalQty=items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),0);
 const totalProfitPerUnit=totalQty?profitTotal/totalQty:0;
 profitRows+=`<tr class="totalrow"><td><b>TOTAL TODOS LOS MODELOS</b></td><td>—</td><td><b>${cash(salesGross)}</b></td><td><b>${cash(salesVat)}</b></td><td><b>${cash(purchaseVat)}</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><b>${cash(totalProfitPerUnit)}</b></td><td><b>${cash(profitTotal)}</b></td></tr>`;
 $("profitDetails").innerHTML=profitRows;
- saveDraft();
+// Actualiza la misma Consulta general que aparece en Reportes, ahora también al final de Costos de importación.
+const costSummaryValues={costGeneralImportName:importDisplayName()||"Importación actual",costGeneralSumCbm:totalVol.toFixed(2)+" m³",costGeneralSumFob:cash(fobSum),costGeneralSumDai:cash(daiSum),costGeneralSumImportVat:cash(importVatSum),costGeneralSumTaxes:cash(daiSum+importVatSum),costGeneralSumFinal:cash(total),costGeneralSumSales:cash(salesGross),costGeneralSumSalesVat:cash(salesVat),costGeneralSumVatPayable:cash(salesVat-purchaseVat),costGeneralSumProfit:cash(profitTotal)};
+Object.entries(costSummaryValues).forEach(([id,value])=>{const el=$(id);if(el)el.textContent=value;});
+if($("costGeneralSalesFormula"))$("costGeneralSalesFormula").textContent=`Valor de venta (IVA incluido) = Σ (cantidad × precio de venta sugerido) = ${cash(salesGross)}. Se toma el precio de venta sugerido de cada producto; los productos con precio 0 no suman ventas.`;
+if($("costGeneralVatFormula"))$("costGeneralVatFormula").textContent=`IVA de la venta = ${cash(salesGross)} × ${vatRate.toFixed(2)} ÷ (1 + ${vatRate.toFixed(2)}) = ${cash(salesVat)}.`;
+if($("costGeneralProfitFormula"))$("costGeneralProfitFormula").textContent=`Ganancia final = (venta ${cash(salesGross)} − IVA venta ${cash(salesVat)}) − (costo final ${cash(total)} − IVA importación ${cash(importVatSum)}) − gastos de venta/operación ${cash(sellingCostsTotal)} = ${cash(profitTotal)}.`;
+const costSummaryRows=items.filter(p=>p.name||n(p.qty)||n(p.fob)).map(p=>{const q=n(p.qty),vol=q*n(p.cbm),share=totalVol?vol/totalVol:0,fob=q*n(p.fob),fr=freight*share,base=fob+fr,dai=base*n(p.dai)/100,iva=(base+dai)*vatRate,landed=base+dai+iva+local*share,unit=q?landed/q:0,sales=q*productSalePrice(p);return `<tr><td>${esc(p.sku||"—")}</td><td>${esc(p.name||"")}</td><td>${q.toFixed(2)}</td><td>${cash(n(p.fob))}</td><td>${cash(fob)}</td><td>${vol.toFixed(2)} m³</td><td>${cash(fr)}</td><td>${cash(base)}</td><td>${n(p.dai)}%</td><td>${cash(dai)}</td><td>${cash(iva)}</td><td>${cash(unit)}</td><td>${cash(sales)}</td></tr>`;}).join("");
+$("costGeneralImportProductRows").innerHTML=costSummaryRows||`<tr><td colspan="13">Agrega productos para ver el detalle.</td></tr>`;
+saveDraft();
 }
-$("products").addEventListener("input",updateProduct);$("products").addEventListener("change",updateProduct);function updateProduct(e){let card=e.target.closest(".product"),k=e.target.dataset.k;if(!card||!k)return;let p=items.find(x=>x.id===card.dataset.id);if(!p)return;p[k]=(k==="name"||k==="sku")?e.target.value:(k==="dai"?Number(e.target.value):n(e.target.value));calc()}
+$("products").addEventListener("input",updateProduct);$("products").addEventListener("change",updateProduct);$("costGeneralRecalculate")?.addEventListener("click",()=>{try{syncVisibleProductFields();calc();const status=$("autosaveStatus");if(status)status.textContent="Resumen recalculado con los valores actuales de Costos de importación.";}catch(error){console.error("Fallo de cálculo:",error);alert("No se pudo completar el cálculo. Verifica que cantidad, FOB, CBM y flete sean números válidos; revisa la consola si continúa el problema.");}});function updateProduct(e){let card=e.target.closest(".product"),k=e.target.dataset.k;if(!card||!k)return;let p=items.find(x=>x.id===card.dataset.id);if(!p)return;p[k]=(k==="name"||k==="sku")?e.target.value:(k==="dai"?Number(e.target.value):n(e.target.value));calc()}
 $("products").addEventListener("click",e=>{let id=e.target.dataset.remove;if(id){items=items.filter(p=>p.id!==id);render()}});
 ["freight","broker","transport","unload","other","vat","containerSize"].forEach(id=>$(id).addEventListener("input",calc));$("importDescription").addEventListener("input",saveDraft);$("importSupplier").addEventListener("input",saveDraft);$("importCountry").addEventListener("input",saveDraft);
 $("add").onclick=()=>{items.push({id:newId(),sku:"",name:"",qty:"",fob:"",sale:0,suggestedSale:"",cbm:"",dai:0,commission:0,ads:0,delivery:0,operating:0});render()};
 $("reset").onclick=()=>{if(confirm("¿Borrar todos los datos ingresados? Esta acción no se puede deshacer.")){activeSavedImportId=null;items=[{id:newId(),sku:"",name:"",qty:"",fob:"",sale:0,suggestedSale:"",cbm:"",dai:0,commission:0,ads:0,delivery:0,operating:0}];["freight","broker","transport","unload","other"].forEach(id=>$(id).value="");$("vat").value=13;$("containerSize").value="40";render()}};
-$("copy").onclick=()=>{let text=[`ImportaPro: volumen ${$("volume").textContent}, FOB ${$("fobtotal").textContent}, total estimado ${$("grand").textContent}`,...items.map(p=>`${p.sku?"SKU "+p.sku+" · ":""}${p.name}: qty ${p.qty}, FOB factura comercial/u ${p.fob}, CBM/u ${p.cbm}, DAI ${p.dai}%, venta sugerida/u ${p.suggestedSale??p.sale??0}, comisión ${p.commission??0}%, publicidad/u ${p.ads??0}, entrega/u ${p.delivery??0}, otros operativos/u ${p.operating??0}`)].join("\n");text+=`\n\nRESUMEN DE IMPUESTOS DE IMPORTACIÓN\nDAI total: ${$("daiTotal").textContent}\nIVA de importación total: ${$("ivaImportTotal").textContent}\nTOTAL IMPUESTOS (DAI + IVA): ${$("taxTotal").textContent}\n\nREPORTE DE RENTABILIDAD POR MODELO\n${items.map(p=>{const q=n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),sale=n(p.sale),gross=sale*q,saleVat=gross*vatRate/(1+vatRate),netSales=gross-saleVat,base=n(p.fob)*q+/* freight and DAI-adjusted import cost are reflected in the app's calculated net unit cost */0;const row=document.querySelectorAll("#profitDetails tr");const match=[...row].find(r=>r.cells[0]?.textContent===p.name);return `${p.name}: ganancia por unidad ${match?.cells[11]?.textContent??"ver tabla"}, ganancia total ${match?.cells[12]?.textContent??"ver tabla"}`;}).join("\n")}\nGANANCIA TOTAL DE TODOS LOS MODELOS: ${$("profitTotal").textContent}\nGanancia promedio por unidad: ${cash((items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),0))?Number(String($("profitTotal").textContent).replace(/[$,]/g,""))/items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),0):0)}\nVentas IVA incluido: ${$("salesGross").textContent}\nGastos de venta y operación: ${$("sellingCosts").textContent}\nIVA neto estimado: ${$("vatNet").textContent}`;navigator.clipboard?.writeText(text).then(()=>alert("Resumen copiado")).catch(()=>alert(text))};
+$("copy").onclick=()=>{let text=[`Gestora 360: volumen ${$("volume").textContent}, FOB ${$("fobtotal").textContent}, total estimado ${$("grand").textContent}`,...items.map(p=>`${p.sku?"SKU "+p.sku+" · ":""}${p.name}: qty ${p.qty}, FOB factura comercial/u ${p.fob}, CBM/u ${p.cbm}, DAI ${p.dai}%, venta sugerida/u ${p.suggestedSale??p.sale??0}, comisión ${p.commission??0}%, publicidad/u ${p.ads??0}, entrega/u ${p.delivery??0}, otros operativos/u ${p.operating??0}`)].join("\n");text+=`\n\nRESUMEN DE IMPUESTOS DE IMPORTACIÓN\nDAI total: ${$("daiTotal").textContent}\nIVA de importación total: ${$("ivaImportTotal").textContent}\nTOTAL IMPUESTOS (DAI + IVA): ${$("taxTotal").textContent}\n\nREPORTE DE RENTABILIDAD POR MODELO\n${items.map(p=>{const q=n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),sale=n(p.sale),gross=sale*q,saleVat=gross*vatRate/(1+vatRate),netSales=gross-saleVat,base=n(p.fob)*q+/* freight and DAI-adjusted import cost are reflected in the app's calculated net unit cost */0;const row=document.querySelectorAll("#profitDetails tr");const match=[...row].find(r=>r.cells[0]?.textContent===p.name);return `${p.name}: ganancia por unidad ${match?.cells[11]?.textContent??"ver tabla"}, ganancia total ${match?.cells[12]?.textContent??"ver tabla"}`;}).join("\n")}\nGANANCIA TOTAL DE TODOS LOS MODELOS: ${$("profitTotal").textContent}\nGanancia promedio por unidad: ${cash((items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),0))?Number(String($("profitTotal").textContent).replace(/[$,]/g,""))/items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),0):0)}\nVentas IVA incluido: ${$("salesGross").textContent}\nGastos de venta y operación: ${$("sellingCosts").textContent}\nIVA neto estimado: ${$("vatNet").textContent}`;navigator.clipboard?.writeText(text).then(()=>alert("Resumen copiado")).catch(()=>alert(text))};
 $("csv").onclick=()=>{let rows=[["SKU","Producto","Cantidad","FOB factura unitario","CBM unidad","DAI %","Precio venta unitario IVA incluido","Comisión %","Publicidad/unidad","Entrega/unidad","Otros operativos/unidad"],...items.map(p=>[p.sku||"",p.name,p.qty,p.fob,p.cbm,p.dai,p.sale??0,p.commission??0,p.ads??0,p.delivery??0,p.operating??0])];let csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(",")).join("\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.download="importapro-productos.csv";a.click();URL.revokeObjectURL(a.href)};
 $("exportReportSales").onclick=()=> $("exportReport").click();
 $("exportReport").onclick=()=>{
@@ -510,7 +759,7 @@ $("exportReport").onclick=()=>{
  const sheetRows=[...companyExportRows,...rows].map((row,ri)=>`<Row>${row.map((v,ci)=>`<Cell${ri===0||String(v).startsWith("TOTAL")?' ss:StyleID="header"':""}><Data ss:Type="String">${escapeXml(v)}</Data></Cell>`).join("")}</Row>`).join("");
  const workbook=`<?xml version="1.0"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="header"><Font ss:Bold="1"/></Style></Styles><Worksheet ss:Name="Reporte ImportaPro"><Table>${sheetRows}</Table></Worksheet></Workbook>`;
  const blob=new Blob([workbook],{type:"application/vnd.ms-excel;charset=utf-8"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ImportaPro-reporte-final.xls";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="Gestora360-final-report.xls";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 };
 
 // Guardado local de importaciones: se conserva en el navegador de este dispositivo.
@@ -768,7 +1017,43 @@ function printInvoice(inv){if(!inv||!Array.isArray(inv.lines)||!inv.lines.length
 <style id="directory-quick-add-v224">
 .directory-input{display:flex;align-items:stretch;gap:7px}.directory-input input{flex:1;min-width:0}.add-directory-btn{width:44px;min-width:44px;padding:0;border-radius:10px;font-size:27px;line-height:1;background:#139b86;color:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 5px #102e4a18}.add-directory-btn:hover{background:#0d806f}.add-directory-btn:focus-visible{outline:3px solid #84dcca;outline-offset:2px}
 </style>
+
+<style id="g360-nav-no-bottom-v309">
+/* Mantener la navegación global fuera del flujo de la página para que no aparezca al final de Inicio. */
+@media (min-width: 761px){
+ body>main{margin-left:252px!important;margin-top:82px!important;}
+ nav.app-navigation{position:fixed!important;top:82px!important;bottom:0!important;left:0!important;width:252px!important;height:auto!important;display:flex!important;flex-direction:column!important;overflow-y:auto!important;overflow-x:hidden!important;z-index:100!important;}
+}
+@media (max-width:760px){
+ body>main{margin:76px 0 0!important;}
+ nav.app-navigation{position:fixed!important;top:76px!important;bottom:auto!important;left:0!important;right:0!important;width:100%!important;height:auto!important;max-height:68px!important;display:flex!important;flex-direction:row!important;overflow-x:auto!important;overflow-y:hidden!important;z-index:100!important;}
+ nav.app-navigation button{flex:0 0 auto!important;}
+}
+</style>
+
+<style id="g360-v311-nav-below-header">
+/* Menú principal horizontal justo debajo de la cabecera y de los iconos Inicio/Ayuda/Idioma. */
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:none!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;overflow-x:auto!important;overflow-y:hidden!important;margin:14px clamp(12px,3vw,38px) 16px!important;padding:0 0 8px!important;background:transparent!important;border:0!important;box-shadow:none!important;z-index:20!important;scrollbar-width:thin}
+nav.app-navigation:before{display:none!important;content:none!important}
+nav.app-navigation button{flex:0 0 auto!important;width:auto!important;min-width:max-content!important;max-width:none!important;min-height:48px!important;padding:11px 19px!important;border:1px solid var(--g360-line,#dce7f1)!important;border-radius:18px!important;background:#fff!important;color:#596d82!important;font-size:14px!important;font-weight:700!important;white-space:nowrap!important;box-shadow:0 1px 2px #183a5b08!important}
+nav.app-navigation button:before{display:none!important;content:none!important}
+nav.app-navigation button[aria-current="page"]{background:linear-gradient(120deg,#087fc2,#126fc0)!important;border-color:#087fc2!important;color:#fff!important;box-shadow:0 5px 14px #087fc22c!important}
+body>main{margin:0!important}
+@media(max-width:560px){nav.app-navigation{margin:12px 10px 14px!important;gap:7px!important;padding-bottom:7px!important}nav.app-navigation button{min-height:43px!important;padding:9px 14px!important;font-size:12px!important;border-radius:16px!important}body>main{padding-top:8px!important}}
+@media print{nav.app-navigation{display:none!important}}
+</style>
+
 </head><body>${invoiceDocument(inv)}
+
+
+<style id="g360-v315-scroll-and-nav-fix">
+/* v315: navegación en el flujo normal para permitir volver al encabezado desplazándose hacia arriba. */
+html,body{height:auto!important;min-height:100%!important;overflow-y:auto!important;overscroll-behavior-y:auto!important;scroll-behavior:auto!important}
+body{overflow-x:hidden!important;overflow-y:auto!important;position:static!important}
+body>header{position:relative!important;top:auto!important;left:auto!important;right:auto!important;z-index:30!important}
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:none!important;overflow-x:auto!important;overflow-y:hidden!important;z-index:20!important;margin-top:8px!important}
+@media(max-width:760px){body>header{position:relative!important;top:auto!important}nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;max-height:none!important;overflow-x:auto!important;overflow-y:hidden!important;margin-top:8px!important}}
+</style>
 
 </body></html>`);win.document.close();}
 function renderInvoiceHistory(){const b=$("invoiceHistory");if(!b)return;b.innerHTML=invoices.map((inv,i)=>`<tr><td>${esc(inv.number)}</td><td>${esc(inv.date)}</td><td>${esc(inv.customer||"Consumidor final")}</td><td>${cash(Math.max(0,inv.lines.reduce((s,l)=>s+l.qty*l.price,0)-n(inv.discount)))}</td><td>Confirmada</td><td><button type="button" class="secondary" data-invoice-print="${i}">Imprimir</button> <button type="button" data-invoice-edit="${i}">Modificar</button> <button type="button" class="remove" data-invoice-delete="${i}">Eliminar</button></td></tr>`).join("")||'<tr><td colspan="6">Todavía no hay facturas guardadas.</td></tr>';}
@@ -857,12 +1142,13 @@ function runReportQuery(){
   let totalDai=0,totalVat=0,totalLanded=0,totalSales=0,totalSalesVat=0,totalProfit=0,totalSellingCosts=0;
   const rows=valid.map(p=>{const qty=n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad),vol=qty*n(p.cbm),share=totalCbm?vol/totalCbm:0,fob=qty*n(p.fob),fr=freight*share,base=fob+fr,dai=base*n(p.dai)/100,iva=(base+dai)*vatRate,landed=base+dai+iva+local*share,unit=qty?landed/qty:0,sale=qty*productSalePrice(p),saleVat=vatRate?sale*vatRate/(1+vatRate):0,sellingCosts=sale*n(p.commission??0)/100+qty*n(p.ads??0)+qty*n(p.delivery??0)+qty*n(p.operating??0),profit=sale-saleVat-(landed-iva)-sellingCosts;totalDai+=dai;totalVat+=iva;totalLanded+=landed;totalSales+=sale;totalSalesVat+=saleVat;totalSellingCosts+=sellingCosts;totalProfit+=profit;return {p,qty,vol,fob,fr,base,dai,iva,unit};});
   const sumValues={generalSumCbm:`${totalCbm.toFixed(2)} m³`,generalSumFob:cash(totalFob),generalSumDai:cash(totalDai),generalSumImportVat:cash(totalVat),generalSumTaxes:cash(totalDai+totalVat),generalSumFinal:cash(totalLanded),generalSumSales:cash(totalSales),generalSumSalesVat:cash(totalSalesVat),generalSumVatPayable:cash(totalSalesVat-totalVat),generalSumProfit:cash(totalProfit)};
-  $("generalImportName").textContent=rec?(rec.description||"Importación sin descripción"):(($ ("importDescription")?.value||"").trim()||"Importación actual");
+  $("generalImportName").textContent=rec?(rec.description||"Importación sin descripción"):(($ ("importDescription")?.value||"").trim());
   Object.entries(sumValues).forEach(([id,value])=>{const el=$(id);if(el)el.textContent=value;});
   if($("generalSalesFormula"))$("generalSalesFormula").textContent=`Valor de venta (IVA incluido) = Σ (cantidad × precio de venta sugerido) = ${cash(totalSales)}. ${totalSales>0?"El total se calculó con los precios de venta guardados en los productos.":"No hay precios de venta sugeridos guardados en esta importación; ingrésalos en los productos y vuelve a guardar la importación."}`;
   if($("generalVatFormula"))$("generalVatFormula").textContent=`IVA de la venta = ${cash(totalSales)} × ${vatRate.toFixed(2)} ÷ (1 + ${vatRate.toFixed(2)}) = ${cash(totalSalesVat)}.`;
   if($("generalProfitFormula"))$("generalProfitFormula").textContent=`Ganancia final = (venta ${cash(totalSales)} − IVA venta ${cash(totalSalesVat)}) − (costo final ${cash(totalLanded)} − IVA importación ${cash(totalVat)}) − gastos de venta/operación ${cash(totalSellingCosts)} = ${cash(totalProfit)}.`;
-  $("generalImportProductRows").innerHTML=rows.length?rows.map(({p,qty,vol,fob,fr,base,dai,iva,unit})=>`<tr><td>${esc(p.sku||"—")}</td><td>${esc(p.name||"")}</td><td>${Number(qty||0).toFixed(2)}</td><td>${cash(n(p.fob))}</td><td>${cash(fob)}</td><td>${vol.toFixed(2)} m³</td><td>${cash(fr)}</td><td>${cash(base)}</td><td>${n(p.dai)}%</td><td>${cash(dai)}</td><td>${cash(iva)}</td><td>${cash(unit)}</td></tr>`).join("")+`<tr class="totalrow"><td colspan="2"><b>TOTAL</b></td><td>${rows.reduce((a,r)=>a+r.qty,0)}</td><td>—</td><td><b>${cash(totalFob)}</b></td><td><b>${totalCbm.toFixed(2)} m³</b></td><td><b>${cash(freight)}</b></td><td>—</td><td>—</td><td><b>${cash(totalDai)}</b></td><td><b>${cash(totalVat)}</b></td><td>—</td></tr>`:`<tr><td colspan="12">${rec?'La importación seleccionada no contiene una lista de productos reconocible. Revisa que el registro esté guardado con sus productos.':'No hay productos en la calculadora actual. Selecciona una importación guardada o agrega productos.'}</td></tr>`;
+  const totalEstimatedSales=rows.reduce((a,r)=>a+(Number(r.qty)||0)*productSalePrice(r.p),0);
+  $("generalImportProductRows").innerHTML=rows.length?rows.map(({p,qty,vol,fob,fr,base,dai,iva,unit})=>`<tr><td>${esc(p.sku||"—")}</td><td>${esc(p.name||"")}</td><td>${Number(qty||0).toFixed(2)}</td><td>${cash(n(p.fob))}</td><td>${cash(fob)}</td><td>${vol.toFixed(2)} m³</td><td>${cash(fr)}</td><td>${cash(base)}</td><td>${n(p.dai)}%</td><td>${cash(dai)}</td><td>${cash(iva)}</td><td>${cash(unit)}</td><td>${cash((Number(qty)||0)*productSalePrice(p))}</td></tr>`).join("")+`<tr class="totalrow"><td colspan="2"><b>TOTAL</b></td><td>${rows.reduce((a,r)=>a+r.qty,0)}</td><td>—</td><td><b>${cash(totalFob)}</b></td><td><b>${totalCbm.toFixed(2)} m³</b></td><td><b>${cash(freight)}</b></td><td>—</td><td>—</td><td><b>${cash(totalDai)}</b></td><td><b>${cash(totalVat)}</b></td><td>—</td><td><b>${cash(totalEstimatedSales)}</b></td></tr>`:`<tr><td colspan="13">${rec?'La importación seleccionada no contiene una lista de productos reconocible. Revisa que el registro esté guardado con sus productos.':'No hay productos en la calculadora actual. Selecciona una importación guardada o agrega productos.'}</td></tr>`;
   const detailWrap=$("generalImportProducts")?.querySelector(".tablewrap");if(detailWrap)detailWrap.scrollLeft=0;
   reportQueryExportRows.push(...[["RESUMEN DE LA IMPORTACIÓN"],["Nombre de la importación",$("generalImportName").textContent],["Total CBM",sumValues.generalSumCbm],["Valor FOB total",sumValues.generalSumFob],["DAI",sumValues.generalSumDai],["IVA de importación",sumValues.generalSumImportVat],["Total IVA + DAI",sumValues.generalSumTaxes],["Valor estimado final",sumValues.generalSumFinal],["Valor de venta (IVA incluido)",sumValues.generalSumSales],["IVA de la venta",sumValues.generalSumSalesVat],["IVA a pagar estimado (IVA venta - IVA importación)",sumValues.generalSumVatPayable],["DETALLE DE PRODUCTOS"],["SKU","Producto","Cantidad","FOB unitario","FOB total","CBM total","Flete asignado","Base DAI","DAI %","DAI","IVA estimado","Costo unitario estimado"],...rows.map(({p,qty,vol,fob,fr,base,dai,iva,unit})=>[p.sku||"",p.name,qty,n(p.fob),fob,vol,fr,base,n(p.dai),dai,iva,unit])]);
  }
@@ -940,12 +1226,21 @@ const helpTopicsEn = [
 ];
 function showHelp(){
  const english=$("language")?.value==="en";
- $("helpTitle").textContent=english?"ImportaPro Help":"Ayuda de ImportaPro";
- $("helpIntro").textContent=english?"Quick guide to the fields and how they are used.":"Guía rápida: qué significa cada campo y cómo se utiliza.";
+ $("helpTitle").textContent=english?"Gestora 360 Help":"Ayuda de Gestora 360";
+ $("helpIntro").textContent=english?"Quick guide to the fields and how they are used.":"Guía rápida de Gestora 360: qué significa cada campo y cómo se utiliza.";
  $("closeHelp").textContent=english?"Close ✕":"Cerrar ✕";
  $("helpContent").innerHTML=(english?helpTopicsEn:helpTopics).map(([t,d])=>`<div style="padding:10px 12px;border:1px solid var(--border,#d9dee7);border-radius:10px"><strong>${esc(t)}</strong><div style="margin-top:4px;line-height:1.45">${esc(d)}</div></div>`).join("");
  $("helpModal").style.display="block";
 }
+
+// Controles compactos de idioma del encabezado.
+(()=>{const btn=document.getElementById('languageButton'),menu=document.getElementById('languageMenu'),sel=document.getElementById('language');if(!btn||!menu||!sel)return;
+const close=()=>{menu.hidden=true;btn.setAttribute('aria-expanded','false')};
+btn.addEventListener('click',e=>{e.stopPropagation();menu.hidden=!menu.hidden;btn.setAttribute('aria-expanded',String(!menu.hidden))});
+menu.querySelectorAll('[data-language-value]').forEach(item=>item.addEventListener('click',()=>{sel.value=item.dataset.languageValue;sel.dispatchEvent(new Event('change',{bubbles:true}));close();btn.title=item.dataset.languageValue==='en'?'Language: English':'Idioma: Español';btn.setAttribute('aria-label',btn.title)}));
+document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
+
 $("helpButton").addEventListener("click",showHelp);
 $("closeHelp").addEventListener("click",()=>$("helpModal").style.display="none");
 $("helpModal").addEventListener("click",e=>{if(e.target===$("helpModal"))$("helpModal").style.display="none"});
@@ -972,7 +1267,7 @@ $("exportBackup")?.addEventListener("click",()=>{
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json;charset=utf-8"});
   const url=URL.createObjectURL(blob);const a=document.createElement("a");
   const stamp=new Date().toISOString().slice(0,10);
-  a.href=url;a.download=`ImportaPro_respaldo_${stamp}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  a.href=url;a.download=`Gestora360_respaldo_${stamp}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
   $("backupStatus").textContent="Respaldo generado. Guarda el archivo en un lugar seguro y conserva una copia.";
  }catch(err){$("backupStatus").textContent="No se pudo generar el respaldo. Revisa el espacio disponible e inténtalo de nuevo.";}
 });
@@ -984,7 +1279,7 @@ $("restoreBackup")?.addEventListener("click",async()=>{
   if(!payload || payload.app!=="ImportaPro Mobile" || payload.formatVersion!==1 || !payload.data || typeof payload.data!=="object" || Array.isArray(payload.data)) throw new Error("Formato no válido");
   const entries=Object.entries(payload.data);
   if(!entries.length || entries.some(([key,value])=>!key.startsWith("importapro_") || typeof value!=="string")) throw new Error("Contenido no válido");
-  const ok=confirm(`El respaldo contiene ${entries.length} elementos guardados (fecha: ${payload.createdAt||"no indicada"}). Se reemplazarán los datos actuales de ImportaPro en este dispositivo. ¿Deseas continuar?`);
+  const ok=confirm(`El respaldo contiene ${entries.length} elementos guardados (fecha: ${payload.createdAt||"no indicada"}). Se reemplazarán los datos actuales de Gestora 360 en este dispositivo. ¿Deseas continuar?`);
   if(!ok)return;
   // Validate storage quota before modifying existing data.
   const previous={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith("importapro_"))previous[k]=localStorage.getItem(k);}
@@ -1003,29 +1298,536 @@ $("restoreBackup")?.addEventListener("click",async()=>{
 
 // Traducción de los principales textos de interfaz.
 const translations={
+ 'Inicio':'Home',
+ 'Registro de la empresa':'Company profile',
+ 'Datos generales y tributarios':'General and tax information',
+ 'Compras':'Purchases',
+ 'Inventario':'Inventory',
+ 'Facturación':'Invoicing',
+ 'Clientes':'Customers',
+ 'Proveedores':'Suppliers',
+ 'Reportes':'Reports',
+ 'Backup y restauración':'Backup & restore',
+ 'Respaldo y restauración':'Backup & restore',
+ 'Respaldar todos tus datos':'Back up all your data',
+ 'Restaurar en este dispositivo':'Restore on this device',
+ 'Descargar respaldo completo (.JSON)':'Download full backup (.JSON)',
+ 'Restaurar respaldo seleccionado':'Restore selected backup',
+ 'Archivo de respaldo (.JSON)':'Backup file (.JSON)',
+ 'Abrir respaldo y restauración →':'Open backup & restore →',
+ 'Todo tu negocio en un solo lugar':'Your entire business in one place',
+ 'Antes de comenzar':'Before you begin',
+ 'Guardar':'Save',
+ 'Cancelar':'Cancel',
+ 'Buscar':'Search',
+ 'Eliminar':'Delete',
+ 'Modificar':'Edit',
+ 'Agregar':'Add',
+ 'Guardar cambios':'Save changes',
+ 'Nuevo producto':'New product',
+ 'Descripción del producto':'Product description',
+ 'Cantidad':'Quantity',
+ 'Precio':'Price',
+ 'Costo':'Cost',
+ 'Total':'Total',
+ 'Fecha':'Date',
+ 'Estado':'Status',
+ 'Acciones':'Actions',
+ 'Nombre comercial':'Trade name',
+ 'Nombre legal / razón social':'Legal name / company name',
+ 'Dirección':'Address',
+ 'Teléfono':'Phone',
+ 'Correo electrónico':'Email',
+ 'País':'Country',
+ 'Buscar y cargar empresa':'Search and load company',
+ 'Nombre comercial o razón social':'Trade name or legal name',
+ 'Completa los datos que deben aparecer en los documentos comerciales. El registro se guarda en este dispositivo y se comparte con facturación y reportes.':'Complete the details to appear on business documents. The profile is saved on this device and shared with invoicing and reports.',
+ 'Genera un archivo de respaldo que incluye los datos guardados por ImportaPro en este navegador: empresa y logo, importaciones, inventario, movimientos, facturas y preferencias.':'Creates a backup file containing Gestora 360 data saved on this device: company and logo, imports, inventory, movements, invoices, and preferences.',
+ 'Selecciona un archivo de respaldo de ImportaPro para recuperar los datos en este dispositivo o en otro celular o computadora.':'Select a Gestora 360 backup file to restore data on this device or another phone or computer.',
+ 'La restauración reemplaza los datos actuales de ImportaPro en este navegador por los del archivo seleccionado. Antes de restaurar, descarga un respaldo de los datos actuales para no perderlos.':'Restoring replaces the current Gestora 360 data on this device with the selected file. Download a backup of current data first to avoid losing it.',
+ 'Importante: la aplicación no sincroniza automáticamente los datos entre dispositivos. Para compartirlos, descarga el archivo, guárdalo en tu nube y luego selecciónalo desde el otro dispositivo. Restaura solo archivos de respaldo confiables.':'Important: data is not automatically synchronized between devices. To transfer data, download the file, save it to cloud storage, then select it on the other device. Restore only trusted backup files.',
+ 'El nombre comercial':'The trade name',
+ 'Ayuda':'Help',
+ 'Cerrar ✕':'Close ✕',
+ 'Versión español':'Spanish version',
+ 'English version':'English version',
  "Resumen de importación":"Import summary","Guardar y recuperar importaciones":"Save and retrieve imports","Descripción de la importación":"Import description","Ej. Contenedor juguetes octubre 2026":"E.g. Toy container October 2026","Importaciones guardadas":"Saved imports","Seleccionar importación guardada...":"Select saved import...","Guardar importación":"Save import","Cargar seleccionada":"Load selected","Eliminar guardada":"Delete saved","Las importaciones guardadas se almacenan en este navegador/dispositivo. Para conservarlas en otro dispositivo, exporta el reporte y guarda una copia.":"Saved imports are stored in this browser/device. To keep them on another device, export the report and save a copy.",
- "Volumen total":"Total volume","Valor FOB total":"Total FOB value","Costo total estimado":"Estimated total cost","DAI total":"Total import duty","IVA total de importación":"Total import VAT","Total impuestos (DAI + IVA)":"Total taxes (duty + VAT)","Gastos generales (USD)":"General expenses (USD)","Tamaño del contenedor":"Container size","20 pies":"20 ft","40 pies":"40 ft","Flete internacional total (USD)":"Total international freight (USD)","Agente / tramitador":"Customs broker / agent","Transporte local":"Local transport","Descarga / mano de obra":"Unloading / labor","Otros gastos":"Other expenses","IVA estimado (%)":"Estimated VAT (%)","Productos del contenedor":"Container products","+ Agregar producto":"+ Add product","Copiar resumen":"Copy summary","Exportar CSV de productos":"Export products CSV","Exportar reporte a Excel":"Export report to Excel","Exportar reporte final a Excel":"Export final report to Excel","Restablecer ejemplo":"Reset example","Detalle por producto":"Product details","Resultados de venta y ganancia estimada":"Estimated sales and profit results","Costo total estimado de importación":"Estimated total import cost","Ventas totales (IVA incluido)":"Total sales (VAT included)","IVA cobrado en ventas":"VAT charged on sales","IVA pagado en importación (crédito estimado)":"Import VAT paid (estimated credit)","IVA neto por pagar estimado":"Estimated net VAT payable","Ganancia estimada sin IVA recuperable":"Estimated profit excluding recoverable VAT","Margen sobre ventas netas":"Margin on net sales","Gastos de venta y operación":"Sales and operating expenses","Aviso importante":"Important notice","ImportaPro es una herramienta de apoyo para preparar estimaciones de costos, impuestos y rentabilidad. Los resultados pueden variar por datos ingresados, clasificación arancelaria, criterios aduaneros, tipo de cambio, cargos y normativa vigente. No garantizamos la exactitud de los cálculos ni nos hacemos responsables por decisiones tomadas únicamente con base en esta estimación. El importador es quien debe verificar la información con sus proveedores, agente aduanal y contador, y quien toma la decisión final de importar.":"ImportaPro is a support tool for estimating costs, taxes, and profitability. Results may vary depending on entered data, tariff classification, customs decisions, exchange rates, fees, and current regulations. We do not guarantee calculation accuracy and are not responsible for decisions made solely on these estimates. The importer must verify information with suppliers, the customs broker, and an accountant, and is responsible for the final import decision.",
- "Descripción del producto":"Product description","FOB unitario según factura comercial ($)":"Unit FOB per commercial invoice ($)","Precio de venta unitario al cliente (IVA incluido, $)":"Unit customer sale price (VAT included, $)","CBM por unidad":"CBM per unit","Cantidad":"Quantity","DAI del producto (%)":"Import duty for product (%)","Comisión de venta (%)":"Sales commission (%)","Publicidad por unidad ($)":"Advertising per unit ($)","Entrega por unidad ($)":"Delivery per unit ($)","Otros gastos operativos por unidad ($)":"Other operating expenses per unit ($)","Costo final unitario ($)":"Final unit cost ($)","Costo de venta sugerido ($) — editable":"Suggested sale price ($) — editable","Costo de compra total FOB ($)":"Total FOB purchase cost ($)","Costo de compra total final ($)":"Total final purchase cost ($)","Costo de compra final por unidad ($)":"Final purchase cost per unit ($)","Ganancia por unidad ($)":"Profit per unit ($)","Ganancia total del producto ($)":"Total product profit ($)","DAI por producto ($)":"Import duty per product ($)","IVA de importación por producto ($)":"Import VAT per product ($)","Flete asignado por producto ($)":"Freight allocated per product ($)","Impuestos totales por producto ($)":"Total taxes per product ($)"
+ "Volumen total":"Total volume","Valor FOB total":"Total FOB value","Costo total estimado":"Estimated total cost","DAI total":"Total import duty","IVA total de importación":"Total import VAT","Total impuestos (DAI + IVA)":"Total taxes (duty + VAT)","Gastos generales (USD)":"General expenses (USD)","Tamaño del contenedor":"Container size","20 pies":"20 ft","40 pies":"40 ft","Flete internacional total (USD)":"Total international freight (USD)","Agente / tramitador":"Customs broker / agent","Transporte local":"Local transport","Descarga / mano de obra":"Unloading / labor","Otros gastos":"Other expenses","IVA estimado (%)":"Estimated VAT (%)","Productos del contenedor":"Container products","+ Agregar producto":"+ Add product","Copiar resumen":"Copy summary","Exportar CSV de productos":"Export products CSV","Exportar reporte a Excel":"Export report to Excel","Exportar reporte final a Excel":"Export final report to Excel","Restablecer ejemplo":"Reset example","Detalle por producto":"Product details","Resultados de venta y ganancia estimada":"Estimated sales and profit results","Costo total estimado de importación":"Estimated total import cost","Ventas totales (IVA incluido)":"Total sales (VAT included)","IVA cobrado en ventas":"VAT charged on sales","IVA pagado en importación (crédito estimado)":"Import VAT paid (estimated credit)","IVA neto por pagar estimado":"Estimated net VAT payable","Ganancia estimada sin IVA recuperable":"Estimated profit excluding recoverable VAT","Margen sobre ventas netas":"Margin on net sales","Gastos de venta y operación":"Sales and operating expenses","Aviso importante":"Important notice","Gestora 360 es una herramienta de apoyo para preparar estimaciones de costos, impuestos y rentabilidad. Los resultados pueden variar por datos ingresados, clasificación arancelaria, criterios aduaneros, tipo de cambio, cargos y normativa vigente. No garantizamos la exactitud de los cálculos ni nos hacemos responsables por decisiones tomadas únicamente con base en esta estimación. El importador es quien debe verificar la información con sus proveedores, agente aduanal y contador, y quien toma la decisión final de importar.":"Gestora 360 is a support tool for estimating costs, taxes, and profitability. Results may vary depending on entered data, tariff classification, customs decisions, exchange rates, fees, and current regulations. We do not guarantee calculation accuracy and are not responsible for decisions made solely on these estimates. The importer must verify information with suppliers, the customs broker, and an accountant, and is responsible for the final import decision.",
+ "Descripción del producto":"Product description","FOB unitario según factura comercial ($)":"Unit FOB per commercial invoice ($)","Precio de venta unitario al cliente (IVA incluido, $)":"Unit customer sale price (VAT included, $)","CBM por unidad":"CBM per unit","Cantidad":"Quantity","DAI del producto (%)":"Import duty for product (%)","Comisión de venta (%)":"Sales commission (%)","Publicidad por unidad ($)":"Advertising per unit ($)","Entrega por unidad ($)":"Delivery per unit ($)","Otros gastos operativos por unidad ($)":"Other operating expenses per unit ($)","Costo final unitario ($)":"Final unit cost ($)","Costo de venta sugerido ($) — editable":"Suggested sale price ($) — editable","Costo de compra total FOB ($)":"Total FOB purchase cost ($)","Costo de compra total final ($)":"Total final purchase cost ($)","Costo de compra final por unidad ($)":"Final purchase cost per unit ($)","Ganancia por unidad ($)":"Profit per unit ($)","Ganancia total del producto ($)":"Total product profit ($)","DAI por producto ($)":"Import duty per product ($)","IVA de importación por producto ($)":"Import VAT per product ($)","Flete asignado por producto ($)":"Freight allocated per product ($)","Impuestos totales por producto ($)":"Total taxes per product ($)",
+ "Bienvenido a Gestora 360":"Welcome to Gestora 360",
+ "Tu plataforma de trabajo":"Your business workspace",
+ "Datos de la empresa":"Company details",
+ "Facturación comercial":"Commercial invoicing",
+ "Costos de importación":"Import costs",
+ "Inventario · una localidad":"Inventory · one location",
+ "Compras locales e internacionales":"Local and international purchases",
+ "Centro de reportes":"Reporting center",
+ "Tu negocio en un solo lugar":"Your business in one place",
+ "Registrar empresa →":"Register company →",
+ "Abrir costos de importación →":"Open import costs →",
+ "Abrir compras →":"Open purchases →",
+ "Abrir inventario →":"Open inventory →",
+ "Abrir facturación →":"Open invoicing →",
+ "Abrir reportes →":"Open reports →",
+ "Abrir clientes →":"Open customers →",
+ "Abrir proveedores →":"Open suppliers →",
+ "Abrir respaldo y restauración →":"Open backup & restore →",
+ "Empresa":"Company",
+ "Costos de importación":"Import Costs",
+ "Ayuda de Gestora 360":"Gestora 360 Help",
+ "Guía rápida de Gestora 360: qué significa cada campo y cómo se utiliza.":"Quick guide to Gestora 360: what each field means and how to use it.",
+ "Gestora 360 reúne en un solo lugar las herramientas para administrar tu empresa: calcula costos de importación, registra compras, controla inventario, prepara facturas y consulta reportes de costos y ventas. Selecciona un módulo en la barra de navegación para comenzar. La información se guarda localmente en este dispositivo.":"Enter your company details and manage estimated costs, local and international purchases, inventory, invoicing, and reports in separate modules. Your work is saved locally on this device.",
+ "Selecciona uno de los módulos. Cada módulo abre su propia página para que trabajes con más claridad desde el teléfono o la computadora.":"Select a module. Each module opens on its own page so you can work more clearly from your phone or computer.",
+ "Registra el nombre comercial y legal, dirección e identificaciones de la empresa. Los datos se comparten con los módulos.":"Enter your trade and legal names, address, and company identification details. The information is shared across modules.",
+ "Registra productos, FOB, CBM, flete, gastos e impuestos estimados para calcular el costo unitario.":"Enter products, FOB, CBM, freight, expenses, and estimated taxes to calculate unit costs.",
+ "Registra compras, costos y recepciones. Las compras confirmadas alimentan el inventario.":"Record purchases, costs, and receipts. Confirmed receipts update inventory.",
+ "Controla existencias, stock mínimo, entradas, salidas y ajustes de una sola localidad.":"Track stock, minimum stock levels, incoming and outgoing movements, and adjustments for one location.",
+ "Prepara comprobantes comerciales, consulta facturas guardadas y registra la salida de inventario al confirmar una venta.":"Prepare commercial invoices, view saved invoices, and record inventory reductions when a sale is confirmed.",
+ "Consulta costos por producto, ventas estimadas, impuestos, ganancia y margen; exporta el reporte a Excel.":"Review product costs, estimated sales, taxes, profit, and margin; export reports to Excel.",
+ "Registra y consulta los datos de tus clientes para mantener un directorio y utilizarlos al preparar facturas.":"Record and view customer details in a directory and use them when preparing invoices.",
+ "Guarda la información de proveedores locales e internacionales y consulta sus datos de contacto.":"Save information about local and international suppliers and view their contact details.",
+ "Descarga una copia de tus datos o restaura un respaldo en este navegador.":"Download a copy of your data or restore a backup in this browser.",
+ "Gestora 360 guarda la información en el navegador de este dispositivo. No sincroniza automáticamente con otros teléfonos o computadoras. Exporta respaldos con regularidad y verifica las bases tributarias con tu agente aduanal o contador.":"Gestora 360 saves information in this device’s browser. It does not automatically sync with other phones or computers. Export backups regularly and verify tax calculations with your customs broker or accountant.",
+ "Antes de comenzar":"Before you begin",
+ "Datos generales y tributarios":"General and tax information",
+ "Integración con los módulos":"Module integration",
+ "Nueva factura / comprobante comercial":"New invoice / commercial receipt",
+ "Facturas guardadas":"Saved invoices",
+ "Guardar y recuperar importaciones":"Save and retrieve imports",
+ "Gastos generales (USD)":"General expenses (USD)",
+ "Productos del contenedor":"Container products",
+ "Resumen de la importación":"Import summary",
+ "Recibir productos desde una importación":"Receive products from an import",
+ "Registrar importación en Compras e Inventario":"Record import in Purchases & Inventory",
+ "Registrar compra":"Record purchase",
+ "Historial de compras":"Purchase history",
+ "Registrar cliente":"Add customer",
+ "Directorio de clientes":"Customer directory",
+ "Registrar proveedor":"Add supplier",
+ "Directorio de proveedores":"Supplier directory",
+ "Consultas y análisis":"Queries and analysis",
+ "Consulta por módulo y fechas":"Query by module and dates",
+ "Resumen general de módulos":"Module overview",
+ "Productos de la importación seleccionada":"Products in selected import",
+ "Consulta de IVA y pago a cuenta":"VAT and advance tax payment query",
+ "Reportes por módulo":"Reports by module",
+ "Cómo leer tus resultados":"How to read your results",
+ "Resultados de venta y ganancia estimada":"Estimated sales and profit results",
+ "Aviso importante":"Important notice",
+ "Buscar empresa guardada":"Find saved company",
+ "Agregar productos del inventario":"Add inventory products",
+ "Fórmulas y valores calculados":"Formulas and calculated values",
+ "Registrar movimiento":"Record movement",
+ "Existencias actuales":"Current stock",
+ "Últimos movimientos":"Latest movements",
+ "Importaciones registradas":"Recorded imports",
+ "⌂ Inicio":"⌂ Home",
+ "Inicio":"Home",
+ "Registro de la empresa":"Company profile",
+ "Compras":"Purchases",
+ "Inventario":"Inventory",
+ "Facturación":"Invoicing",
+ "Clientes":"Customers",
+ "Proveedores":"Suppliers",
+ "Reportes":"Reports",
+ "Backup y restauración":"Backup & restore",
+ "Respaldo y restauración":"Backup & restore",
+ "Guardar":"Save",
+ "Cancelar":"Cancel",
+ "Buscar":"Search",
+ "Eliminar":"Delete",
+ "Modificar":"Edit",
+ "Agregar":"Add",
+ "Guardar cambios":"Save changes",
+ "Nuevo producto":"New product",
+ "Cantidad":"Quantity",
+ "Precio":"Price",
+ "Costo":"Cost",
+ "Total":"Total",
+ "Fecha":"Date",
+ "Estado":"Status",
+ "Acciones":"Actions",
+ "Acción":"Action",
+ "Número":"Number",
+ "Cliente":"Customer",
+ "Producto":"Product",
+ "Tipo":"Type",
+ "País":"Country",
+ "Documento":"Document",
+ "Proveedor":"Supplier",
+ "Teléfono":"Phone",
+ "Correo":"Email",
+ "Dirección":"Address",
+ "Nombre comercial":"Trade name",
+ "Nombre legal / razón social":"Legal name / company name",
+ "DUI / NIT":"DUI / Tax ID",
+ "Registro tributario / NRC":"Tax registration / NRC",
+ "Moneda":"Currency",
+ "Logo de la empresa":"Company logo",
+ "Tipo de documento":"Document type",
+ "Número correlativo de documento":"Sequential document number",
+ "Nombre del cliente":"Customer name",
+ "DUI / NIT del cliente (opcional)":"Customer DUI / Tax ID (optional)",
+ "Número de registro IVA (NRC)":"VAT registration number (NRC)",
+ "Dirección del cliente (opcional)":"Customer address (optional)",
+ "Descuento total (USD)":"Total discount (USD)",
+ "Precio unitario (USD, IVA incluido)":"Unit price (USD, VAT included)",
+ "Descripción de la importación":"Import description",
+ "Proveedor de la importación":"Import supplier",
+ "País de compra":"Purchase country",
+ "Importaciones guardadas":"Saved imports",
+ "Tamaño del contenedor":"Container size",
+ "Flete internacional total (USD)":"Total international freight (USD)",
+ "Agente / tramitador":"Customs broker / agent",
+ "Transporte local":"Local transport",
+ "Descarga / mano de obra":"Unloading / labor",
+ "Otros gastos":"Other expenses",
+ "IVA estimado (%)":"Estimated VAT (%)",
+ "Nombre de la localidad":"Location name",
+ "Nombre del producto":"Product name",
+ "Código / SKU (opcional)":"Code / SKU (optional)",
+ "Existencia inicial":"Opening stock",
+ "Stock mínimo":"Minimum stock",
+ "Costo unitario ($)":"Unit cost ($)",
+ "Precio de venta unitario ($)":"Unit sale price ($)",
+ "Tipo de movimiento":"Movement type",
+ "Nota / referencia (opcional)":"Note / reference (optional)",
+ "Destino del registro":"Record destination",
+ "Categoría del gasto":"Expense category",
+ "Tipo de compra":"Purchase type",
+ "Factura / referencia":"Invoice / reference",
+ "Producto del inventario (opcional)":"Inventory product (optional)",
+ "Nombre del producto si es nuevo":"Product name if new",
+ "SKU / código (si es nuevo)":"SKU / code (if new)",
+ "Cantidad comprada":"Quantity purchased",
+ "Moneda del proveedor":"Supplier currency",
+ "Tipo de cambio (USD por 1 unidad)":"Exchange rate (USD per 1 unit)",
+ "Costo unitario en moneda de compra":"Unit cost in purchase currency",
+ "IVA incluido en el precio (%)":"VAT included in price (%)",
+ "Flete / transporte total USD":"Total freight / transport USD",
+ "Seguro total USD":"Total insurance USD",
+ "Otros gastos total USD":"Other expenses total USD",
+ "DAI estimado (%)":"Estimated import duty (%)",
+ "IVA de compra local (%)":"Local purchase VAT (%)",
+ "Notas":"Notes",
+ "Nombre / razón social *":"Name / legal company name *",
+ "Buscar cliente":"Search customers",
+ "Tipo de persona *":"Person type *",
+ "Nombre completo / razón social *":"Full name / legal company name *",
+ "NIT / identificación fiscal":"Tax ID",
+ "Registro de IVA (NRC)":"VAT registration (NRC)",
+ "Representante legal":"Legal representative",
+ "DUI / documento del representante":"Representative ID / document",
+ "Contacto de ventas":"Sales contact",
+ "Moneda habitual":"Usual currency",
+ "Categoría del proveedor":"Supplier category",
+ "Forma de pago":"Payment method",
+ "Días de crédito":"Credit days",
+ "Límite de crédito (USD)":"Credit limit (USD)",
+ "Banco / cuenta (opcional)":"Bank / account (optional)",
+ "Dirección fiscal / comercial":"Tax / business address",
+ "Observaciones":"Comments",
+ "Buscar y cargar empresa":"Search and load company",
+ "Nombre comercial o razón social":"Trade name or legal company name",
+ "Completa los datos que deben aparecer en los documentos comerciales. El registro se guarda en este dispositivo y se comparte con facturación y reportes.":"Complete the details that should appear on commercial documents. The profile is saved on this device and shared with invoicing and reports.",
+ "Si los campos están vacíos, busca por nombre comercial o razón social para recuperar los datos guardados en este dispositivo.":"If the fields are empty, search by trade name or legal company name to retrieve information saved on this device.",
+ "Los datos se almacenan localmente.":"Data is stored locally.",
+ "El perfil de empresa guardado se usará en la cabecera de las facturas comerciales y en los reportes imprimibles. Los costos de importación y el inventario continúan usando los mismos datos locales.":"The saved company profile appears in commercial invoice headers and printable reports. Import costs and inventory continue to use the same local data.",
+ "Este módulo crea documentos comerciales internos. No genera ni transmite facturación electrónica tributaria oficial (DTE), ni sustituye los requisitos autorizados por la autoridad fiscal. Verifica los requisitos vigentes con tu contador.":"This module creates internal commercial documents. It does not generate or transmit official electronic tax invoices (DTE) and does not replace documents authorized by the tax authority. Verify current requirements with your accountant.",
+ "Formatos: PNG, JPG, WEBP o SVG. Se guarda en este dispositivo. Recomendado: imagen cuadrada o fondo transparente, máximo 1.5 MB.":"Formats: PNG, JPG, WEBP, or SVG. Saved on this device. Recommended: square image or transparent background, maximum 1.5 MB.",
+ "Quitar logo":"Remove logo",
+ "Guardar datos de empresa":"Save company details",
+ "Limpiar formulario":"Clear form",
+ "Agregar a la factura":"Add to invoice",
+ "Actualizar productos":"Refresh products",
+ "Guardar factura y descontar inventario":"Save invoice and deduct inventory",
+ "Cancelar modificación":"Cancel edit",
+ "Imprimir / Guardar PDF":"Print / Save PDF",
+ "Exportar facturas CSV":"Export invoices CSV",
+ "+ Nuevo registro":"+ New record",
+ "Cargar seleccionada":"Load selected",
+ "Eliminar guardada":"Delete saved",
+ "+ Agregar producto":"+ Add product",
+ "Copiar resumen":"Copy summary",
+ "Exportar CSV de productos":"Export products CSV",
+ "Exportar reporte a Excel":"Export report to Excel",
+ "Borrar datos":"Clear data",
+ "Guardar importación":"Save import",
+ "Actualizar lista de importaciones":"Refresh imports list",
+ "Ver productos de la importación":"View import products",
+ "Pasar / actualizar productos en inventario":"Transfer / update inventory products",
+ "Agregar al inventario":"Add to inventory",
+ "Registrar productos en Compras (pendientes)":"Record products in Purchases (pending)",
+ "Exportar inventario CSV":"Export inventory CSV",
+ "Exportar movimientos CSV":"Export movements CSV",
+ "Guardar movimiento":"Save movement",
+ "Actualizar lista":"Refresh list",
+ "Limpiar historial de movimientos":"Clear movement history",
+ "Ver lista de productos":"View product list",
+ "Guardar compra pendiente":"Save pending purchase",
+ "Guardar y recibir en inventario":"Save and receive into inventory",
+ "Vincular importaciones guardadas":"Link saved imports",
+ "Exportar compras CSV":"Export purchases CSV",
+ "Limpiar historial de compras e importaciones eliminadas":"Clear purchase history and deleted imports",
+ "Guardar cliente":"Save customer",
+ "Exportar clientes CSV":"Export customers CSV",
+ "Guardar proveedor":"Save supplier",
+ "Exportar proveedores CSV":"Export suppliers CSV",
+ "⌕ Consultar":"⌕ Search",
+ "Ver todo":"View all",
+ "Exportar a Excel / CSV":"Export to Excel / CSV",
+ "Calcular período":"Calculate period",
+ "Consulta general":"General query",
+ "Exportar reporte CSV":"Export report CSV",
+ "Descargar reporte de compras":"Download purchase report",
+ "Descargar reporte de ventas":"Download sales report",
+ "Descargar reporte de inventario":"Download inventory report",
+ "Descargar movimientos":"Download movements",
+ "Exportar reporte final a Excel":"Export final report to Excel",
+ "Quitar":"Remove",
+ "Imprimir PDF":"Print PDF",
+ "Recibir":"Receive",
+ "Consumidor final":"Final consumer",
+ "Correlativo automático por tipo de documento. Puedes editarlo si necesitas.":"Automatic sequential number by document type. You can edit it if needed.",
+ "Se resta del total de la factura.":"Deducted from the invoice total.",
+ "Los gastos operativos se guardan en compras, pero nunca aumentan existencias.":"Operating expenses are recorded in purchases but never increase stock.",
+ "Ingresa el costo total que aparece en la factura, con IVA incluido. El sistema separará automáticamente la base y el IVA. Si no aplica IVA, escribe 0.":"Enter the total shown on the invoice, including VAT. The system will automatically separate the taxable base and VAT. If VAT does not apply, enter 0.",
+ "Ingresa la tasa que aparece en la factura del proveedor; usa 0 si no aplica.":"Enter the rate shown on the supplier invoice; use 0 if not applicable.",
+ "Módulo 2":"Module 2",
+ "Módulo 3":"Module 3",
+ "Módulo 4":"Module 4",
+ "Módulo 5":"Module 5",
+ "Primero revisa":"Review first",
+ "Después compara":"Then compare",
+ "Finalmente evalúa":"Finally evaluate",
+ // Inventario: etiquetas, acciones y descripciones completas
+ "Inventario · una localidad":"Inventory · one location",
+ "← Inicio":"← Home",
+ "Recibir productos desde una importación":"Receive products from an import",
+ "Selecciona una importación guardada para recibirla por primera vez o sincronizar cambios posteriores. Si modificas una importación ya recibida, se actualizarán sus productos y solo se ajustarán las existencias según los cambios detectados.":"Select a saved import to receive it for the first time or synchronize later changes. If you modify an import that has already been received, its products will be updated and stock will only be adjusted according to the detected changes.",
+ "Importaciones guardadas":"Saved imports",
+ "Seleccionar importación...":"Select an import...",
+ "Actualizar lista de importaciones":"Refresh import list",
+ "Ver productos de la importación":"View import products",
+ "Pasar / actualizar productos en inventario":"Add / update products in inventory",
+ "Control de existencias para una sola localidad. Ingresa el precio de venta para calcular la ganancia por unidad y el margen sobre el precio de venta. Los datos se guardan en este dispositivo.":"Stock control for a single location. Enter the selling price to calculate profit per unit and the margin on the selling price. Data is saved on this device.",
+ "Nombre de la localidad":"Location name",
+ "Nombre del producto":"Product name",
+ "Código / SKU (opcional)":"Code / SKU (optional)",
+ "Existencia inicial":"Opening stock",
+ "Stock mínimo":"Minimum stock",
+ "Costo unitario ($)":"Unit cost ($)",
+ "Precio de venta unitario ($)":"Unit selling price ($)",
+ "Agregar al inventario":"Add to inventory",
+ "Registrar productos en Compras (pendientes)":"Register products in Purchases (pending)",
+ "Exportar inventario CSV":"Export inventory CSV",
+ "Exportar movimientos CSV":"Export movements CSV",
+ "Registrar movimiento":"Record movement",
+ "Seleccionar producto...":"Select a product...",
+ "Tipo de movimiento":"Movement type",
+ "Entrada":"Stock in",
+ "Salida":"Stock out",
+ "Ajustar existencia":"Adjust stock",
+ "Nota / referencia (opcional)":"Note / reference (optional)",
+ "Guardar movimiento":"Save movement",
+ "Existencias actuales":"Current stock",
+ "Existencia actual":"Current stock",
+ "Salidas / ventas acumuladas":"Cumulative issues / sales",
+ "Precio de venta/u":"Selling price/unit",
+ "Ganancia por unidad":"Profit per unit",
+ "Margen de ganancia":"Profit margin",
+ "Valor total a costo":"Total value at cost",
+ "Últimos movimientos":"Latest movements",
+ "Actualizar lista":"Refresh list",
+ "Limpiar historial de movimientos":"Clear movement history",
+ "Limpia únicamente el historial visible de movimientos. No cambia las existencias actuales ni elimina productos, compras o facturas.":"This only clears the visible movement history. It does not change current stock or delete products, purchases, or invoices.",
+ "Existencia resultante":"Resulting stock",
+ "Los productos calculados no aumentan existencias automáticamente. Primero registra la compra en Compras; cuando la mercancía llegue, usa “Recibir” en la compra o “Pasar / actualizar productos en inventario” en esta pantalla.":"Calculated products do not increase stock automatically. First record the purchase in Purchases; when the goods arrive, use “Receive” in the purchase or “Add / update products in inventory” on this screen.",
+ // Reportes: títulos, filtros, explicaciones y columnas
+ "Centro de reportes":"Reports center",
+ "Consultas y análisis":"Queries and analysis",
+ "Consulta tus operaciones por período, revisa indicadores y exporta resultados listos para Excel.":"Review your operations by period, check key indicators, and export results ready for Excel.",
+ "Productos en la calculadora · Ver resumen ↗":"Products in cost calculator · View summary ↗",
+ "Locales e internacionales · Ver resumen ↗":"Local and international purchases · View summary ↗",
+ "Facturas comerciales guardadas · Ver resumen ↗":"Saved commercial invoices · View summary ↗",
+ "Referencias registradas · Ver resumen ↗":"Recorded references · View summary ↗",
+ "Entradas, salidas y ajustes · Ver resumen ↗":"Stock in, stock out, and adjustments · View summary ↗",
+ "Directorio de clientes · Ver resumen ↗":"Customer directory · View summary ↗",
+ "Directorio de proveedores · Ver resumen ↗":"Supplier directory · View summary ↗",
+ "Agotados o bajo mínimo · Ver resumen ↗":"Out of stock or below minimum · View summary ↗",
+ "Consulta por módulo y fechas":"Filter by module and dates",
+ "Selecciona un módulo y un período. Para ver todo el historial disponible, deja las fechas vacías y pulsa Consulta general . Costos estimados de importación e inventario actual son":"Select a module and period. To view all available history, leave the dates blank and click General query. Estimated import costs and current inventory are",
+ "Todos los módulos":"All modules",
+ "Costos estimados de importación (actual)":"Estimated import costs (current)",
+ "Ventas / facturación":"Sales / invoicing",
+ "Inventario actual":"Current inventory",
+ "Movimientos de inventario":"Inventory movements",
+ "Desde":"From",
+ "Hasta":"To",
+ "⌕ Consultar":"⌕ Search",
+ "Ver todo":"View all",
+ "Exportar a Excel / CSV":"Export to Excel / CSV",
+ "Selecciona los filtros y pulsa Consultar.":"Select filters and click Search.",
+ "Resumen general de módulos":"Module overview",
+ "Productos en la calculadora":"Products in cost calculator",
+ "Locales e internacionales":"Local and international purchases",
+ "Facturas guardadas":"Saved invoices",
+ "Referencias registradas":"Recorded references",
+ "Entradas, salidas y ajustes":"Stock in, stock out, and adjustments",
+ "Importaciones registradas":"Recorded imports",
+ "El sistema selecciona automáticamente la importación guardada más reciente. Puedes elegir otra para ver su resumen y todos sus productos.":"The system automatically selects the most recently saved import. You can choose another to view its summary and all its products.",
+ "Importación guardada":"Saved import",
+ "Resumen de la importación":"Import summary",
+ "El resumen y el detalle corresponden a la importación seleccionada. Si eliges la calculadora actual, se muestran los productos que estás editando. Los importes son estimados; confirma los valores antes de tomar decisiones.":"The summary and details correspond to the selected import. If you choose the current calculator, the products you are editing will be shown. Amounts are estimates; verify them before making decisions.",
+ "Fórmulas y valores calculados":"Formulas and calculated values",
+ "Valor de venta = suma de cantidad × precio de venta sugerido.":"Sales value = sum of quantity × suggested selling price.",
+ "IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).":"Sales VAT = sales value × VAT rate ÷ (1 + VAT rate).",
+ "Ganancia final = venta sin IVA − costo de importación sin IVA de importación − gastos de venta y operación.":"Final profit = sales excluding VAT − import cost excluding import VAT − selling and operating expenses.",
+ "Productos de la importación seleccionada":"Products in the selected import",
+ "SKU":"SKU",
+ "Producto":"Product",
+ "Cantidad":"Quantity",
+ "FOB unitario":"Unit FOB",
+ "FOB total":"Total FOB",
+ "CBM total":"Total CBM",
+ "Flete asignado":"Allocated freight",
+ "Base DAI":"Import duty base",
+ "DAI %":"Import duty %",
+ "DAI":"Import duty",
+ "IVA estimado":"Estimated VAT",
+ "Costo unitario estimado":"Estimated unit cost",
+ "Consulta de IVA y pago a cuenta":"VAT and advance tax payment query",
+ "Selecciona un período para estimar IVA débito de ventas, IVA de compras registrado y pago a cuenta. Solo se usan documentos guardados en Gestora 360. Verifica el tratamiento fiscal antes de presentar declaraciones.":"Select a period to estimate output VAT on sales, recorded input VAT on purchases, and advance tax payment. Only documents saved in Gestora 360 are used. Verify the tax treatment before filing returns.",
+ "IVA aplicado (%)":"VAT rate (%)",
+ "Pago a cuenta estimado (%)":"Estimated advance tax payment (%)",
+ "Calcular período":"Calculate period",
+ "Consulta general":"General query",
+ "Exportar reporte CSV":"Export CSV report",
+ "Selecciona un período y pulsa Calcular período.":"Select a period and click Calculate period.",
+ "Concepto":"Description",
+ "Base estimada":"Estimated base",
+ "Tasa":"Rate",
+ "Importe":"Amount",
+ "Reportes por módulo":"Reports by module",
+ "Cada reporte se descarga en CSV compatible con Excel. Los reportes de ventas se basan en facturas guardadas; los de compras incluyen pendientes y recibidas.":"Each report downloads as a CSV compatible with Excel. Sales reports are based on saved invoices; purchase reports include pending and received purchases.",
+ "Proveedor, documento, cantidades, gastos y estado.":"Supplier, document, quantities, expenses, and status.",
+ "Descargar reporte de compras":"Download purchase report",
+ "Documentos guardados, clientes, tipo y totales.":"Saved documents, customers, type, and totals.",
+ "Descargar reporte de ventas":"Download sales report",
+ "Existencias, mínimo, costo, precio y valor.":"Stock, minimum level, cost, price, and value.",
+ "Descargar reporte de inventario":"Download inventory report",
+ "Entradas, salidas, ajustes y saldos registrados.":"Recorded stock in, stock out, adjustments, and balances.",
+ "Descargar movimientos":"Download movements",
+ "Cómo leer tus resultados":"How to read your results",
+ "Flete, gastos, cantidades, FOB, CBM y DAI.":"Freight, expenses, quantities, FOB, CBM, and import duty.",
+ "DAI, IVA de importación y costo total estimado.":"Import duty, import VAT, and estimated total cost.",
+ "Precio de venta, gastos comerciales, ganancia y margen.":"Selling price, commercial expenses, profit, and margin.",
+ "Resultados de venta y ganancia estimada":"Sales and estimated profit results",
+ "Exportar reporte final a Excel":"Export final report to Excel",
+ "Precio venta/u IVA incl.":"Selling price/unit incl. VAT",
+ "Ventas totales IVA incl.":"Total sales incl. VAT",
+ "IVA venta":"Sales VAT",
+ "IVA importación estimado":"Estimated import VAT",
+ "Venta neta/u":"Net sales/unit",
+ "Costo neto/u":"Net cost/unit",
+ "Comisión":"Commission",
+ "Publicidad":"Advertising",
+ "Entrega":"Delivery",
+ "Otros operativos":"Other operating expenses",
+ "Ganancia/u":"Profit/unit",
+ "Ganancia total":"Total profit",
+ "Supuesto del modelo: el precio de venta ingresado incluye IVA. El IVA de venta se separa usando la tasa configurada. La ganancia se estima como venta sin IVA menos costo de importación sin IVA de importación y gastos de venta. No es una declaración fiscal.":"Model assumption: the entered selling price includes VAT. Sales VAT is separated using the configured rate. Profit is estimated as sales excluding VAT minus import cost excluding import VAT and selling expenses. This is not a tax return.",
+ "Aviso importante":"Important notice",
+ "Gestora 360 es una herramienta de apoyo para preparar estimaciones de costos, impuestos y rentabilidad. Los resultados pueden variar por datos ingresados, clasificación arancelaria y tratamiento fiscal. Consulta a tu agente aduanal o contador antes de declarar.":"Gestora 360 is a support tool for estimating costs, taxes, and profitability. Results may vary based on entered data, tariff classification, and tax treatment. Consult your customs broker or accountant before filing.",
+ // Compras y datos de empresa
+ "Compras locales e internacionales":"Local and international purchases",
+ "Registrar importación en Compras e Inventario":"Register import in Purchases and Inventory",
+ "Selecciona una importación guardada para ver cuántos productos contiene y revisar el detalle antes de registrarla. Si ya fue recibida en Inventario, se vinculará a Compras sin volver a aumentar existencias.":"Select a saved import to see how many products it contains and review details before registering it. If it has already been received into Inventory, it will be linked to Purchases without increasing stock again.",
+ "Importaciones guardadas y número de productos":"Saved imports and product count",
+ "Cargando importaciones...":"Loading imports...",
+ "Ver lista de productos":"View product list",
+ "Actualizar lista":"Refresh list",
+ "Registrar compra":"Record purchase",
+ "Los costos estimados de importación permanecen independientes. Solo una compra registrada como recibida aumentará el inventario. Cada registro representa una línea de producto; registra una compra por cada producto.":"Estimated import costs remain separate. Only a purchase marked as received will increase inventory. Each record represents one product line; record one purchase per product.",
+ "Destino del registro":"Record destination",
+ "Compra para inventario":"Purchase for inventory",
+ "Compra sin inventario / Gasto operativo":"Non-inventory purchase / Operating expense",
+ "Los gastos operativos se guardan en compras, pero nunca aumentan existencias.":"Operating expenses are recorded in Purchases but never increase stock.",
+ "Categoría del gasto":"Expense category",
+ "Tipo de compra":"Purchase type",
+ "Compra local":"Local purchase",
+ "Compra internacional":"International purchase",
+ "Factura / referencia":"Invoice / reference",
+ "Producto del inventario (opcional)":"Inventory product (optional)",
+ "Crear producto nuevo a partir del nombre...":"Create a new product from its name...",
+ "Nombre del producto si es nuevo":"Product name if new",
+ "SKU / código (si es nuevo)":"SKU / code (if new)",
+ "Cantidad comprada":"Quantity purchased",
+ "Moneda del proveedor":"Supplier currency",
+ "USD - Dólar estadounidense":"USD - US dollar",
+ "CNY / yuan":"CNY / yuan",
+ "EUR / euro":"EUR / euro",
+ "MXN / peso mexicano":"MXN / Mexican peso",
+ "Otra":"Other",
+ "Tipo de cambio (USD por 1 unidad)":"Exchange rate (USD per 1 unit)",
+ "Costo unitario en moneda de compra":"Unit cost in purchase currency",
+ "IVA incluido en el precio (%)":"VAT included in price (%)",
+ "Ingresa el costo total que aparece en la factura, con IVA incluido. El sistema separará automáticamente la base y el IVA. Si no aplica IVA, escribe 0.":"Enter the total cost shown on the invoice, including VAT. The system will automatically separate the taxable base and VAT. If VAT does not apply, enter 0.",
+ "Flete / transporte total USD":"Total freight / transport USD",
+ "Seguro total USD":"Total insurance USD",
+ "Otros gastos total USD":"Other total expenses USD",
+ "DAI estimado (%)":"Estimated import duty (%)",
+ "IVA estimado (%)":"Estimated VAT (%)",
+ "IVA de compra local (%)":"Local purchase VAT (%)",
+ "Ingresa la tasa que aparece en la factura del proveedor; usa 0 si no aplica.":"Enter the rate shown on the supplier invoice; use 0 if it does not apply.",
+ "Guardar compra pendiente":"Save pending purchase",
+ "Guardar y recibir en inventario":"Save and receive into inventory",
+ "Limpiar formulario":"Clear form",
+ "Vincular importaciones guardadas":"Link saved imports",
+ "Exportar compras CSV":"Export purchases CSV",
+ "Historial de compras":"Purchase history",
+ "Limpiar historial de compras e importaciones eliminadas":"Clear purchase history and deleted imports",
+ "Fecha":"Date",
+ "Tipo":"Type",
+ "Proveedor":"Supplier",
+ "País":"Country",
+ "Documento":"Document",
+ "Costo unitario USD":"Unit cost USD",
+ "Total USD":"Total USD",
+ "Las compras pendientes no cambian el stock. Al recibir una compra se registra una entrada de inventario y el costo del producto se actualiza mediante promedio ponderado.":"Pending purchases do not change stock. When a purchase is received, an inventory entry is recorded and the product cost is updated using the weighted-average method.",
+ "Registro de la empresa":"Company profile",
+ "Completa los datos que deben aparecer en los documentos comerciales. El registro se guarda en este dispositivo y se comparte con facturación y reportes.":"Complete the details that should appear on commercial documents. The profile is saved on this device and shared with invoicing and reports.",
+ "Buscar empresa guardada":"Find saved company",
+ "Si los campos están vacíos, busca por nombre comercial o razón social para recuperar los datos guardados en este dispositivo.":"If the fields are empty, search by trade name or legal name to retrieve details saved on this device.",
+ "Nombre comercial o razón social":"Trade name or legal name",
+ "Buscar y cargar empresa":"Find and load company",
+ "Nombre legal / razón social":"Legal name",
+ "Dirección":"Address",
+ "DUI (si corresponde)":"DUI (if applicable)",
+ "Registro tributario / NRC":"Tax registration / NRC",
+ "Teléfono":"Phone",
+ "Correo electrónico":"Email address",
+ "País":"Country",
+ "Moneda":"Currency",
+ "Logo de la empresa":"Company logo",
+ "Quitar logo":"Remove logo",
+ "Guardar datos de empresa":"Save company details",
+ "Los datos se almacenan localmente.":"Data is stored locally.",
+ "Integración con los módulos":"Module integration",
+ "Formatos: PNG, JPG, WEBP o SVG. Se guarda en este dispositivo. Recomendado: imagen cuadrada o fondo transparente, máximo 1.5 MB.":"Formats: PNG, JPG, WEBP, or SVG. Saved on this device. Recommended: square image or transparent background, maximum 1.5 MB."
 };
 function applyLanguage(lang){
- const esSelect=$("language"); if(esSelect)esSelect.value=lang;
+ const picker=$("language"); if(picker)picker.value=lang;
  document.documentElement.lang=lang;
- document.querySelectorAll("h2, label, button, .metric span, .note, option").forEach(el=>{
-  if(!el.dataset.originalText)el.dataset.originalText=el.textContent;
-  const original=el.dataset.originalText.trim();
-  if(lang==="en" && translations[original])el.textContent=translations[original];
-  else el.textContent=original;
- });
- if(lang==="en"){
-  document.querySelectorAll('input[placeholder]').forEach(el=>{
-   if(!el.dataset.originalPlaceholder)el.dataset.originalPlaceholder=el.placeholder;
-   if(translations[el.dataset.originalPlaceholder])el.placeholder=translations[el.dataset.originalPlaceholder];
-  });
- }else{
-  document.querySelectorAll('input[placeholder]').forEach(el=>{if(el.dataset.originalPlaceholder)el.placeholder=el.dataset.originalPlaceholder});
- }
+ const dict=translations;
+ const translateText=(text)=>{const raw=(text||"");const trimmed=raw.trim();if(!trimmed)return raw;if(lang!=="en")return raw;let val=dict[trimmed];if(val!==undefined)return raw.replace(trimmed,val);return raw;};
+ const walk=(root)=>{if(!root)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode())){if(!node.__g360Original)node.__g360Original=node.nodeValue;const original=node.__g360Original;node.nodeValue=lang==="en"?translateText(original):original;}
+  root.querySelectorAll?.("input[placeholder],textarea[placeholder],option,title,[title],[aria-label]").forEach(el=>{for(const attr of ["placeholder","title","aria-label"]){if(!el.hasAttribute(attr))continue;const key="__g360Original_"+attr;if(!el.dataset[key])el.dataset[key]=el.getAttribute(attr);const original=el.dataset[key];el.setAttribute(attr,lang==="en"?(dict[original]||original):original);}});
+ };
+ walk(document.body);
 }
 $("language").addEventListener("change",e=>{applyLanguage(e.target.value);saveDraft()});
+const g360LanguageObserver=new MutationObserver(()=>{const l=$("language")?.value||"es";if(l==="en")applyLanguage("en")});g360LanguageObserver.observe(document.body,{childList:true,subtree:true});
 
 // Directorios locales de clientes y proveedores.
 const CUSTOMERS_KEY="importapro_customers_v223", SUPPLIERS_KEY="importapro_suppliers_v223";
@@ -1049,6 +1851,7 @@ function showPage(pageId){
  const valid=["page-home","page-company","page-costs","page-inventory","page-purchases","page-billing","page-customers","page-suppliers","page-reports","page-backup"];
  if(!valid.includes(pageId))pageId="page-home";
  document.querySelectorAll(".app-page").forEach(page=>page.classList.toggle("active",page.id===pageId));
+ if(pageId==="page-costs"){try{syncVisibleProductFields();calc();}catch(error){console.error("Error al recalcular Costos de importación:",error);const status=$("autosaveStatus");if(status)status.textContent="No se pudo recalcular automáticamente. Pulsa Recalcular resumen y revisa los campos de productos.";}}
  document.querySelectorAll("[data-page-go]").forEach(button=>{
   if(button.closest(".app-navigation")){if(button.dataset.pageGo===pageId)button.setAttribute("aria-current","page");else button.removeAttribute("aria-current");}
  });
@@ -1072,6 +1875,8 @@ restoreDraft();
 applyLanguage($("language")?.value||"es");
 
 render();
+try{syncVisibleProductFields();calc();}catch(error){console.error("Error en el cálculo inicial:",error);}
+window.addEventListener("pageshow",()=>{try{syncVisibleProductFields();calc();}catch(error){console.error("Error al restaurar cálculos:",error);}});
 refreshPurchaseSavedImportSelect();
 if("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost")){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));}
 document.addEventListener("DOMContentLoaded",()=>{try{loadInventory();renderInventory();refreshInventoryImportSelect();renderInventoryImportPreview();refreshPurchaseSavedImportSelect();}catch(error){console.error("Error al cargar inventario",error);}});
@@ -1079,4 +1884,14 @@ document.addEventListener("DOMContentLoaded",()=>{try{loadInventory();renderInve
 <script id="gestora360-sidebar-icons-v237">
 (()=>{const icons={"page-home":"⌂","page-company":"▣","page-costs":"◈","page-purchases":"⇄","page-inventory":"▤","page-billing":"▧","page-customers":"♙","page-suppliers":"♧","page-reports":"▥","page-backup":"↻"};document.querySelectorAll(".app-navigation [data-page-go]").forEach(b=>{b.dataset.icon=icons[b.dataset.pageGo]||"•";b.setAttribute("title",b.textContent.trim());});})();
 </script>
+
+<style id="g360-v315-scroll-and-nav-fix">
+/* v315: navegación en el flujo normal para permitir volver al encabezado desplazándose hacia arriba. */
+html,body{height:auto!important;min-height:100%!important;overflow-y:auto!important;overscroll-behavior-y:auto!important;scroll-behavior:auto!important}
+body{overflow-x:hidden!important;overflow-y:auto!important;position:static!important}
+body>header{position:relative!important;top:auto!important;left:auto!important;right:auto!important;z-index:30!important}
+nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:none!important;overflow-x:auto!important;overflow-y:hidden!important;z-index:20!important;margin-top:8px!important}
+@media(max-width:760px){body>header{position:relative!important;top:auto!important}nav.app-navigation{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;max-height:none!important;overflow-x:auto!important;overflow-y:hidden!important;margin-top:8px!important}}
+</style>
+
 </body></html>

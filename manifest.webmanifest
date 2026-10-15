@@ -5,7 +5,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f7f5",
-  "theme_color": "#0B2343",
+  "theme_color": "#102342",
   "icons": [
     {
       "src": "./icon-192.png",
@@ -20,5 +20,10 @@
     }
   ],
   "orientation": "portrait",
-  "scope": "./"
+  "scope": "./",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "prefer_related_applications": false
 }
