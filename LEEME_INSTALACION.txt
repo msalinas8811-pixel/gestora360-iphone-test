@@ -1,0 +1,225 @@
+VERSIÓN 2.90 — Flujo controlado Costos → Compras → Inventario
+
+- Registrar una importación desde Costos de importación solo crea líneas de compra pendientes; no suma existencias.
+- Las importaciones guardadas deben estar registradas en Compras antes de poder recibirse desde el panel de Inventario.
+- Al recibir la importación, las cantidades se sincronizan y las líneas de compra quedan marcadas como recibidas.
+- Si se recibe una compra por línea desde Compras, el sistema evita volver a recibir el lote completo cuando detecta una recepción parcial o completa, para reducir duplicaciones.
+- Las importaciones históricas marcadas como recibidas por versiones anteriores se vuelven a comprobar contra los registros de compra y los movimientos; verifica las existencias antes de facturar.
+
+IMPORTANTE: haz una copia de seguridad antes de instalar. La aplicación guarda los datos localmente en el dispositivo/navegador. Esta versión es independiente y no modifica la página publicada.
+
+VERSIÓN 2.89 — Corrección de cantidades entre Compras e Inventario
+
+- Corrige un caso en el que una importación aparecía como recibida en Compras, pero sus cantidades no habían generado una entrada efectiva en Inventario.
+- Al volver a pasar/actualizar la importación, detecta ese caso y recupera las unidades cuando el producto está en cero y no existen movimientos de entrada de esa importación ni salidas históricas que indiquen ventas o retiros.
+- Conserva la sincronización por diferencias para evitar sumar dos veces una importación ya recibida.
+- Incluye actualización de caché para cargar la nueva versión.
+
+IMPORTANTE: realiza una copia de seguridad antes de instalar y verifica existencias antes de facturar. La aplicación guarda datos localmente en el dispositivo/navegador.
+
+VERSIÓN 2.85 — Corrección de impresión PDF desde Reportes
+
+- El botón “Imprimir PDF” de Reportes → Consulta de ventas valida la factura seleccionada y prepara una ventana de impresión de forma más compatible con Safari/iPhone.
+- El diálogo de impresión se solicita después de cargar el documento para evitar que se pierda el evento de carga.
+- Si la factura no existe o no contiene productos, se muestra un aviso claro.
+- Si el navegador bloquea ventanas emergentes, debe permitirse para esta aplicación.
+
+VERSIÓN 2.82 — Corrección de cálculos del resumen de importación
+
+El resumen de Costos de importación calcula y muestra: nombre de la importación activa, ventas estimadas con los precios de venta sugeridos, IVA incluido en esas ventas, ganancia final estimada e IVA neto estimado (IVA de venta menos IVA de importación). En importaciones guardadas se reconocen también nombres alternativos de campos de precio de venta y gastos para evitar que el reporte quede en cero cuando los datos sí existen.
+
+GESTORA 360 — ACTUALIZACIÓN 2.79
+- Costos de importación: el panel “Resumen de importación” se reemplazó por el mismo formato de resumen general usado en Reportes, con CBM, FOB, DAI, IVA de importación, impuestos, costo final estimado, venta con IVA, IVA de venta, IVA a pagar estimado y ganancia final.
+- El resumen del módulo Costos de importación usa la calculadora actual; el resumen de Reportes conserva la selección de importaciones guardadas.
+- Inventario: botón “Actualizar lista” recarga productos y últimos movimientos guardados en este navegador.
+- Compras: “Registrar importación en Compras e Inventario” registra o actualiza líneas de compra, sincroniza productos y existencias, y marca la compra como recibida cuando la sincronización termina.
+- La sincronización aplica diferencias de cantidades para evitar sumar dos veces importaciones ya recibidas.
+
+GESTORA 360 — PLATAFORMA DE GESTIÓN EMPRESARIAL (VERSIÓN 2.21)
+Marca: Gestora 360
+Eslogan: Todo tu negocio en un solo lugar.
+Módulos: costos estimados de importación, compras locales e internacionales, inventario, ventas y facturación comercial, reportes y consultas.
+
+IMPORTAPRO MOBILE 2.15 — RESPALDO Y RESTAURACIÓN
+
+IMPORTAPRO MOBILE 2.10 — CUATRO PÁGINAS E INVENTARIO CON RENTABILIDAD
+
+Este paquete es una PWA (aplicación web instalable), no un archivo IPA/APK. Requiere alojarse en una URL HTTPS para instalarse en la pantalla de inicio. Esta copia es independiente y no modifica automáticamente ningún sitio publicado.
+
+GUARDADO LOCAL
+- La importación que estés editando se guarda automáticamente en el almacenamiento local del navegador de este dispositivo.
+- También puedes usar “Guardar importación” para conservar varias importaciones con nombre y cargarlas o eliminarlas después.
+- Los datos no se sincronizan entre dispositivos ni usuarios.
+- Si borras los datos del navegador, cambias de navegador o dispositivo, puedes perder el guardado local. Exporta los reportes y conserva copias de respaldo.
+
+INSTALAR EN IPHONE
+1. Aloja el contenido de esta carpeta en una URL HTTPS.
+2. Abre la URL en Safari.
+3. Pulsa Compartir y elige “Añadir a pantalla de inicio”.
+4. Abre ImportaPro desde el icono instalado.
+
+INSTALAR EN ANDROID
+1. Aloja el contenido de esta carpeta en una URL HTTPS.
+2. Abre la URL en Chrome.
+3. Abre el menú y elige “Instalar aplicación” o “Añadir a pantalla de inicio”.
+
+IMPORTANTE
+- El guardado local solo existe en el mismo navegador y dispositivo. No es una base de datos compartida para varias sucursales.
+- Para inventario multibodega y sincronización entre usuarios será necesaria una API y una base de datos central.
+- Verifica los cálculos fiscales con tu agente aduanal y contador antes de tomar decisiones reales.
+
+
+MÓDULO DE INVENTARIO 2.10
+- Administra productos en una sola localidad/bodega.
+- Guarda localmente existencias, stock mínimo, costo unitario y movimientos de entrada, salida y ajuste.
+- Permite agregar productos desde la calculadora de importación: los nuevos toman cantidad y costo calculado; los existentes solo actualizan costo, sin sumar stock de nuevo.
+- Permite exportar inventario y movimientos a CSV.
+- Los datos solo quedan en el navegador/dispositivo actual; no hay sincronización ni base de datos central. Exporta copias regularmente.
+
+
+NAVEGACIÓN 2.10
+La aplicación está organizada en cuatro páginas: Inicio, Costos de importación, Inventario y Reportes. Usa la barra de navegación o los botones de Inicio para cambiar de página. Los datos locales se conservan al navegar entre módulos.
+
+
+PRECIO DE VENTA Y MARGEN EN INVENTARIO 2.10
+- Cada producto incluye costo unitario y precio de venta unitario editable.
+- La ganancia estimada por unidad se calcula como precio de venta menos costo unitario.
+- El margen porcentual se calcula como ganancia por unidad / precio de venta × 100.
+- La ganancia potencial estimada del inventario multiplica la ganancia por unidad por las unidades disponibles, solo en productos con precio de venta ingresado.
+- El inventario CSV exporta precio de venta, ganancia por unidad, margen y valor total a costo. Estas cifras son estimaciones y no descuentan impuestos ni otros gastos de venta adicionales.
+
+
+NOVEDADES DE LA VERSION 2.11
+- Nueva página para registrar nombre comercial, razón social, dirección, DUI, NIT, registro tributario/NRC, teléfono y correo.
+- Perfil de empresa compartido con facturación comercial y cabeceras de reportes.
+- Nueva página de facturación comercial: cliente, productos del inventario, cantidad, precio, IVA estimado, impresión/guardar como PDF e historial de facturas.
+- Al confirmar una factura comercial, descuenta las cantidades vendidas del inventario y registra los movimientos.
+- Importante: esta función NO genera ni transmite DTE ni facturación electrónica tributaria oficial. Verifica los requisitos aplicables en El Salvador con tu contador y proveedor autorizado.
+- Los datos permanecen en el navegador/dispositivo local; no se sincronizan con otros equipos. Exporta respaldos con frecuencia.
+
+
+NOVEDADES DE LA VERSION 2.12
+- En Registro de la empresa puedes cargar un logo en PNG, JPG, WEBP o SVG (máximo 1.5 MB).
+- El logo se guarda localmente y aparece en la vista del perfil y en la impresión/guardado como PDF de facturas comerciales.
+- Después de seleccionar el logo, pulsa Guardar datos de empresa. El logo no se sube a ningún servidor.
+
+
+VERSION 2.13: se corrigió el cierre prematuro del script de la página de facturación que impedía ejecutar el código de navegación y los botones de inicio. Se actualizó el caché del service worker.
+
+
+VERSIÓN 2.14 — MEJORAS
+- Factura PDF/impresión con datos de empresa, cliente, registro IVA (NRC), detalle de productos, cantidades, precios y totales.
+- Selector de tipo de documento: Factura, Recibo o Crédito fiscal.
+- Inventario: columna de salidas/ventas acumuladas a partir de movimientos registrados.
+- El selector y el PDF son para documentos comerciales internos; no generan un DTE oficial autorizado. Verifica con tu contador los requisitos fiscales para cada tipo de documento.
+
+
+RESPALDO Y RESTAURACIÓN (VERSIÓN 2.15)
+- Entra al módulo “Respaldo” y pulsa “Descargar respaldo completo (.JSON)”.
+- Guarda el archivo descargado en una ubicación segura, como iCloud Drive, Google Drive o OneDrive. La aplicación no puede subirlo automáticamente a tu cuenta de nube sin una integración y autorización adicionales.
+- En otro celular o computadora, abre ImportaPro, entra en “Respaldo”, selecciona el archivo JSON y pulsa “Restaurar respaldo seleccionado”.
+- La restauración reemplaza los datos locales de ImportaPro en ese dispositivo. Descarga primero un respaldo de los datos existentes si quieres conservarlos.
+- No compartas el archivo sin protección: puede incluir información comercial y de clientes.
+
+
+VERSIÓN 2.16 — COMPRAS LOCALES E INTERNACIONALES
+- Nuevo módulo de compras locales e internacionales.
+- Cada registro corresponde a una línea de producto.
+- Puedes guardar compras pendientes sin cambiar las existencias.
+- Al recibir una compra, se registra la entrada al inventario y se actualiza el costo unitario mediante promedio ponderado.
+- Las compras internacionales permiten registrar moneda, tipo de cambio, flete, seguro, otros gastos, DAI e IVA estimados. Los impuestos son estimaciones y deben verificarse con contador/agente aduanal.
+- Los costos estimados de importación siguen separados y no alteran el inventario por sí solos.
+- Las compras recibidas no se pueden borrar desde el historial porque ya modificaron el inventario; usa un ajuste/devolución para corregirlas.
+
+
+VERSIÓN 2.17 — COMPRAS LOCALES SIMPLIFICADAS
+En el módulo de compras, al elegir “Compra local” se ocultan los campos de moneda extranjera, tipo de cambio, flete internacional, seguro, DAI e IVA estimado de importación. El cálculo local usa costo unitario en USD y otros gastos; no agrega impuestos aduanales. Al seleccionar “Compra internacional”, esos campos vuelven a mostrarse.
+
+
+VERSIÓN 2.18 — REPORTES POR MÓDULO Y PDF MEJORADO
+- Centro de reportes con descargas separadas para costos estimados de importación, compras, ventas/facturación, inventario y movimientos.
+- Los reportes CSV se pueden abrir con Excel o importar a una hoja de cálculo.
+- Diseño de impresión/PDF de factura reorganizado con encabezado de empresa, bloque de cliente, tabla de artículos y totales destacados.
+- Se mantiene la advertencia: el documento es comercial interno y no sustituye un DTE autorizado.
+
+
+Versión 2.19 — Consultas por módulo y fechas
+- Se agregó al Centro de reportes una consulta consolidada por módulo o todos los módulos.
+- Permite filtrar compras, ventas/facturas y movimientos por fecha Desde/Hasta, consultar en general, ver resultados y exportar la consulta a CSV compatible con Excel.
+- Muestra conteo de registros y totales de compras y ventas consultadas.
+- Costos de importación e inventario actual son fotografías del estado actual y no tienen historial por fecha; aparecen en consulta general, no en rangos históricos.
+- Esta versión se entrega en ZIP independiente; no modifica el sitio publicado.
+
+
+VERSIÓN 2.20 — CENTRO PROFESIONAL DE CONSULTAS
+- Panel de consultas movido al inicio de la sección Reportes para que sea visible de inmediato.
+- Diseño profesional inspirado en dashboards empresariales: cabecera, indicadores, filtros por módulo/fechas y tabla de resultados.
+- Resumen dinámico de compras, ventas, referencias de inventario y alertas de stock.
+- Consulta general sin fechas y consultas por rango de fechas; exportación CSV compatible con Excel.
+- No modifica el sitio publicado. Datos permanecen guardados localmente en el dispositivo.
+
+
+VERSIÓN 2.22 — IMPRESIÓN PDF DESDE CONSULTAS DE FACTURACIÓN
+En el Centro de consultas, al seleccionar Ventas / facturación y ejecutar una consulta, cada factura aparece en una fila individual con el botón “Imprimir PDF”. El botón abre el documento guardado en una ventana de impresión, desde la que puedes imprimir o elegir “Guardar como PDF”. Se conserva el aviso de que es un documento comercial interno y no un DTE autorizado.
+
+
+VERSIÓN 2.23 — MÓDULOS DE CLIENTES Y PROVEEDORES
+- Nuevo directorio de clientes con nombre/razón social, DUI/NIT, NRC, teléfono, correo, dirección y notas.
+- Nuevo directorio de proveedores con identificación, contacto, teléfono, correo, país, dirección y notas.
+- Búsqueda en cada directorio y exportación CSV compatible con Excel.
+- Los datos se guardan localmente en el navegador y se incluyen en el respaldo JSON de la aplicación.
+- Eliminar un registro del directorio no elimina facturas ni compras históricas.
+
+
+VERSIÓN 2.24 — ACCESO RÁPIDO PARA AGREGAR CLIENTES Y PROVEEDORES
+- En Facturación, el campo Nombre del cliente incluye un botón + que abre el formulario de Clientes y precarga el nombre escrito para facilitar el registro.
+- En Compras, el campo Proveedor incluye un botón + que abre el formulario de Proveedores y precarga el nombre escrito.
+- Los campos también sugieren nombres ya registrados para reducir errores de escritura.
+- Los cambios se aplican a esta versión ZIP independiente; no modifican el sitio publicado.
+
+
+VERSIÓN 2.25
+Se actualizó el nombre del botón de navegación “Costos” a “Calculadora de costos de importación”.
+
+Versión 2.27: se agregó numeración correlativa automática local por tipo de documento en facturación: F-000001 (Factura), R-000001 (Recibo) y CCF-000001 (Crédito fiscal). El correlativo se calcula a partir de documentos guardados en este dispositivo; no es numeración fiscal DTE autorizada.
+
+
+Versión 2.27: diseño de impresión/PDF de facturación actualizado tomando como referencia la estructura visual del documento compartido. Documento comercial interno; no sustituye un DTE autorizado.
+
+
+Versión 2.28: se incorpora el módulo de consulta orientativa de IVA y pago a cuenta, con filtros de fechas y exportación CSV. Las cifras requieren validación contable antes de declarar o pagar.
+
+
+VERSION 2.29 — COMPRAS SIN INVENTARIO / GASTOS OPERATIVOS
+- El módulo Compras permite elegir entre Compra para inventario y Compra sin inventario / Gasto operativo.
+- Los gastos incluyen categorías como alquiler, electricidad, agua, internet, publicidad, honorarios, papelería, mantenimiento, combustible, servicios bancarios y otros.
+- Para gastos se registra proveedor, fecha, factura/referencia, subtotal, tasa de IVA del documento, total y notas.
+- Guardar un gasto no crea productos, no modifica existencias y no genera movimientos de inventario.
+- Los gastos se incluyen en el historial y en el CSV de compras con destino y categoría diferenciados.
+- El IVA de los documentos es solo un dato registrado/estimado; la acreditabilidad fiscal debe verificarse con el contador.
+
+VERSIÓN 2.31 — CORRECCIÓN DEL REPORTE DE IVA DE COMPRAS
+- El reporte de IVA y pago a cuenta ahora considera los registros de compras y gastos por fecha, incluso cuando no ingresan al inventario.
+- Se agregó un campo de tasa de IVA para compras locales de inventario; el importe se guarda en el registro y aparece en el reporte tributario estimado.
+- Para compras internacionales y gastos sin inventario se mantiene el cálculo de IVA configurado en su formulario.
+- Los importes son orientativos y el crédito fiscal deducible debe validarse con documentación válida y el contador.
+
+VERSIÓN 2.32 — GASTOS SIN INVENTARIO CON IVA INCLUIDO
+- En “Compra sin inventario / Gasto operativo”, el campo de costo ahora recibe el importe total de la factura con IVA incluido.
+- La aplicación separa automáticamente la base del gasto y el IVA según la tasa indicada; el total registrado permanece igual al importe digitado.
+- Para documentos sin IVA, indicar 0%.
+- La clasificación y acreditabilidad del IVA debe validarse con el contador según el documento y la normativa aplicable.
+
+
+ACTUALIZACIÓN v2.33 — COMPRAS INTERNACIONALES DESDE LA CALCULADORA
+En Costos de importación se pueden indicar proveedor y país de compra. El botón “Registrar importación en Compras e Inventario” crea líneas de compra internacional como recibidas y suma las cantidades al inventario, usando el costo unitario estimado puesto en bodega. Se bloquea el registro repetido de la misma importación según descripción, proveedor, país, productos, cantidades y FOB. Los datos siguen almacenándose localmente en el dispositivo.
+
+
+Versión 2.74: en Compras se agregó una lista de importaciones guardadas, con cantidad de productos, vista previa por SKU/producto/cantidad/FOB/CBM/costo estimado y acción para vincular la importación a Compras y recibirla en Inventario sin duplicar stock si ya fue recibida.
+
+
+VERSIÓN 2.77 — LIMPIAR HISTORIAL DE ÚLTIMOS MOVIMIENTOS
+- En Inventario se agregó el botón “Limpiar historial de movimientos” junto al título “Últimos movimientos”.
+- El botón solicita confirmación y elimina únicamente los registros guardados en el historial de movimientos.
+- No modifica las existencias actuales, productos, compras ni facturas. La limpieza del historial no se puede deshacer; exporta los movimientos antes si necesitas conservar una copia.
+- Esta versión ZIP independiente no modifica el sitio publicado.

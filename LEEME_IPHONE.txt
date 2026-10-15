@@ -1,0 +1,39 @@
+GESTORA 360 v2.90 — PAQUETE PWA PARA PROBAR EN IPHONE
+
+IMPORTANTE
+Este ZIP es un paquete listo para alojar como sitio estático HTTPS. No es una aplicación publicada ni contiene una dirección web ya creada. No se ha probado en iPhone real todavía.
+
+ARCHIVOS
+- index.html: aplicación
+- manifest.webmanifest: configuración PWA
+- service-worker.js: caché para uso sin conexión
+- apple-touch-icon.png: icono para pantalla de inicio de iOS
+- icon-192.png / icon-512.png / importapro-logo.png: recursos gráficos
+
+PASO 1 — PUBLICAR EN UNA DIRECCIÓN HTTPS
+1. Usa un servicio de alojamiento estático que proporcione HTTPS.
+2. Sube el CONTENIDO de este ZIP (no una carpeta contenedora adicional) como sitio estático. La página de entrada debe quedar en /index.html.
+3. Abre la dirección HTTPS que te entregue el servicio y comprueba que Gestora 360 carga correctamente.
+
+PASO 2 — INSTALAR EN CADA IPHONE
+1. Abre la dirección HTTPS en Safari (no dentro de WhatsApp/Facebook).
+2. Toca Compartir.
+3. Selecciona “Añadir a pantalla de inicio”. Si aparece, activa “Abrir como app”.
+4. Toca Añadir. Repite los pasos en el otro iPhone.
+5. Con la aplicación abierta y conectada una vez, espera a que cargue completamente. Después activa modo avión y vuelve a abrirla para probar el modo sin conexión.
+
+DATOS Y PRIVACIDAD
+- Los datos se guardan por separado en cada iPhone; no hay sincronización entre teléfonos.
+- No desinstales la aplicación ni borres los datos del sitio durante la prueba.
+- Antes de introducir datos reales, prueba con registros ficticios y confirma que las copias/exportaciones disponibles funcionen.
+- Si actualizas los archivos publicados, el caché puede tardar en renovarse; comprueba primero la versión en línea.
+
+PRUEBAS RECOMENDADAS
+1. Abrir/cerrar y volver a abrir la aplicación.
+2. Crear un producto de prueba y revisar si permanece guardado.
+3. Registrar una compra y luego su recepción; verificar que el inventario se incremente una sola vez.
+4. Probar consultas, exportaciones e impresión si el iPhone y la impresora lo permiten.
+5. Activar modo avión y verificar las funciones principales.
+
+ALCANCE
+Este paquete conserva la aplicación Gestora 360 v2.90 y añade metadatos/icono de pantalla de inicio para iOS. La preparación del paquete no confirma que todas las funciones hayan sido validadas en iOS; hay que probarlas en los dos teléfonos.
