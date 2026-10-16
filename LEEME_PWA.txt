@@ -26,3 +26,6 @@ Versión v334: agrega al final de Costos de importación una tabla con todos los
 
 
 Versión v335: resumen visible al final de Costos de importación, una fila por producto, con cantidad, FOB, costo unitario, precio de venta y ganancia estimada por unidad.
+
+
+Versión v336: el resumen final de productos ahora se alimenta directamente de la lista de productos activa y contempla nombres/cantidades/precios de importaciones guardadas con distintos nombres de campo. Se actualiza al recalcular y al cargar una importación guardada.

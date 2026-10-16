@@ -750,7 +750,25 @@ function render(){ $("products").innerHTML=items.map((p,i)=>`<div class="product
 <div class="calcfield"><label>Ganancia total del producto ($)</label><input class="profittotal" type="text" readonly value="$0.00"></div></div>
 <p class="note">Los campos bloqueados se calculan automáticamente. Ingresa manualmente el precio de venta sugerido (IVA incluido) para cada producto. Los valores de venta, IVA de venta, pago a cuenta estimado y ganancia final se actualizan automáticamente.</p>
 </div>`).join("");calc()}
+function refreshCostImportProductsSummary(){
+ try{
+  const body=document.getElementById("costGeneralImportProductRows");
+  if(!body)return;
+  const list=Array.isArray(items)?items:[];
+  const num=(...values)=>{for(const value of values){if(value!==undefined&&value!==null&&value!==""){const parsed=Number(value);if(Number.isFinite(parsed))return parsed;}}return 0;};
+  const freightTotal=num(document.getElementById("freight")?.value),localTotal=["broker","transport","unload","other"].reduce((sum,id)=>sum+num(document.getElementById(id)?.value),0),vatRate=num(document.getElementById("vat")?.value,13)/100;
+  const volumeTotal=list.reduce((sum,p)=>sum+num(p.qty,p.quantity,p.cantidad,p.Quantity,p.Cantidad)*num(p.cbm,p.cbmUnit, p.volume),0);
+  const usable=list.filter(p=>String(p.name??p.description??p.productName??p.product??p.descripcion??"").trim()||num(p.qty,p.quantity,p.cantidad,p.Quantity,p.Cantidad)>0||num(p.fob,p.fobUnit,p.unitFob,p.unitPrice,p.precioFOB)>0);
+  if(!usable.length){body.innerHTML='<tr><td colspan="8">Todavía no hay productos agregados a esta importación.</td></tr>';const cap=document.getElementById("costImportProductsCaption");if(cap)cap.textContent=`Importación: ${document.getElementById("importDescription")?.value||"Importación actual"} · 0 productos`;return;}
+  body.innerHTML=usable.map(p=>{
+   const name=p.name??p.description??p.productName??p.product??p.descripcion??"Producto sin nombre",sku=p.sku??p.SKU??p.code??p.codigo??"—",q=num(p.qty,p.quantity,p.cantidad,p.Quantity,p.Cantidad),fobUnit=num(p.fob,p.fobUnit,p.unitFob,p.unitPrice,p.precioFOB),cbm=num(p.cbm,p.cbmUnit,p.volume),daiRate=num(p.dai,p.daiRate,p.daiPercent,p.DAI),sale=num(p.suggestedSale,p.sale,p.salePrice,p.suggested_sale,p.precioVenta,p.precio_venta),vol=q*cbm,share=volumeTotal?vol/volumeTotal:0,fobTotal=q*fobUnit,fr=freightTotal*share,base=fobTotal+fr,dai=base*daiRate/100,iva=(base+dai)*vatRate,landed=base+dai+iva+localTotal*share,unit=q?landed/q:0,profit=sale-unit;
+   return `<tr><td>${esc(String(sku))}</td><td>${esc(String(name))}</td><td>${q.toLocaleString("en-US")}</td><td>${cash(fobUnit)}</td><td>${cash(fobTotal)}</td><td>${cash(unit)}</td><td>${cash(sale)}</td><td>${cash(profit)}</td></tr>`;
+  }).join("");
+  const cap=document.getElementById("costImportProductsCaption");if(cap)cap.textContent=`Importación: ${document.getElementById("importDescription")?.value||"Importación actual sin descripción"} · ${usable.length} producto(s). Una fila por cada producto agregado.`;
+ }catch(error){console.error("No se pudo actualizar el resumen de productos de la importación",error);}
+}
 function calc(){
+refreshCostImportProductsSummary();
 syncVisibleProductFields();
 let totalVol=items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad)*n(p.cbm),0),
 fobSum=items.reduce((s,p)=>s+n(p.qty??p.quantity??p.cantidad??p.Quantity??p.Cantidad)*n(p.fob),0),
@@ -885,7 +903,7 @@ $("loadImport").addEventListener("click",()=>{
  activeSavedImportId=rec.id;
  $("importDescription").value=rec.description||"";$("importSupplier").value=rec.importSupplier||"";$("importCountry").value=rec.importCountry||"";
  Object.entries(rec.settings||{}).forEach(([k,v])=>{if($(k))$(k).value=v});
- items=(rec.items||[]).map(p=>({...p,id:p.id||newId()})); render(); calc();
+ items=(rec.items||[]).map(p=>({...p,id:p.id||newId()})); render(); refreshCostImportProductsSummary(); calc();
  if(rec.language){$("language").value=rec.language;applyLanguage(rec.language)}
 });
 $("deleteImport").addEventListener("click",()=>{
