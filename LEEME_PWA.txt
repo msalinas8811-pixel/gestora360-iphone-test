@@ -28,4 +28,6 @@ Versión v329: agrega IVA de venta y pago a cuenta estimado después de la venta
 
 Versión v330: IVA de venta y pago a cuenta quedan inmediatamente después del precio de venta sugerido; la ganancia por unidad y total descuenta ambos conceptos; se elimina la tabla de detalle de productos al final de Costos de importación, conservando los indicadores del resumen.
 
-Versión v331: corrige el menú superior de navegación; vuelve a mostrar la barra de módulos y añade manejo de clics para abrir el módulo correspondiente en escritorio y móvil.
+
+VERSION v332 - CORRECCION DE MENU Y BOTONES
+Se parte del paquete v330, que conserva el JavaScript principal sintacticamente valido. Se corrige la regla CSS que ocultaba el menu de modulos y se incrementa la cache PWA a v332. No se agrego un manejador JavaScript nuevo.
