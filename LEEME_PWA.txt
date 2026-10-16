@@ -20,3 +20,6 @@ NOTAS
 
 
 Versión v333 — reconstruida sobre la base funcional v325. Conserva los módulos completos (incluido Inventario) y elimina únicamente la tarjeta adicional “Resumen de la importación” de Costos de importación. Añade IVA de venta y pago a cuenta estimados (1.75% de venta sin IVA) justo después del precio de venta sugerido; ambos se descuentan al calcular la ganancia por unidad y total. Se actualiza la caché de la PWA a v333.
+
+
+Versión v334: agrega al final de Costos de importación una tabla con todos los productos de la importación actual o consultada. La tabla se actualiza con los datos de la calculadora.
