@@ -1116,7 +1116,7 @@ nav.app-navigation{position:relative!important;top:auto!important;left:auto!impo
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   window.addEventListener('load', function () { navigator.serviceWorker.register('./service-worker.js').catch(function (err) { console.warn('No se pudo registrar el modo PWA:', err); }); });
 }
-</script>
+<\/script>
 </body></html>`);win.document.close();}
 function renderInvoiceHistory(){const b=$("invoiceHistory");if(!b)return;b.innerHTML=invoices.map((inv,i)=>`<tr><td>${esc(inv.number)}</td><td>${esc(inv.date)}</td><td>${esc(inv.customer||"Consumidor final")}</td><td>${cash(Math.max(0,inv.lines.reduce((s,l)=>s+l.qty*l.price,0)-n(inv.discount)))}</td><td>Confirmada</td><td><button type="button" class="secondary" data-invoice-print="${i}">Imprimir</button> <button type="button" data-invoice-edit="${i}">Modificar</button> <button type="button" class="remove" data-invoice-delete="${i}">Eliminar</button></td></tr>`).join("")||'<tr><td colspan="6">Todavía no hay facturas guardadas.</td></tr>';}
 function resetInvoiceEditor(){invoiceEditingIndex=null;invoiceCart=[];renderInvoiceCart();$("invoiceSave").textContent="Guardar factura y descontar inventario";$("invoiceCancelEdit").hidden=true;$("invoiceNumber").value="";$("customerName").value="";$("customerId").value="";$("customerNrc").value="";$("customerAddress").value="";$("invoiceDiscount").value="0";refreshInvoiceNumber(true);}
