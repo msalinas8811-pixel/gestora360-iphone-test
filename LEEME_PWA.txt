@@ -31,10 +31,4 @@ Versión v335: resumen visible al final de Costos de importación, una fila por 
 Versión v336: el resumen final de productos ahora se alimenta directamente de la lista de productos activa y contempla nombres/cantidades/precios de importaciones guardadas con distintos nombres de campo. Se actualiza al recalcular y al cargar una importación guardada.
 
 
-Versión v337: interfaz de Costos de importación reorganizada. El selector de importaciones guardadas y sus botones quedan al inicio; País de compra pasa a ser el primer campo de Gastos generales.
-
-
-Versión v338: el campo País de compra está en el primer bloque, junto a los datos de la importación, y ya no dentro de Gastos generales. Se conserva el id importCountry.
-
-
-v339: País de compra colocado como primer campo del primer bloque de Costos de importación. Caché PWA actualizada.
+Versión v340: en Costos de importación, Importaciones guardadas queda al inicio del bloque, con Nuevo registro, Cargar seleccionada y Eliminar guardada debajo del selector. País de compra permanece en su bloque original y Gastos generales continúa inmediatamente después.
