@@ -23,3 +23,5 @@ Versión v328: agrega aviso visible al agregar/guardar productos y lista de deta
 Versión v328: renueva la caché PWA para evitar que el navegador siga mostrando archivos antiguos. Incluye aviso de agregado/guardado y detalle de productos en Costos de importación.
 
 Versión v328: muestra el resumen de todas las importaciones guardadas dentro de Costos de importación, confirma guardado exitoso y bloquea duplicados por nombre + proveedor + país. Para modificar una importación existente, cargarla desde la lista y guardarla de nuevo.
+
+Versión v329: agrega IVA de venta y pago a cuenta estimado después de la venta estimada; resta ambos conceptos al calcular la ganancia por unidad y total. Elimina las tablas de resumen de importación y detalle de producto del módulo de costos de importación.
