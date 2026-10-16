@@ -35,3 +35,6 @@ Versión v340: en Costos de importación, Importaciones guardadas queda al inici
 
 
 Versión 341: al pulsar “Guardar importación”, se muestra un mensaje de confirmación: “La importación ya fue guardada exitosamente”.
+
+
+Versión v342: al pulsar “Guardar importación”, aparece una confirmación visible dentro de la página. Se actualizó la versión de caché de la PWA.

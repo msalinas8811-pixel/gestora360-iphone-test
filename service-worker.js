@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestora360-pwa-v341';
+const CACHE_NAME = 'gestora360-pwa-v342';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './importapro-logo.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
