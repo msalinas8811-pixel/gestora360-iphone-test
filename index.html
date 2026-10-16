@@ -680,6 +680,7 @@ function render(){ $("products").innerHTML=items.map((p,i)=>`<div class="product
 <div class="calcfield"><label>Costo de compra total final ($)</label><input class="totalfinal" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>Costo de compra final por unidad ($)</label><input class="finalcost" type="text" readonly value="$0.00"></div>
 <div><label>Precio de venta sugerido (IVA incluido, $) — editable</label><input data-k="suggestedSale" type="number" min="0" step=".01" value="${p.suggestedSale??0}" placeholder="Ingrese precio sugerido"></div>
+<div class="calcfield"><label>Venta total estimada del producto ($)</label><input class="productSalesTotal" type="text" readonly value="$0.00" aria-label="Venta total estimada del producto"></div>
 <div class="calcfield"><label>DAI por producto ($)</label><input class="productdai" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>IVA de importación por producto ($)</label><input class="productiva" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>Flete asignado por producto ($)</label><input class="productfreight" type="text" readonly value="$0.00"></div>
@@ -709,6 +710,7 @@ items.forEach(p=>{
  el.querySelector(".totalfob").value=cash(fobTotal);
  el.querySelector(".totalfinal").value=cash(landed);
  el.querySelector(".finalcost").value=cash(unit);
+ el.querySelector(".productSalesTotal").value=cash(grossSales);
  el.querySelector(".productdai").value=cash(dai);
  el.querySelector(".productiva").value=cash(importVat);
  el.querySelector(".productfreight").value=cash(fr);
