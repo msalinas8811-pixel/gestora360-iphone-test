@@ -35,3 +35,6 @@ Versión v337: interfaz de Costos de importación reorganizada. El selector de i
 
 
 Versión v338: el campo País de compra está en el primer bloque, junto a los datos de la importación, y ya no dentro de Gastos generales. Se conserva el id importCountry.
+
+
+v339: País de compra colocado como primer campo del primer bloque de Costos de importación. Caché PWA actualizada.
