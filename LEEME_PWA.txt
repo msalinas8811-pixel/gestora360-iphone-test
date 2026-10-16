@@ -43,3 +43,5 @@ Versión 343: tamaño en metros cúbicos con capacidad estándar automática par
 
 
 Version 344: se reforzó la selección de capacidad del contenedor. 20 pies completa 33.2 m³ y bloquea el campo; 40 pies completa 67.7 m³ y bloquea el campo; Otra medida habilita la entrada manual y conserva el valor al restaurar o cargar una importación.
+
+Versión 345: añade campos bloqueados para volumen acumulado por productos y volumen restante de la capacidad asignada.
