@@ -1,4 +1,4 @@
-GESTORA 360 PWA v327 — PAQUETE COMPLETO
+GESTORA 360 PWA v328 — PAQUETE COMPLETO
 
 CONTENIDO
 - index.html: aplicación Gestora 360 basada en la versión v323, con el orden de campos solicitado.
@@ -18,6 +18,8 @@ NOTAS
 - El modo sin conexión cubre la interfaz y archivos locales de la aplicación. No sustituye una copia de seguridad de los datos.
 - Las notificaciones push y recordatorios en segundo plano no están configurados en esta versión.
 
-Versión v327: agrega aviso visible al agregar/guardar productos y lista de detalle al final de Costos de importación.
+Versión v328: agrega aviso visible al agregar/guardar productos y lista de detalle al final de Costos de importación.
 
-Versión v327: renueva la caché PWA para evitar que el navegador siga mostrando archivos antiguos. Incluye aviso de agregado/guardado y detalle de productos en Costos de importación.
+Versión v328: renueva la caché PWA para evitar que el navegador siga mostrando archivos antiguos. Incluye aviso de agregado/guardado y detalle de productos en Costos de importación.
+
+Versión v328: muestra el resumen de todas las importaciones guardadas dentro de Costos de importación, confirma guardado exitoso y bloquea duplicados por nombre + proveedor + país. Para modificar una importación existente, cargarla desde la lista y guardarla de nuevo.

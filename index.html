@@ -574,6 +574,11 @@ body>main{margin:0!important;padding-top:16px!important;}
 <section class="panel"><h2>Gastos generales (USD)</h2><div class="fields">
 <div><label>Tamaño del contenedor</label><select id="containerSize"><option value="">Seleccionar tamaño...</option><option value="20">20 pies</option><option value="40">40 pies</option></select></div><div><label>Flete internacional total (USD)</label><input id="freight" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Agente / tramitador</label><input id="broker" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Transporte local</label><input id="transport" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Descarga / mano de obra</label><input id="unload" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>Otros gastos</label><input id="other" type="number" min="0" step=".01" value="" placeholder="0.00"></div><div><label>IVA estimado (%)</label><input id="vat" type="number" min="0" step=".01" value="13"></div></div></section>
 <section class="panel"><div class="head"><h2 style="margin:0">Productos del contenedor</h2><button id="add">+ Agregar producto</button></div><div id="products"></div><div class="actions"><button class="secondary" id="copy">Copiar resumen</button><button class="secondary" id="csv">Exportar CSV de productos</button><button class="secondary" id="exportReport">Exportar reporte a Excel</button><button class="secondary" id="reset">Borrar datos</button><button id="saveImport">Guardar importación</button></div><p id="importRecordFeedback" class="note" role="status" aria-live="polite">Agrega productos y pulsa “Guardar importación” para conservar el registro.</p></section><section class="panel" id="importProductsDetailPanel"><div class="consult-section-title"><div><div class="section-kicker">DETALLE ACTUAL</div><h2>Lista de productos de esta importación</h2></div><span id="importProductsDetailCount" class="note">0 productos</span></div><p class="note">Esta lista se actualiza al agregar o editar productos. Para conservarlos y recuperarlos después, pulsa “Guardar importación”.</p><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>FOB unitario</th><th>CBM/u</th><th>DAI %</th><th>Costo final total</th><th>Venta estimada total</th></tr></thead><tbody id="importProductsDetailRows"><tr><td colspan="8">Agrega un producto para ver el detalle.</td></tr></tbody></table></div></section>
+<section class="panel" id="savedImportSummaryPanel" style="margin-top:14px">
+ <div class="consult-section-title"><div><div class="section-kicker">REGISTROS GUARDADOS</div><h2>Resumen de importaciones guardadas</h2></div><span id="savedImportSummaryCount" class="note">0 importaciones</span></div>
+ <p class="note">Cada importación guardada aparece una sola vez. Para editar una existente, selecciónala arriba y pulsa “Cargar seleccionada”.</p>
+ <div class="tablewrap"><table><thead><tr><th>Nombre de importación</th><th>Proveedor</th><th>País</th><th>Productos</th><th>Unidades</th><th>FOB total</th><th>Fecha guardada</th></tr></thead><tbody id="savedImportSummaryRows"><tr><td colspan="7">Todavía no hay importaciones guardadas.</td></tr></tbody></table></div>
+</section>
 <section id="costGeneralImportSummary" class="panel" style="margin-top:14px;background:#f7fbf9"><div class="consult-section-title"><div><div class="section-kicker">CONSULTA GENERAL</div><h2>Resumen de la importación</h2></div><button type="button" id="costGeneralRecalculate" class="secondary" style="margin-top:10px">Recalcular resumen</button></div><div class="metrics"><div class="metric" style="grid-column:1/-1"><span>Nombre de la importación</span><strong id="costGeneralImportName">Importación actual</strong></div><div class="metric"><span>Total CBM</span><strong id="costGeneralSumCbm">0.000 m³</strong></div><div class="metric"><span>Valor FOB total</span><strong id="costGeneralSumFob">$0.00</strong></div><div class="metric"><span>DAI</span><strong id="costGeneralSumDai">$0.00</strong></div><div class="metric"><span>IVA de importación</span><strong id="costGeneralSumImportVat">$0.00</strong></div><div class="metric"><span>Total IVA + DAI</span><strong id="costGeneralSumTaxes">$0.00</strong></div><div class="metric"><span>Valor estimado final</span><strong id="costGeneralSumFinal">$0.00</strong></div><div class="metric"><span>Valor de venta (IVA incluido)</span><strong id="costGeneralSumSales">$0.00</strong></div><div class="metric"><span>IVA de la venta</span><strong id="costGeneralSumSalesVat">$0.00</strong></div><div class="metric"><span>IVA a pagar estimado (IVA venta − IVA importación)</span><strong id="costGeneralSumVatPayable">$0.00</strong></div><div class="metric"><span>Ganancia final estimada</span><strong id="costGeneralSumProfit">$0.00</strong></div></div><p class="note">El resumen corresponde a los productos que estás editando en Costos de importación. Los importes son estimados; confirma los impuestos con tu agente aduanal y contador.</p><div style="margin-top:12px;padding:14px;border:1px solid #dbe4ed;border-radius:12px;background:#f8fafc"><h3 style="margin:0 0 8px">Fórmulas y valores calculados</h3><p id="costGeneralSalesFormula" class="note">Valor de venta = suma de cantidad × precio de venta sugerido.</p><p id="costGeneralVatFormula" class="note">IVA de la venta = valor de venta × tasa IVA ÷ (1 + tasa IVA).</p><p id="costGeneralProfitFormula" class="note">Ganancia final = venta sin IVA − costo de importación sin IVA de importación − gastos de venta y operación.</p></div><div class="consult-section-title" style="margin-top:18px"><div><div class="section-kicker">DETALLE DE PRODUCTOS</div><h2>Productos de la importación</h2></div></div><div class="tablewrap"><table><thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>FOB unitario</th><th>FOB total</th><th>CBM total</th><th>Flete asignado</th><th>Base DAI</th><th>DAI %</th><th>DAI</th><th>IVA estimado</th><th>Costo unitario estimado</th><th>Venta estimada total</th></tr></thead><tbody id="costGeneralImportProductRows"><tr><td colspan="13">Agrega productos para ver el detalle.</td></tr></tbody></table></div></section>
 </div>
 <div id="page-inventory" class="app-page">
@@ -843,10 +848,24 @@ function restoreDraft(){
  }catch(e){}
 }
 function savedList(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch(e){return []}}
+function renderSavedImportSummary(){
+ const body=$("savedImportSummaryRows"),count=$("savedImportSummaryCount");
+ if(!body)return;
+ const all=savedList();
+ if(count)count.textContent=`${all.length} importación(es)`;
+ if(!all.length){body.innerHTML='<tr><td colspan="7">Todavía no hay importaciones guardadas.</td></tr>';return;}
+ body.innerHTML=all.map(rec=>{
+  const products=Array.isArray(rec.items)?rec.items:[];
+  const qty=products.reduce((sum,p)=>sum+n(p.qty??p.quantity??p.cantidad),0);
+  const fob=products.reduce((sum,p)=>sum+n(p.qty??p.quantity??p.cantidad)*n(p.fob),0);
+  return `<tr><td>${esc(rec.description||"Importación sin descripción")}</td><td>${esc(rec.importSupplier||"—")}</td><td>${esc(rec.importCountry||"—")}</td><td>${products.length}</td><td>${qty}</td><td>${cash(fob)}</td><td>${esc(rec.date||"—")}</td></tr>`;
+ }).join("");
+}
 function refreshSavedImports(selected=""){
  const select=$("savedImports"); if(!select)return;
  select.innerHTML='<option value="">Seleccionar importación guardada...</option>'+savedList().map(x=>`<option value="${esc(x.id)}">${esc(x.description||"Importación sin descripción")} — ${esc(x.date||"")}</option>`).join("");
  select.value=selected;
+ renderSavedImportSummary();
 }
 let activeSavedImportId = null;
 function clearImportForm(){
@@ -863,18 +882,32 @@ function captureImport(){
 }
 $("newImportRecord").addEventListener("click",()=>{clearImportForm();const status=$("autosaveStatus");if(status)status.textContent="Nuevo registro listo. Los campos de la importación anterior se limpiaron; las importaciones guardadas se conservaron.";});
 $("saveImport").addEventListener("click",()=>{
+ const description=$("importDescription").value.trim();
+ if(!description){
+  const feedback=$("importRecordFeedback");if(feedback)feedback.textContent="No se guardó: escribe un nombre para la importación.";
+  alert("Escribe el nombre de la importación antes de guardar.");$("importDescription").focus();return;
+ }
  const rec=captureImport(),all=savedList(),idx=all.findIndex(x=>x.id===rec.id);
- if(idx>=0){all[idx]={...all[idx],...rec};}else{all.unshift(rec);}
+ const norm=v=>String(v||"").trim().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/\\s+/g," ");
+ if(idx<0){
+  const duplicate=all.find(x=>norm(x.description)===norm(rec.description)&&norm(x.importSupplier)===norm(rec.importSupplier)&&norm(x.importCountry)===norm(rec.importCountry));
+  if(duplicate){
+   const feedback=$("importRecordFeedback");if(feedback)feedback.textContent=`No se guardó porque ya existe una importación con el nombre “${rec.description}” y el mismo proveedor/país. Carga el registro existente para editarlo, o cambia el nombre si se trata de otra importación.`;
+   alert("Importación duplicada: ya existe un registro con el mismo nombre, proveedor y país. Carga la importación existente para actualizarla.");
+   refreshSavedImports(duplicate.id);return;
+  }
+  all.unshift(rec);
+ }else{
+  rec.date=all[idx].date||rec.date;
+  all[idx]={...all[idx],...rec};
+ }
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(all));}
+ catch(e){alert("No se pudo guardar la importación en este dispositivo. Comprueba el espacio disponible del navegador.");return;}
  activeSavedImportId=rec.id;
- localStorage.setItem(STORAGE_KEY,JSON.stringify(all));
- // Mantener la importación en pantalla tras guardar para que el resumen financiero
- // siga mostrando sus valores y fórmulas en vez de reiniciarse a cero.
- refreshSavedImports(rec.id);
- refreshInventoryImportSelect();
- calc();
- saveDraft();
- const status=$("autosaveStatus");if(status)status.textContent=idx>=0?"Importación actualizada correctamente.":"Importación guardada correctamente en este dispositivo.";const feedback=$("importRecordFeedback");if(feedback)feedback.textContent=idx>=0?`Importación “${rec.description}” actualizada correctamente. ${items.length} producto(s) guardado(s).`:`Importación “${rec.description}” guardada correctamente. ${items.length} producto(s) guardado(s).`;
- alert(idx>=0?"Importación actualizada correctamente. El resumen permanece visible.":"Importación guardada en este dispositivo. El resumen permanece visible.");
+ refreshSavedImports(rec.id);refreshInventoryImportSelect();calc();saveDraft();
+ const status=$("autosaveStatus");if(status)status.textContent=idx>=0?"Importación actualizada con éxito.":"Importación guardada con éxito.";
+ const feedback=$("importRecordFeedback");if(feedback)feedback.textContent=idx>=0?`Importación “${rec.description}” actualizada con éxito. ${items.length} producto(s) guardado(s).`:`Importación “${rec.description}” guardada con éxito. ${items.length} producto(s) guardado(s).`;
+ alert(idx>=0?"Importación actualizada con éxito.":"Importación guardada con éxito.");
 });
 $("loadImport").addEventListener("click",()=>{
  const id=$("savedImports").value,rec=savedList().find(x=>x.id===id);
