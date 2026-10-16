@@ -1,6 +1,7 @@
 {
   "name": "Gestora 360 — Plataforma de gestión empresarial",
   "short_name": "Gestora 360",
+  "version": "318",
   "description": "Gestión empresarial: importaciones, compras, inventario, ventas, facturación, consultas, reportes, clientes, proveedores y gastos operativos sin inventario.",
   "start_url": "./index.html",
   "display": "standalone",

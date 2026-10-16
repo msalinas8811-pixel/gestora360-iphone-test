@@ -414,6 +414,14 @@ body>main{margin:0!important;padding-top:16px!important;}
 @media print{body>header,nav.app-navigation{display:none!important}}
 </style>
 
+<style id="g360-v318-estimated-sales-field">
+/* v318: campo de venta total estimada destacado dentro de cada ficha de producto */
+.estimated-sales-field{display:block!important;visibility:visible!important;opacity:1!important;grid-column:span 1;background:#eaf8f5;border:1px solid #78c9b8;border-radius:10px;padding:10px;min-width:0}
+.estimated-sales-field label{color:#075f54!important;font-weight:800!important;font-size:12px!important;line-height:1.35}
+.estimated-sales-field input.productSalesTotal{display:block!important;width:100%;min-width:0;background:#fff!important;border:2px solid #159782!important;color:#075f54!important;font-size:18px!important;font-weight:800!important;text-align:left;padding:11px!important}
+.estimated-sales-help{display:block;margin-top:6px;color:#28685f;font-size:11px;line-height:1.35}
+@media(max-width:700px){.estimated-sales-field{grid-column:1/-1!important}.estimated-sales-field input.productSalesTotal{font-size:17px!important}}
+</style>
 </head><body><header><div class="brand"><img src="./importapro-logo.png" alt="Gestora 360 — G360"><div class="brandname">Gestora 360<div class="tag">Todo tu negocio en un solo lugar</div></div><div class="g360-header-tools" aria-label="Accesos rápidos">
 <button type="button" data-page-go="page-home" id="globalHomeButton" class="g360-icon-btn g360-home-btn" aria-label="Inicio" title="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M9 20v-6h6v6"/></svg></button>
 <button type="button" id="helpButton" class="g360-icon-btn" aria-label="Ayuda" title="Ayuda"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.3 1.8c-1.1 1-1.9 1.2-1.9 2.7M12 17h.01"/></svg></button>
@@ -680,7 +688,7 @@ function render(){ $("products").innerHTML=items.map((p,i)=>`<div class="product
 <div class="calcfield"><label>Costo de compra total final ($)</label><input class="totalfinal" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>Costo de compra final por unidad ($)</label><input class="finalcost" type="text" readonly value="$0.00"></div>
 <div><label>Precio de venta sugerido (IVA incluido, $) — editable</label><input data-k="suggestedSale" type="number" min="0" step=".01" value="${p.suggestedSale??0}" placeholder="Ingrese precio sugerido"></div>
-<div class="calcfield"><label>Venta total estimada del producto ($)</label><input class="productSalesTotal" type="text" readonly value="$0.00" aria-label="Venta total estimada del producto"></div>
+<div class="calcfield estimated-sales-field"><label>VENTA TOTAL ESTIMADA DEL PRODUCTO ($)</label><input class="productSalesTotal" type="text" readonly value="$0.00" aria-label="Venta total estimada del producto" title="Cantidad × precio de venta sugerido (IVA incluido)"><small class="estimated-sales-help">Se calcula automáticamente: cantidad × precio de venta sugerido.</small></div>
 <div class="calcfield"><label>DAI por producto ($)</label><input class="productdai" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>IVA de importación por producto ($)</label><input class="productiva" type="text" readonly value="$0.00"></div>
 <div class="calcfield"><label>Flete asignado por producto ($)</label><input class="productfreight" type="text" readonly value="$0.00"></div>

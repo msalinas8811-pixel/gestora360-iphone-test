@@ -1,4 +1,4 @@
-const CACHE_NAME="gestora-360-pwa-v317";
+const CACHE_NAME="gestora-360-pwa-v318";
 const ASSETS=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./importapro-logo.png"];
 self.addEventListener("install",event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)));});
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>(key.startsWith("importapro-mobile-")||key.startsWith("gestora-360-"))&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
