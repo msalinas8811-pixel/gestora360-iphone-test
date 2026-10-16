@@ -1,0 +1,11 @@
+Gestora 360 — versión 346 (ampliación de traducción español/inglés)
+
+Cambios realizados sobre la versión v345 proporcionada:
+- Se amplió el diccionario español-inglés con etiquetas, botones, títulos, campos y ayudas de importación, compras, inventario, facturación, clientes, proveedores, reportes y respaldos.
+- Se añadieron traducciones exactas para varios estados y mensajes de validación/confirmación.
+- Los cuadros alert() y confirm() usan las traducciones disponibles cuando el idioma seleccionado es English.
+- Se conservaron los textos originales en español y la lógica de cálculos/datos del proyecto.
+
+Validación realizada: se comprobó la integridad del ZIP de origen, se extrajeron los archivos y Node.js no reportó errores de sintaxis en los scripts JavaScript extraídos del HTML.
+
+Nota: esta es una ampliación importante, pero no certifica que cada frase dinámica de todos los módulos esté traducida. Recomendado: probar cada módulo cambiando Español/English y revisar mensajes que dependan de datos introducidos por el usuario.
