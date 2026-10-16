@@ -1,22 +1,19 @@
-GESTORA 360 PWA — VERSIÓN 316
+GESTORA 360 PWA v324 — PAQUETE COMPLETO
 
 CONTENIDO
-- index.html: aplicación
-- manifest.webmanifest: configuración de instalación
-- service-worker.js: caché y funcionamiento sin conexión para recursos guardados
-- icon-192.png / icon-512.png: iconos de la app
+- index.html: aplicación Gestora 360 basada en la versión v323, con el orden de campos solicitado.
+- manifest.webmanifest: configuración instalable de la PWA.
+- service-worker.js: caché de archivos de la aplicación y apertura básica sin conexión tras la primera carga.
+- icon-192.png e icon-512.png: iconos de la PWA.
+- importapro-logo.png: logotipo incluido en el paquete original.
 
-IMPORTANTE
-Este paquete es una PWA (aplicación web progresiva), no un APK ni un IPA. Para instalarla como aplicación en iPhone o Android, debe publicarse en un sitio HTTPS. Abrir el HTML directamente desde Archivos no permite instalar todas las funciones PWA.
+CÓMO PROBAR
+1. Extrae todos los archivos del ZIP en una misma carpeta.
+2. Publica la carpeta en un hosting con HTTPS (por ejemplo, tu hosting web). Una PWA no se instala correctamente al abrir index.html directamente como archivo local.
+3. Abre la URL publicada en Chrome/Android y usa “Instalar aplicación” o “Añadir a pantalla de inicio”. En iPhone/iPad, abre la URL en Safari, toca Compartir y luego “Añadir a pantalla de inicio”.
+4. Abre la app al menos una vez con conexión para que el navegador guarde los archivos necesarios para la apertura básica sin conexión.
 
-PUBLICACIÓN
-1. Descomprime el ZIP.
-2. Sube TODOS los archivos de esta carpeta a la raíz de un sitio HTTPS (por ejemplo, el hosting que utilices).
-3. Abre la URL del sitio en Safari (iPhone) o Chrome (Android).
-4. iPhone: Safari > Compartir > Añadir a pantalla de inicio.
-5. Android: Chrome > menú ⋮ > Instalar aplicación o Añadir a pantalla de inicio.
-
-DATOS
-La aplicación conserva datos localmente en el navegador/dispositivo. Los datos no se sincronizan automáticamente entre dispositivos. Usa el módulo Respaldo para exportar y conservar copias antes de actualizar o cambiar de dispositivo.
-
-Esta versión deriva de Gestora 360 v315 y mantiene sus módulos y lógica funcional; se actualizaron los metadatos PWA y la versión de caché. No se ha publicado automáticamente en internet.
+NOTAS
+- Esta versión añade capacidades PWA; no cambia deliberadamente las fórmulas funcionales de la aplicación.
+- El modo sin conexión cubre la interfaz y archivos locales de la aplicación. No sustituye una copia de seguridad de los datos.
+- Las notificaciones push y recordatorios en segundo plano no están configurados en esta versión.

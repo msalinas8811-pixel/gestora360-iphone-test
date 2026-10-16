@@ -1,30 +1,17 @@
 {
-  "name": "Gestora 360 — Plataforma de gestión empresarial",
+  "id": "./",
+  "name": "Gestora 360 — Gestión empresarial",
   "short_name": "Gestora 360",
-  "version": "318",
-  "description": "Gestión empresarial: importaciones, compras, inventario, ventas, facturación, consultas, reportes, clientes, proveedores y gastos operativos sin inventario.",
+  "description": "Costos de importación, compras, inventario, facturación, clientes, proveedores y reportes.",
+  "lang": "es-SV",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#f4f7f5",
   "theme_color": "#102342",
   "icons": [
-    {
-      "src": "./icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "orientation": "portrait",
-  "scope": "./",
-  "display_override": [
-    "standalone",
-    "minimal-ui"
-  ],
-  "prefer_related_applications": false
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+  ]
 }
