@@ -40,3 +40,6 @@ Versión 341: al pulsar “Guardar importación”, se muestra un mensaje de con
 Versión v342: al pulsar “Guardar importación”, aparece una confirmación visible dentro de la página. Se actualizó la versión de caché de la PWA.
 
 Versión 343: tamaño en metros cúbicos con capacidad estándar automática para contenedor de 20 (33.2 m³) y 40 (67.7 m³); “Otra medida” permite ingresar la capacidad manualmente.
+
+
+Version 344: se reforzó la selección de capacidad del contenedor. 20 pies completa 33.2 m³ y bloquea el campo; 40 pies completa 67.7 m³ y bloquea el campo; Otra medida habilita la entrada manual y conserva el valor al restaurar o cargar una importación.
