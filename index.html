@@ -895,7 +895,7 @@ $("saveImport").addEventListener("click",()=>{
  calc();
  saveDraft();
  const status=$("autosaveStatus");if(status)status.textContent=idx>=0?"Importación actualizada. El resumen sigue mostrando esta importación.":"Importación guardada. El resumen sigue mostrando esta importación.";
- alert(idx>=0?"Importación actualizada correctamente. El resumen permanece visible.":"Importación guardada en este dispositivo. El resumen permanece visible.");
+ alert(idx>=0?"La importación ya fue guardada exitosamente. Se actualizaron los datos guardados.":"La importación ya fue guardada exitosamente en este dispositivo.");
 });
 $("loadImport").addEventListener("click",()=>{
  const id=$("savedImports").value,rec=savedList().find(x=>x.id===id);

@@ -32,3 +32,6 @@ Versión v336: el resumen final de productos ahora se alimenta directamente de l
 
 
 Versión v340: en Costos de importación, Importaciones guardadas queda al inicio del bloque, con Nuevo registro, Cargar seleccionada y Eliminar guardada debajo del selector. País de compra permanece en su bloque original y Gastos generales continúa inmediatamente después.
+
+
+Versión 341: al pulsar “Guardar importación”, se muestra un mensaje de confirmación: “La importación ya fue guardada exitosamente”.
